@@ -1,0 +1,79 @@
+﻿{% extends "base_2col.html" %}
+
+{% block coltype %}links-link change-form{% endblock %}
+{% block sectionid %}links{% endblock %}
+{% block active_nav-links %}class="active"{% endblock %}
+{% block title %}Ajouter un lien{% endblock %}
+
+{% block billboard %}<h2><a href="/liens/">Liens</a></h2>{% endblock %}
+
+{% block content %}
+<h1>Ajouter un lien</h1>
+
+<div class="content first-content">
+    {% if form.has_errors %}
+    <p class="error">Merci de corriger les erreures suivantes&nbsp;:</p>
+    {% endif %}
+
+    <form method="post" action="" id="link_form">
+        <div class="form-row full-input-width">
+            <label for="id_title">
+                Titre, en général le titre original du billet :
+            </label>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <p class="error">{{ form.title.errors|join:", " }}</p>
+            {% endif %}
+        </div>
+        <div class="form-row">
+            <p class="half-cell full-input-width">
+                <label for="id_url">
+                    Adresse du lien :
+                </label>
+                {{ form.url }}
+                {% if form.url.errors %}
+                    <span class="error">{{ form.url.errors|join:", " }}</span>
+                {% endif %}
+            </p>
+
+            <p class="half-cell">
+                <label for="id_lang">Langue :</label> {{ form.lang }}
+                {% if form.lang.errors %}<span class="error">
+                    {{ form.lang.errors|join:", " }}</span>
+                {% endif %}
+            </p>
+            <div class="cale"></div>
+        </div>
+        <div class="form-row full-input-width">
+            <label for="id_related_tags">
+                Tags, séparés par des espaces, c'est principalement pour enrichir la doc :
+            </label>
+            {{ form.related_tags }}
+            {% if form.related_tags.errors %}
+                <p class="error">{{ form.related_tags.errors|join:", " }}</p>
+            {% endif %}
+        </div>
+        <div class="form-row full-input-width">
+            <label for="id_comment">
+                Commentaire, si possible en français décrivant précisément l'objet du lien soumis :
+            </label>
+            {{ form.comment }}
+            {% if form.comment.errors %}
+                <p class="error">{{ form.comment.errors|join:", " }}</p>
+            {% endif %}
+        </div>
+        <div class="submit-row">
+            <input type="submit" />
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block content-related %}
+    <h2>Liens intéressants relatifs à Django et à ses extensions possibles.</h2>
+    <p>
+        La documentation officielle est complète mais ne suffit parfois pas à
+        certaines spécificités, les liens présents sur cette page sont là pour
+        combler ce manque.
+    </p>
+{% endblock %}

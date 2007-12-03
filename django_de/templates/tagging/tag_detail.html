@@ -1,0 +1,56 @@
+﻿{% extends "base_2col.html" %}
+{% load tagging_tags %}
+
+{% block sectionid %}links{% endblock %}
+{% block active_nav-links %}class="active"{% endblock %}
+{% block title %}Index des liens{% endblock %}
+
+{% block billboard %}<h2>Tags</h2>{% endblock %}
+
+{% block content %}
+<h1>Ressources pour le tag "{{ tag }}"</h1>
+<div class="content">
+
+{% tagged_objects tag in documentation.Documentation as documentation_list %}
+{% if documentation_list %}
+    <h2>Dans la documentation</h2>
+    <ul class="linklist doclist">
+    {% for documentation in documentation_list %}
+        <li>
+            <a href="{{ documentation.get_absolute_url }}"
+            title="{{ documentation.title }}">{{ documentation.title }}</a>
+            <p>{{ documentation.summary }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% tagged_objects tag in links.Link as link_list %}
+{% if link_list %}
+    <h2>Dans les liens</h2>
+    <ul class="linklist">
+    {% for link in link_list %}
+        <li>
+            <a href="{{ link.get_absolute_url }}"
+            title="{{ link.title }}">{{ link.title }}</a> ({{ link.lang|lower }})
+            <blockquote>{{ link.comment }}</blockquote>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block content-related %}
+    <h2>Tags</h2>
+    <ul id="tag_cloud">
+    {% tags_for_model documentation.Documentation as documentation_list %}
+    {% for tag in documentation_list %}
+        <li><a href="/tags/{{ tag }}/" title="" class="importance{{ tag.font_size }}">{{ tag }}</a></li>
+    {% endfor %}
+    {% tags_for_model links.Link as link_list %}
+    {% for tag in link_list %}
+        <li><a href="/tags/{{ tag }}/" title="" class="importance{{ tag.font_size }}">{{ tag }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

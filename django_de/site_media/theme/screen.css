@@ -1,0 +1,759 @@
+﻿/*
+* Feuilles de styles globale du thème pour le projet Django-Fr
+* Créé par David THENON en Janvier 2007
+* Licence GPL pour le CSS, logo et images de fonds du thème.
+* L'iconographie est composé d'éléments (sous leur propre licence) venant de :
+* - Style Gala 'BulletMadness' http://www.stylegala.com/features/bulletmadness/
+* - Set d'icones pour KDE 'Crystal Clear' par Everaldo
+*
+____________________
+    Redéfinitions de balises et style pour tous
+*/
+html{
+    background-color:white;
+}
+body{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    font-family:sans-serif;
+    background-color:#f0f2d9;
+}
+html > body{
+    background-color:white;
+}
+hr,
+.cale{
+    visibility:hidden;
+    width:0;
+    height:0.05px;
+    font-size:0;
+    clear:both;
+}
+form{
+    margin:0;
+    padding:0;
+}
+img{
+    border:0;
+}
+a,
+a:link{
+    color:#b46702;
+    text-decoration:none;
+}
+a:hover{
+    color:#d48722;
+    text-decoration:underline;
+}
+a:visited{
+    color:#944702;
+}
+
+/* ________________________________________
+    Container globale de toute les éléments
+*/
+/* #root{} */
+
+/* ________________________________________
+    Éléments de l'entete
+*/
+#body_head{
+    height:65px;
+    background-image:url("./background/background_dark_header_for_billboard.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+#body_head h1{
+    margin:0 10px 0 10px;
+    padding:5px 0 0 5px;
+    height:59px;
+    background-image:url("./background/background_light_header_for_billboard.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+#body_head h1 a{
+    display:block;
+    margin:0;
+    padding:0;
+    width:151px;
+    height:59px;
+    background-image:url("./logo.png");
+    background-position:top left;
+    background-repeat:no-repeat;
+}
+#body_head h1 span{
+    display:none;
+}
+#body_head h2{
+    display:none;
+}
+
+/* ________________________________________
+    Éléments de la navigation principale
+*/
+#body_head ul{
+    margin:5px 10px 0 0;
+    padding:0;
+    position:absolute;
+    top:0;
+    right:0;
+}
+#body_head li{
+    margin:0;
+    padding:0;
+    display:block;
+    float:left;
+    list-style-type:none;
+}
+#body_head li a,
+#body_head li a:link{
+    color:#787b51;
+    text-decoration:none;
+    padding:33px 10px 0 10px;
+    height:27px;
+    display:block;
+    float:left;
+    font-size:14.5px;
+    white-space:nowrap;
+    list-style-type:none;
+}
+#body_head li a.active,
+#body_head li a:hover{
+    color:#d48722;
+    background-image:url("./background/background_navigation_items.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+
+/* ________________________________________
+    Texte d'accroche
+*/
+#billboard{
+    margin:0;
+    padding:14px 0 0 0;
+    background-color:#92cc47;
+    background-image:url("./background/background_billboard_top.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+#billboard h2{
+    color:white;
+    margin:0;
+    padding:0 0 14px 16px;
+    font-size:18px;
+    font-weight:bold;
+    background-image:url("./background/background_billboard_bottom.png");
+    background-position:bottom left;
+    background-repeat:repeat-x;
+}
+#billboard h2 a{
+    color:white;
+}
+#billboard h2 span{
+    display:block;
+    margin:0;
+    padding:0;
+    font-size:14px;
+    font-weight:bold;
+    color:#52772b;
+}
+
+/* ________________________________________
+    Éléments globaux du cadre principale de contenu
+*/
+#columnwrap {
+    background-color:#f0f2d9;
+}
+/* Pour le mode 3colonnes */
+#subwrap {
+    background-color:#f5f7ee;
+    width:73%;
+    float:left;
+    background-image:url("./vertical_green_dot.gif");
+    background-position:top right;
+    background-repeat:repeat-y;
+}
+
+/* Tête de chapitre */
+#content-main h1{
+    color:#2c472c;
+    margin:0;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
+}
+body.rest-document #content-main h1{
+    padding:15px 0 15px 0;
+}
+
+/*#content-main div.header_content p{
+    color:#77a63a;
+    margin:0;
+    padding:0 0 0 2px;
+    font-size:16px;
+    font-weight:bold;
+}*/
+
+/* Contenu principal */
+#content-main{
+    float:left;
+    width:72%;
+    margin:0;
+    padding:0;
+    background:white;
+    background-image:url("./vertical_green_dot.gif");
+    background-position:top right;
+    background-repeat:repeat-y;
+}
+html > body #content-main{
+    width:73%;
+}
+/* Spécialement pour le Mode 3colonnes */
+#subwrap #content-main{
+    width:69%;
+}
+#content-main div.content{
+    color:#3f3f39;
+    background-image:url("./background/background_corpus.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+    margin:0 1px 0 0;
+    padding:8px 15px 12px 15px;
+}
+body.rest-document #content-main div.content{
+    background-image:url("./background/background_corpus_without_dot.png");
+}
+#content-main div.first-content{
+    background-color:#f5f9f8;
+    background-image:url("./background/background_corpus_first-content.png");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+body.rest-document #content-main div.first-content{
+    background-image:url("./background/background_corpus_first-content_without_dot.png");
+}
+
+#content-main div.content h2{
+    margin:0 0 0 0;
+    padding:8px 0 8px 0;
+    font-size:19px;
+    font-weight:bold;
+    color:#cbc347;
+}
+#content-main div.first-content h2{
+    color:#b8b149;
+}
+#content-main div.content h3{
+    font-size:16px;
+}
+
+#content-main div.content div.bio{
+    font-size:14px;
+}
+
+div.content p{
+    margin:7px 0 10px 0;
+    padding:0;
+    font-size:14px;
+}
+#content-main div.content div.bio{
+    font-size:14px;
+}
+
+div.content blockquote{
+    margin:0;
+    padding:0;
+}
+#links blockquote{
+    margin-left:16px;
+    padding-left:14px;
+    padding-right:16px;
+    border-left:2px solid #92cc47;
+}
+
+/* CODE BLOCKS */
+.literal { white-space:nowrap; }
+.literal, .literal-block { color:#234f32; }
+.sidebar .literal { color:white; background:transparent; font-size:11px; }
+pre, .literal-block { font-size:medium; background:#E0FFB8; border:1px solid #94da3a; border-width:1px 0; margin: 1em 0; padding: .3em .4em; overflow: auto; }
+dt .literal, table .literal { background:none; }
+textarea.codedump { font-size:10px; color:#234f32; width:100%; background:#E0FFB8; border:1px solid #94da3a; border-width:1px 0; padding: .3em .4em; }
+
+/* Encart de notes des documents ReST */
+.note, .admonition {
+    margin:16px 0 16px 0;
+    padding:16px;
+    border:1px solid #9bb678;
+}
+.admonition-title {
+    color:#6b8648;
+    font-weight:bold;
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+}
+.admonition-philosophie {
+    padding-left:65px;
+    background:url(./icons/ktip.png) .8em .8em no-repeat;
+}
+.admonition-note {
+    padding-left:65px;
+    background:url(./icons/reminders.png) .8em .8em no-repeat;
+}
+.admonition-behind-the-scenes {
+    padding-left:65px;
+    background:url(./icons/misc.png) .8em .8em no-repeat;
+}
+.admonition .last {
+    margin-bottom:0 !important;
+}
+/* Tableaux dans des documents ReST */
+#content-main table { color:#000; }
+table.docutils { border-collapse:collapse; }
+table.docutils thead th { border-bottom:2px solid #dfdfdf; text-align:left; }
+table.docutils td, table.docutils th { border-bottom:1px solid #dfdfdf; padding:4px 2px;}
+table.docutils td p { margin-top:0; margin-bottom:.5em; }
+#documentation #content-related .literal { background:transparent !important; }
+/* Divers mises en formes dans les documents ReST */
+#content-main div.content pre,
+#content-main div.content .literal-block{
+    width:100%;
+    background-color:#e7f1d9;
+    border:1px solid #9bb678;
+    border-width:1px 0;
+    margin:6px 0 6px 0;
+    padding:4px;
+    overflow:auto;
+}
+html>body #content-main div.content pre,
+html>body #content-main div.content .literal-block{
+    width:auto;
+}
+
+/* Liste à puces lambda */
+div.content ul{
+    margin:0;
+    padding:6px 13px 6px 0;
+    font-size:14px;
+}
+div.content ul li{
+    margin-left:20px;
+    margin-bottom:2px;
+}
+div.content ol{
+    margin:0;
+    padding:6px 13px 6px 0;
+    font-size:14px;
+    list-style-type:upper-latin;
+}
+div.content ol li{
+    margin-left:26px;
+    margin-bottom:2px;
+}
+div.bio{
+    margin:0;
+    padding:4px;
+    border-top:1px dotted #b46702;
+}
+
+/* Liste de liens */
+ul.linklist{
+    margin:0 0 0 24px;
+    list-style-type:none;
+}
+ul.linklist li{
+    margin:0 0 12px 0;
+    padding-left:0;
+    list-style-type:none;
+}
+div.content ul.linklist li{
+    margin:0 8px 20px 8px;
+    padding-left:0;
+    list-style-type:none;
+}
+ul.linklist li h3,
+ul.linklist li a{
+    display:block;
+    padding:2px 4px 0 24px;
+    background-image:url("./icons/link_doc.png");
+    background-position:1px 1px;
+    background-repeat:no-repeat;
+}
+ul.doclist li h3,
+ul.doclist li a{
+    display:block;
+    padding:2px 4px 0 24px;
+    background-image:url("./icons/document.png");
+    background-position:1px 1px;
+    background-repeat:no-repeat;
+}
+ul.linklist li div,
+ul.linklist li p{
+    margin:0 0 0 24px;
+}
+ul.linklist li div p{
+    margin:0 0 0 24px;
+}
+ul.linklist li h3 a,
+ul.linklist li div a,
+ul.linklist li p a{
+    display:inline;
+    padding:0;
+    background-image:none;
+}
+
+/* Tag cloud */
+#tag_cloud { list-style-type:none; }
+#tag_cloud li { float:left; display:inline; }
+#tag_cloud li a.importance1 { font-size:80%; }
+#tag_cloud li a.importance2 { font-size:100%; }
+#tag_cloud li a.importance3 { font-size:120%; }
+#tag_cloud li a.importance4 { font-size:140%; }
+
+/* Divers liens avec icone */
+a.more-about{
+    padding:0 16px 0 0;
+    background-image:url("./bullets/0111_arrow.gif");
+    background-position:top right;
+    background-repeat:no-repeat;
+}
+a.link-add{
+    padding:0 0 0 16px;
+    background-image:url("./bullets/0051_plus.gif");
+    background-position:top left;
+    background-repeat:no-repeat;
+}
+a.quick_link{
+    padding:0 0 0 20px;
+    background-image:url("./bullets/0024_chevrons.gif");
+    background-position:2px center;
+    background-repeat:no-repeat;
+}
+a.contributor_link{
+    padding:0 0 0 20px;
+    background-image:url("./bullets/0181_1.gif");
+    background-position:2px center;
+    background-repeat:no-repeat;
+}
+
+/* Formulaire */
+form{
+    margin:0;
+    padding:0 12px 12px 12px;
+}
+#content-main div.form-row{
+    margin:0;
+    padding:0 1% 0 1%;
+    font-size:13px;
+}
+div.form-row p{
+    font-size:13px;
+}
+div.form-row label{
+    display:block;
+    margin:12px 0 5px 0;
+    padding:0;
+    font-weight:bold;
+}
+div.form-row input{
+    padding:2px;
+    border:2px solid #cccccc;
+    background-image:url("./form.gif");
+    background-position:top left;
+    background-repeat:repeat-x;
+}
+div.form-row textarea{
+    padding:2px;
+    border:2px solid #cccccc;
+    background-image:url("./area.gif");
+    background-position:top left;
+    background-repeat:no-repeat;
+}
+div.form-row select{
+    padding:1px;
+    border:2px solid #cccccc;
+}
+/* Demi cellule */
+div.form-row p.half-cell{
+    width:49%;
+    margin-right:1%;
+    float:left;
+}
+/* Tiers de cellule */
+div.form-row p.third-cell{
+    width:32%;
+    margin-right:1%;
+    float:left;
+}
+/* Force la largeur des champs au maximum */
+.full-input-width input,
+.full-input-width textarea,
+.full-input-width select{
+    width:98%;
+}
+/* Boutons */
+div.submit-row{
+    margin:15px 0 15px 0;
+    text-align:center;
+}
+div.submit-row input{
+    margin-left:auto;
+    margin-right:auto;
+    color:#333333;
+    font-size:14px;
+    font-weight:bold;
+    font-family:Verdana, Helvetica, Arial, sans-serif;
+    border:5px double #999999;
+    border-top-color:#cccccc;
+    border-left-color:#cccccc;
+    background-color:#eff3f7;
+}
+div.submit-row input:active{
+    border:5px double #cccccc;
+    border-top-color: #999999;
+    border-left-color: #999999;
+    background-color:#ffffff;
+}
+/* Message d'erreur */
+.error{
+    margin-top:5px;
+    font-weight:bold;
+    color:red;
+}
+p.error,
+span.error{
+    display:block;
+    font-weight:normal;
+}
+
+/* ________________________________________
+    Éléments globaux des cadres de contextes (nav, menu, liens, etc..)
+*/
+#content-related{
+    float:right;
+    padding:0 2% 0 1%;
+    width:23%;
+}
+#content-extra{
+    float:right;
+    padding:0 1% 0 1%;
+    width:25%;
+}
+/* Mode 3colonnes */
+#subwrap #content-related{
+    float:right;
+    padding:0;
+    width:31%;
+}
+
+/* ________________________________________
+    Éléments génériques des colonnes de contextes
+*/
+div.sidebar{
+    margin:0;
+    padding:0 15px 25px 15px;
+    color:#79745a;
+}
+div.sidebar h2{
+    margin:0;
+    padding:12px 0 6px 0;
+    font-size:16px;
+    color:#a3b563;
+}
+div.sidebar p{
+    margin:0;
+    padding:4px 0 6px 0;
+    font-size:13px;
+}
+
+/* listes à puces ou numériques */
+div.sidebar ul{
+    margin:0;
+    padding:6px 13px 6px 0;
+    font-size:13px;
+}
+div.sidebar ul li{
+    margin-left:20px;
+    margin-bottom:2px;
+}
+div.sidebar ol{
+    margin:0;
+    padding:6px 13px 6px 0;
+    font-size:13px;
+    list-style-type:upper-latin;
+}
+div.sidebar ol li{
+    margin-left:26px;
+    margin-bottom:2px;
+}
+div.sidebar ol ol{
+    list-style-type: upper-roman;
+}
+div.sidebar ol ol ol{
+    list-style-type: decimal;
+}
+
+/* liste de définitions */
+div.sidebar dl{
+    margin:6px 14px 6px 4px;
+    padding:0 0 0 0;
+    font-size:13px;
+}
+div.sidebar dt{
+    margin:0 0 0 0;
+    padding:2px 2px 2px 2px;
+    font-weight:bold;
+}
+div.sidebar dt a{
+    color:#b46702;
+}
+div.sidebar dd{
+    margin:0 2px 9px 2px;
+    padding:2px 2px 9px 2px;
+    border-bottom:1px dotted #d9d4ca;
+}
+
+/* Force le margin en concurrence */
+div.sidebar ul.linklist li{
+    margin:0 0 12px 0;
+}
+
+/* Lien de téléchargement */
+div.sidebar ul li.button-download,
+div.sidebar ul.linklist li.button-download{
+    margin-left:0;
+    padding-left:0;
+    list-style-type:none;
+    list-style-image:none;
+}
+div.sidebar ul li.button-download a,
+div.sidebar ul.linklist li.button-download a{
+    display:block;
+    margin:4px 0 0 0;
+    padding:0 0 0 20px;
+    height:16px;
+    font-size:13px;
+    background-image:url("./bullets/0107_dl.gif");
+    background-position:2px 2px;
+    background-repeat:no-repeat;
+}
+
+/* Liste de liens d'accès rapide (ancres) d'un document */
+div.sidebar ul.toc{
+    font-weight:bold;
+}
+div.sidebar ul.toc li{
+    margin-left:0;
+    padding-left:0;
+    list-style-type:none;
+    list-style-image:none;
+}
+div.sidebar ul.toc li a{
+    display:block;
+    margin:4px 0 0 0;
+    padding:0 0 0 20px;
+    font-size:13px;
+    background-image:url("./bullets/0024_chevrons.gif");
+    background-position:2px 2px;
+    background-repeat:no-repeat;
+}
+div.sidebar ul.toc ul{
+    margin:0 3px 8px 16px;
+    padding:0;
+    font-weight:normal;
+}
+div.sidebar ul.toc ul li a{
+    background-image:url("./bullets/0129_ibullet.gif");
+    background-position:3px 3px;
+    background-repeat:no-repeat;
+}
+div.sidebar ul.toc ul ul li a .pre{
+    color: #79745a;
+}
+
+/* Liste de liens contributeur */
+div.sidebar ul.contributor_link li{
+    margin-left:0;
+    padding-left:0;
+    list-style-type:none;
+    list-style-image:none;
+}
+div.sidebar ul.contributor_link li a{
+    display:block;
+    margin:4px 0 0 0;
+    padding:0 0 0 20px;
+    font-size:13px;
+    background-image:url("./bullets/0181_1.gif");
+    background-position:2px 2px;
+    background-repeat:no-repeat;
+}
+
+/* Pub/Annonces mises en avant dans les cadres de contextes */
+div.sidebar div.adcell{
+    margin:0 1px 0 0;
+    padding:0 15px 15px 15px;
+    background-image:url("./horizontal_green_dot.gif");
+    background-position:bottom left;
+    background-repeat:repeat-x;
+}
+div.sidebar div.adcell:hover{
+    background-color:#f0f2d9;
+}
+
+/* ________________________________________
+    Fortunes
+*/
+
+div.fortune{
+    border-bottom:1px dashed #d48722;
+    padding-left:15px;
+}
+div.vote{
+    float:right;
+    margin-top:-2em;
+    text-align:center;
+    width:4em;
+}
+.irc dt{
+    float:left;
+    text-align:right;
+    width:9.8em;
+}
+.irc dd{
+    margin-left:10em;
+    border-left:2px solid #92cc47;
+    padding-left:0.5em;
+}
+
+/* ________________________________________
+    Éléments du pied de page
+*/
+#footer{
+    margin:0 0 0 0;
+    padding:10px 8px 10px 8px;
+    background-color:#e2e8da;
+    border-left:10px solid #b9c9a3;
+    border-right:10px solid #b9c9a3;
+    font-size:12px;
+    color:#899973;
+}
+html>body #footer{
+    margin:0;
+}
+#footer a{
+    color:#d48722;
+    text-decoration:none;
+}
+#footer p{
+    margin:2px 0 2px 0;
+    padding:0;
+    text-align:center;
+    font-weight:bold;
+}
+#footer p.topanchor{
+    margin:0 6px 2px 6px;
+    padding:0;
+    text-align:right;
+}
+

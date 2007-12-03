@@ -1,0 +1,60 @@
+﻿{% extends "base_2col.html" %}
+{% load tagging_tags %}
+
+{% block sectionid %}links{% endblock %}
+{% block active_nav-links %}class="active"{% endblock %}
+{% block title %}Index des liens{% endblock %}
+
+{% block billboard %}<h2><a href="/liens/">Liens</a></h2>{% endblock %}
+
+{% block content %}
+<h1>Liste des derniers liens soumis</h1>
+{% if msg %}<span class="sitefr_message">{{ msg }}</span>{% endif %}
+<div class="content first-content">
+    <h2 class="deck">
+        Liens intéressants relatifs à Django et à ses extensions possibles.
+    </h2>
+    <p>
+        La documentation officielle est complète mais ne suffit parfois pas à
+        certaines spécificités, les liens présents sur cette page sont là pour
+        combler ce manque.
+    </p>
+</div>
+<div class="content">
+    <h2>Derniers ajouts</h2>
+    {% for link in latest %}
+        <h3 id="{{ link.slug }}">
+            <a href="{{ link.url }}" title="Accès au site (sortie)">{{ link.title }}</a> ({{ link.lang|lower }})
+        </h3>
+        <blockquote>{{ link.comment }}</blockquote>
+        <p>Tags :
+        {% tags_for_object link as tag_list %}
+        {% for tag in tag_list %}
+            <a href="/tags/{{ tag }}/" title="">{{ tag.name }}</a>
+        {% endfor %}
+        </p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block content-related %}
+    <h2>Rester informer</h2>
+    <p>
+        <a href="/rss/liens/" title="S'abonner au flux"
+        >Flux RSS des derniers ajouts</a>
+    </p>
+    <h2>Ajouter un lien</h2>
+    <p>L'ajout de lien est modéré a priori.</p>
+    <p><a href="/liens/ajouter/" class="link-add">Proposer un nouveau lien</a></p>
+    <h2>Tags</h2>
+    <ul id="tag_cloud">
+    {% tags_for_model documentation.Documentation as documentation_list %}
+    {% for tag in documentation_list %}
+        <li><a href="/tags/{{ tag }}/" title="" class="importance{{ tag.font_size }}">{{ tag }}</a></li>
+    {% endfor %}
+    {% tags_for_model links.Link as link_list %}
+    {% for tag in link_list %}
+        <li><a href="/tags/{{ tag }}/" title="" class="importance{{ tag.font_size }}">{{ tag }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

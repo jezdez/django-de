@@ -1,0 +1,81 @@
+﻿{% extends "base_2col.html" %}
+
+{% block sectionid %}participate{% endblock %}
+{% block active_nav-participate %}class="active"{% endblock %}
+{% block title %}Comment participer à Django-fr{% endblock %}
+{% block billboard %}<h2>Participer</h2>{% endblock %}
+
+{% block content %}
+<h1>Comment participer à Django-fr</h1>
+<div class="content first-content">
+    <p>
+        Vous pouvez participer à plusieurs niveaux en fonction de votre temps
+        libre et de votre motivation&nbsp;:
+    </p>
+    <h2>Traduire les pages de documentation</h2>
+    <p>
+        Il suffit de récupérer dans le répertoire <code>/docs</code> de votre
+        installation de django les fichiers texte correspondant à la page et de
+        le traduire. Pour éviter de faire le travail en double, il vaut mieux
+        s'inscrire à la mailing-list des contributeurs du site. Envoyez ensuite
+        votre traduction sur la liste en vous assurant de sa validité grâce à la
+        commande suivante&nbsp;:
+    </p>
+    <pre class="literal-block"><code>rst2html fichier.txt fichier.html</code></pre>
+    <p>
+        S'il n'est pas valide, des messages d'erreur apparaîtront vous indiquant
+        les paragraphes incriminés (en cas de doute, la liste est là pour vous
+        aider). Il faut avoir préalablement installé le paquet
+        <code>python-docutils</code>.
+    </p>
+    <h2>Reporter un bug sur ce site</h2>
+    <p>
+        Si vous trouvez un bug de fonctionnement, une faute d'orthographe, une 
+	faute de frappe sur ce site, consultez le 
+	<a href="http://trac.django-fr.org/">trac</a> de django-fr. Vous pourrez
+	ainsi vérifier si le bug à déjà été repéré et assigné, et dans le cas
+	contraire créer un ticket pour le reporter.
+    </p>
+    <h2>Ajouter des liens</h2>
+    <p>
+        Vous pouvez les <a href="/liens/ajouter/" title="Ajouter un lien"
+        >ajouter anonymement ou grâce à votre identifiant de contributeur</a>.
+        Ils n'apparaîtront pas directement mais après modération de façon à
+        garantir la pertinence des adresses proposées (et surtout à se protéger
+        du spam).
+    </p>
+    <h2>Participer au développement du framework</h2>
+    <p>
+        Dans ce cas, il va falloir maîtriser la langue de shakespeare. Un bon
+        point de départ est l'inscription sur la
+        <a href="http://groups.google.com/group/django-developers"
+        title="S'abonner à la liste de diffusion (sortie du site)"
+        >liste de diffusion de développement</a> et la
+        <a href="http://code.djangoproject.com/report"
+        title="Accès au gestionnaire de bugs (sortie du site)"
+        >consultation du gestionnaire de bugs</a> de façon à corriger ceux à
+        votre portée (mieux vaut toujours commencer petit en proposant des
+        patchs de façon à devenir un contributeur de confiance par la suite).
+    </p>
+</div>
+{% endblock %}
+
+{% block content-related %}
+<h2>Tout simplement en parler</h2>
+<p>
+    Ça demande peu de ressources mais ça contribue à l'enrichissement des
+    utilisateurs et donc des contributeurs potentiels, c'est la force des
+    projets Open-source. Une grande passion commence parfois par un simple
+    billet de blog ;-).
+</p>
+<p>
+    <a href="http://lists.afpy.org/cgi-bin/mailman/listinfo/django"
+    >La mailing-list francophone consacrée à django</a> peut vous permet de
+    suivre et participer aux discussions de fond.
+</p>
+<p>
+    Notre canal IRC <strong>#django-fr</strong> sur le serveur
+    <strong>irc.freenode.net</strong> vous est ouvert pour rencontrer la
+    communauté francophone de Django et poser vos questions en temps réel.
+</p>
+{% endblock %}

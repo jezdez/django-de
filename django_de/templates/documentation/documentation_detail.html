@@ -1,0 +1,53 @@
+﻿{% extends "base_docs.html" %}
+{% load tagging_tags %}
+
+{% block active_nav-documentation %}class="active"{% endblock %}
+{% block title %}Documentation | {{ documentation.title }}{% endblock %}
+{% block coltype %}rest-document{% endblock %}
+
+{% block content %}
+<div class="content first-content">
+    <h1>{{ documentation.title }}</h1>
+    {{ documentation.content_html }}
+</div>
+{% endblock %}
+
+{% block content-related %}
+    <h2>Informations</h2>
+    <ul class="quick_link">
+        <li>
+            <a href="http://www.djangoproject.com/documentation/{{ documentation.slug }}/"
+               title="Accès à cette page en anglais"
+            >Accès à cette page en anglais</a> (non traduite)
+        </li>
+        <li>
+            Révision de la traduction : {{ documentation.revision }}
+            (version {{ documentation.version }})
+        </li>
+    </ul>
+    <h2>Accès rapide</h2>
+    <div class="quick_link">
+    {{ documentation.toc_html }}
+    </div>
+    <h2>Traducteur(s)</h2>
+    <ul class="contributor_link">
+    {% for contributor in documentation.authors.all %}
+        <li>
+            <a href="{{ contributor.get_absolute_url }}"
+               title="Accès au profil de {{ contributor.name }}"
+            >{{ contributor.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% if documentation.tags %}
+    <h2>Liens (peut-être) en rapport</h2>
+    <ul>
+        {% for tag in documentation.tags %}
+            {% tagged_objects tag in links.Link as object_list %}
+            {% for link in object_list %}
+                <li><a href="{{ link.get_absolute_url }}" title="Accès au résumé du lien">{{ link.title }}</a></li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

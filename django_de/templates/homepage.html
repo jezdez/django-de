@@ -1,0 +1,155 @@
+﻿{% extends "base_3col.html" %}
+
+{% block cssid %}homepage{% endblock %}
+{% block sectionid %}homepage{% endblock %}
+{% block active_nav-homepage %}class="active"{% endblock %}
+
+{% block billboard %}
+<h2>
+    La Plateforme de développement Web pour les perfectionistes sous pression.
+    <span>Vos applications n'ont jamais été aussi agréables à coder.</span>
+</h2>
+{% endblock %}
+
+{% block content %}
+<h1>Découvrez Django</h1>
+<div class="content first-content">
+    <h2 class="deck">
+        Django est un des « frameworks » développés récemment qui facilitent
+        la programmation rapide de sites internet.
+    </h2>
+    <p>Outre le bonheur de coder, il faut reconnaître à django ces avantages&nbsp;:</p>
+    <ul>
+        <li>Programmation ultra-rapide (peu de code)</li>
+        <li>Pas de soucis de DB (Django s'occupe du SQL et de l'interface d'administration de vos données)</li>
+        <li>Vos projets sont propres (programmation et affichage HTML sont séparés)</li>
+    </ul>
+    <p>
+        Choisir django, c'est programmer en Python, un language simple,
+        puissant et populaire.
+    </p>
+    <p>
+        Commencez par <a href="/documentation/overview/"
+        title="Accès au résumé">lire le résumé &rarr;</a>
+    </p>
+    <p>
+        Si vous êtes convaincus, lisez le <a href="/documentation/install/"
+        title="Accès au guide d'installation">guide d'installation</a> et
+        <a href="/documentation/tutorial01/"
+        title="Accès au tutoriel">le tutoriel</a>.
+    </p>
+</div>
+<div class="content">
+	<h2>Le framework Django</h2>
+	<h3>Mapping relationnel-objet</h3>
+	<p>
+        Définissez votre <a href="/documentation/model-api/">modèle de données</a>
+        entièrement en Python. Vous disposez d'une riche, <a href="/documentation/db_api/"
+        >API dynamique d'accès à la base de données</a> directement &mdash; mais
+        vous pouvez toujours écrire vos requêtes en SQL si le besoin s'en fait
+        ressentir.
+    </p>
+	<h3>Interface d'administration automatisée</h3>
+	<p>
+        Épargnez vous le fastidieux travail de conception des interfaces
+        permettant aux gens d'ajouter et de modifier le contenu.
+        <a href="/documentation/tutorial02/">Django le fait automatiquement</a>,
+        c'est prêt pour la production.
+    </p>
+	<h3>Design élégant d'URL</h3>
+	<p>
+        Designez <a href="/documentation/url_dispatch/">élégamment vos URL</a>
+        sans aucune limitation spécifique au framework. Soyez aussi flexible que
+        ce que vous le désirez.
+    </p>
+	<h3>Sytème de template</h3>
+	<p>
+        Utilisez le puissant, extensible et designer-friendly
+        <a href="/documentation/templates/">langage de template</a> de Django
+        pour séparer design, contenu et code Python.
+    </p>
+	<h3>Système de cache</h3>
+	<p>
+        Utilisez memcached ou d'autres frameworks de cache pour de
+        <a href="/documentation/cache/">super performances</a> &mdash;
+        choisissez le niveau de cache répondant à vos besoins.
+    </p>
+    <h3>Internationalisation</h3>
+    <p>
+        Django dispose d'un support complet des <a href="/documentation/i18n/"
+        >applications en plusieurs langues</a>, vous permettant de spécifier les
+        chaînes de caractères à traduire et mettant à disposition des outils
+        pour des fonctionnalités spécifiques au langage.
+    </p>
+</div>
+<!-- END #content-secondary -->
+{% endblock %}
+
+{% block content-related %}
+<div class="adcell">
+    <h2>Téléchargement</h2>
+    <ul class="linklist">
+        <li class="button-download">
+            <a href="/telechargement/">Dernière version : <strong>0.96</strong></a>
+        </li>
+    </ul>
+    <p>
+        Open source, <a href="http://code.djangoproject.com/browser/django/trunk/LICENSE"
+        >licence BSD</a>
+    </p>
+</div>
+<div class="adcell">
+    <h2>Documentation</h2>
+    <ul class="linklist doclist">
+        <li><a href="/documentation/install/">Guide d'installation</a></li>
+        <li><a href="/documentation/tutorial01/">Tutoriel d'apprentissage</a></li>
+        <li><a href="/documentation/model-api/">Modèles de données de données</a></li>
+        <li><a href="/documentation/templates/">Système de templates</a></li>
+        <li><a href="/documentation/">En savoir plus...</a></li>
+    </ul>
+</div>
+<div class="adcell">
+    <h2>Participer</h2>
+    <p>
+        Django-fr est en cours de développement/traduction. Toutes les
+        contributions sont bien sûr les bienvenues.
+    </p>
+    <p><a href="/participer/" class="more-about">En savoir plus...</a></p>
+</div>
+{% endblock %}
+
+{% block content-extra %}
+<h2>Sites utilisant Django</h2>
+<dl>
+    <dt><a href="http://www.archlinuxfr.org/" title="Accès au site">Arch Linux France</a></dt>
+    <dd>
+        Site officiel des utilisateurs francophones d'Arch Linux, une
+        distribution souple et légère qui tente de rester simple (Keep It Simple).
+    </dd>
+    <dt><a href="http://www.edoll.fr/" title="Accès au site">Edoll</a></dt>
+    <dd>
+        Edoll premier site communautaire synchronisé web et mobile pour chatter,
+        rencontrer et lancer des défis à tes amis et plus encore..
+    </dd>
+    <dt><a href="http://amisphere.com/" title="Accès au site">Amisphère</a></dt>
+    <dd>
+        Amisphère est une communauté en ligne pour <strong>ami</strong>liorer vos contacts et vos sorties.
+    </dd>
+    <dt><a href="http://kib2.webfactional.com/" title="Accès au site">Kib's blog</a></dt>
+    <dd>
+        Python, LaTeX et logiciels, le blog de Kib².
+    </dd>
+    <dt><a href="http://www.slubman.info/" title="Accès au site">$ Slubman::Blog()</a></dt>
+    <dd>
+        Le blog de Slubman.
+    </dd>
+    <dt><a href="http://shortbrain.org/" title="Accès au site">ShortBrain</a></dt>
+    <dd>
+        Répertoire d'articles autour de Python et de Django.
+    </dd>
+    <dt><a href="http://jondesign.net/" title="Accès au site">JonDesign</a></dt>
+    <dd>
+        Site bilingue avec plusieurs milliers de visites par jour.
+    </dd>
+</dl>
+{% endblock %}
