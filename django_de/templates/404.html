@@ -1,42 +1,41 @@
 ﻿{% extends "base_2col.html" %}
 
 {% block sectionid %}download{% endblock %}
-{% block title %}Page 404{% endblock %}
-{% block billboard %}<h2>Aïe !</h2>{% endblock %}
+{% block title %}Seite nicht gefunden{% endblock %}
+{% block billboard %}<h2>Hoppla!</h2>{% endblock %}
 
 {% block content %}
-<h1>Page 404</h1>
+<h1>Seite nicht gefunden</h1>
 <div class="content first-content">
     <p>
-        Malgré tous nos efforts, il reste des liens pointant vers des pages
-        inconnues, il y a deux raisons possibles&nbsp;:
+        Trotz all unser Bemühungen wird es immer mal wieder einen Link geben,
+        der auf eine nicht verfügbare Seite verweist. Es gibt zwei mögliche Gründe dafür:
     </p>
 
-    <h2>Traduction non terminée</h2>
+    <h2>Unvollständige Übersetzung</h2>
 
     <p>
-        Dans ce cas vous êtes invité(e) à <a href="/participer/"
-        title="Accès à la page de participation">participer à la traduction</a>
-        de la documentation restante.
+        In diesem Fall möchten wir Sie bitten an der Übersetzung
+ 		der restlichen Dokumentation <a href="/participate/"
+        title="Link zur Teilnahmeseite">teilzunehmen</a>.
     </p>
     <p>
-        Si vous maîtrisez l'anglais, vous pouvez aussi vous rendre sur la
-        <a href="http://www.djangoproject.com/documentation/"
-        title="Accès à la documentation de Django"
-        >documentation officielle de Django</a>.
+        Die <a href="http://www.djangoproject.com/documentation/"
+        title="Link zur offiziellen Dokumentation"
+        >offizielle Django Dokumentation</a> ist in englischer Sprache verfasst.
     </p>
 
-    <h2>Erreur de développement</h2>
+    <h2>Fehler in der Programmierung</h2>
 
     <p>
-        Des fois, Django permet de développer <strong>trop</strong> rapidement !
-        Toutes nos excuses, un mail est normalement envoyé à l'administrateur du
-        site qui en prend connaissance au plus vite.
+        Django erlaubt <strong>sehr schnell</strong> zu entwickeln, leider lassen sich
+        Fehler nicht immer ausschließen. Ein Administrator wurde über diesen Fehler per
+        E-Mail informiert und wird sich darum kümmern.
     </p>
 </div>
 {% endblock %}
 
 {% block content-related %}
-<h2>404 ?</h2>
-<p>Une erreur 404 signifie que la page n'a pu être trouvée sur le site.</p>
+<h2>Seite nicht gefunden?</h2>
+<p>Wird unter einer aufgerufenen Web-Adresse keine Seite gefunden, antwortet der Server mit dem HTTP-Fehlercode 404.</p>
 {% endblock %}
