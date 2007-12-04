@@ -6,7 +6,7 @@
 
 {% block billboard %}
 <h2>
-    Das Web Framework für Perfektionisten mit Zeitdruck.
+    Das Web Framework für Perfektionisten mit Deadlines.
     <span>Entwickeln Sie bessere Webanwendungen in kürzerer Zeit, mit weniger Code.</span>
 </h2>
 {% endblock %}
@@ -15,77 +15,69 @@
 <h1>Entdecken Sie Django</h1>
 <div class="content first-content">
     <h2 class="deck">
-        Django ist ein Web Framework, das schnelles Entwickeln von sauberen,
-        pragmatischen Lösungen fördert.
+        Django ist ein Python Web Framework für schnelle Entwickelung von sauberen,
+        pragmatischen Lösungen.
     </h2>
-    <p>Entwickelt für die hektische Welt der Online-Nachrichten, kann Django
-        zwei Probleme besonders gut bewältigen: Die straffen Deadlines in
-        Online-Redaktionen und die stringenten Ansprüche der <a href="http://www.djangoproject.com/documentation/faq/#who-s-behind-this"
-        >erfahrenen Entwickler</a>. Damit können Sie hochperformante, elegante
-        Webanwendungen schnell entwickeln.
-    </p>
-    <p>Outre le bonheur de coder, il faut reconnaître à django ces avantages&nbsp;:</p>
-    <ul>
-        <li>Programmation ultra-rapide (peu de code)</li>
-        <li>Pas de soucis de DB (Django s'occupe du SQL et de l'interface d'administration de vos données)</li>
-        <li>Vos projets sont propres (programmation et affichage HTML sont séparés)</li>
-    </ul>
-    <p>
-        Choisir django, c'est programmer en Python, un language simple,
-        puissant et populaire.
+    <p>Da Django ursprünglich für Nachrichtenplattformen entwickelt wurde,
+        ist es darauf optimiert, die straffen Deadlines in Online-Redaktionen
+        einzuhalten und trotzdem den hohen technischen Ansprüchen von
+        hochperformanten und eleganten Webanwendungen gerecht zu werden.
     </p>
     <p>
-        Commencez par <a href="/documentation/overview/"
-        title="Accès au résumé">lire le résumé &rarr;</a>
+        Dabei wird versucht, soviel wie möglich zu automatisieren und dem
+        <a href="http://de.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY-Prinzip</a> zu folgen.
+        Es kommt die einfache und populäre Programmiersprache Python zum Einsatz.
     </p>
     <p>
-        Si vous êtes convaincus, lisez le <a href="/documentation/install/"
-        title="Accès au guide d'installation">guide d'installation</a> et
+        Erfahren Sie mehr in der <a href="/documentation/overview/"
+        title="Übersicht aufrufen">Übersicht &rarr;</a>
+    </p>
+    <p>
+        Wenn Sie mit Programmieren anfangen wollen, lesen Sie bitte die <a href="/documentation/install/"
+        title="Installationsanleitung aufrufen">Installationsanleitung</a> und dann das
         <a href="/documentation/tutorial01/"
-        title="Accès au tutoriel">le tutoriel</a>.
+        title="Tutorial aufrufen">Tutorial</a>.
     </p>
 </div>
+
 <div class="content">
-	<h2>Le framework Django</h2>
-	<h3>Mapping relationnel-objet</h3>
+	<h2>Das Django Framework</h2>
+	<h3>Objektrelationales Mapping (<abbr title="Object-relational mapper">ORM</abbr>)</h3>
 	<p>
-        Définissez votre <a href="/documentation/model-api/">modèle de données</a>
-        entièrement en Python. Vous disposez d'une riche, <a href="/documentation/db_api/"
-        >API dynamique d'accès à la base de données</a> directement &mdash; mais
-        vous pouvez toujours écrire vos requêtes en SQL si le besoin s'en fait
-        ressentir.
+	    Du kannst deine <a href="/documentation/model-api/">Datenmodelle</a>
+	    komplett in Python definieren, erhälst Zugriff auf eine umfangreiche,
+	    dynamische <a href="/documentation/db_api/">Datenbank-API</a>
+	    und kannst &ndash; wenn nötig &ndash; SQL benutzen.	    
     </p>
-	<h3>Interface d'administration automatisée</h3>
+	<h3>Automatisches Admin-Interface</h3>
 	<p>
-        Épargnez vous le fastidieux travail de conception des interfaces
-        permettant aux gens d'ajouter et de modifier le contenu.
-        <a href="/documentation/tutorial02/">Django le fait automatiquement</a>,
-        c'est prêt pour la production.
+        Erspar dir die mühsame Arbeit, ein Interface zum Hinzufügen und Ändern
+        von Inhalten zu entwickeln &ndash; <a href="/documentation/tutorial02/">Django
+        erledigt das für dich automatisch</a>.
     </p>
-	<h3>Design élégant d'URL</h3>
+	<h3>Elegante URL-Konfiguration</h3>
 	<p>
-        Designez <a href="/documentation/url_dispatch/">élégamment vos URL</a>
-        sans aucune limitation spécifique au framework. Soyez aussi flexible que
-        ce que vous le désirez.
+        Entwirf <a href="http://www.djangoproject.com/documentation/url_dispatch/"
+        >gutaussehende URLs</a> ohne unnötigen Balast und ohne irgendeine
+        technische Einschränkung. Sei so flexibel, wie du willst.
     </p>
-	<h3>Sytème de template</h3>
+	<h3>Templates</h3>
 	<p>
-        Utilisez le puissant, extensible et designer-friendly
-        <a href="/documentation/templates/">langage de template</a> de Django
-        pour séparer design, contenu et code Python.
+        Benutze Djangos mächtige, erweiterbare und Webdesigner-freundliche
+        <a href="/documentation/templates/">Template-Sprache</a> und trenne
+        Design, Inhalt und Python Code auf einfache Weise.  
     </p>
-	<h3>Système de cache</h3>
+	<h3>Cache</h3>
 	<p>
-        Utilisez memcached ou d'autres frameworks de cache pour de
-        <a href="/documentation/cache/">super performances</a> &mdash;
-        choisissez le niveau de cache répondant à vos besoins.
+        Setze für <a href="/documentation/cache/">höhere Leistung</a> memcached
+        oder andere Cache-Frameworks ein und steuere gezielt, wie sie verwendet werden.
     </p>
-    <h3>Internationalisation</h3>
+    <h3>Internationalisierung</h3>
     <p>
-        Django dispose d'un support complet des <a href="/documentation/i18n/"
-        >applications en plusieurs langues</a>, vous permettant de spécifier les
-        chaînes de caractères à traduire et mettant à disposition des outils
-        pour des fonctionnalités spécifiques au langage.
+        Django bietet umfangreiche Unterstützung für <a href="/documentation/i18n/"
+        >mehrsprachige Anwendungen</a>, läßt dich Übersetzungen einfach
+        definieren und bringt die Möglichkeit mit, sprachspezifische Funktionen
+        zu implementieren.
     </p>
 </div>
 <!-- END #content-secondary -->
@@ -96,7 +88,7 @@
     <h2>Download</h2>
     <ul class="linklist">
         <li class="button-download">
-            <a href="/telechargement/">Letze Version: <strong>0.96.1</strong></a>
+            <a href="/download/">Letze Version: <strong>0.96.1</strong></a>
         </li>
     </ul>
     <p>
@@ -107,24 +99,24 @@
 <div class="adcell">
     <h2>Dokumentation</h2>
     <ul class="linklist doclist">
-        <li><a href="/documentation/install/">Guide d'installation</a></li>
-        <li><a href="/documentation/tutorial01/">Tutoriel d'apprentissage</a></li>
-        <li><a href="/documentation/model-api/">Modèles de données de données</a></li>
-        <li><a href="/documentation/templates/">Système de templates</a></li>
-        <li><a href="/documentation/">En savoir plus...</a></li>
+        <li><a href="/documentation/install/">Installationsanleitung</a></li>
+        <li><a href="/documentation/tutorial01/">Anfänger-Tutorial</a></li>
+        <li><a href="/documentation/model-api/">Datenmodelle</a></li>
+        <li><a href="/documentation/templates/">Templates</a></li>
+        <li><a href="/documentation/">Und vieles mehr...</a></li>
     </ul>
 </div>
 <div class="adcell">
     <h2>Mitmachen</h2>
     <p>
         Django-de wird gerade aufgebaut und und braucht Übersetzer.
-        Wir würden uns über jede Hilfe sehr freuen.
+        Wir freuen uns über jede Mithilfe.
     </p>
-    <p><a href="/participer/" class="more-about">Mehr Informationen...</a></p>
+    <p><a href="/participate/" class="more-about">Mehr Informationen...</a></p>
 </div>
 {% endblock %}
 
-{% block content-extra %}
+{% block content-extra_ %}
 <h2>Sites utilisant Django</h2>
 <dl>
     <dt><a href="http://www.archlinuxfr.org/" title="Accès au site">Arch Linux France</a></dt>
