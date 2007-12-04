@@ -1,19 +1,18 @@
 ﻿{% extends "base_docs.html" %}
 
 {% block active_nav-documentation %}class="active"{% endblock %}
-{% block title %}Documentation traduite en français{% endblock %}
+{% block title %}Deutsche Übersetzung der Dokumentation{% endblock %}
 
 {% block content %}
-<h1>Documentation traduite en français</h1>
+<h1>Deutsche Übersetzung der Dokumentation</h1>
 <div class="content first-content">
     <h2 class="deck">
-        La traduction de la <a href="http://www.djangoproject.com/documentation/"
-        class="quick_links">documentation officielle</a> est en cours, n'hésitez
-        pas à participer
+        Hier ist die Übersetzung der <a href="http://www.djangoproject.com/documentation/"
+        class="quick_links">offiziellen Dokumentation</a> im Gange.
     </h2>
     <p>
-        Les principales pages ont déjà été traduites, elles sont ici dans leur
-        ordre (chrono)logique de lecture.
+        Nachfolgend sind, in chronologischer Reihenfolge, alle Seiten 
+        aufgelistet, die bereits übersetzt wurden.
     </p>
     <ul class="linklist doclist">
     {% for documentation in documentation_list %}
@@ -28,10 +27,10 @@
 {% endblock %}
 
 {% block content-related %}
-    <h2>Comment participer</h2>
+    <h2>Wie kann ich mithelfen?</h2>
     <p>
-        Django-fr est en cours de développement/traduction. Toutes les
-        contributions sont bien sûr les bienvenues.
+        Django-de wird von Freiwilligen entwickelt und übersetzt. 
+        Unterstützung dabei ist jederzeit willkommen.
     </p>
-    <p><a href="/participer/" class="more-about">En savoir plus...</a></p>
+    <p><a href="/participate/" class="more-about">Mehr erfahren...</a></p>
 {% endblock %}

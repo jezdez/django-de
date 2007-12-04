@@ -2,21 +2,21 @@
 
 {% block sectionid %}authors{% endblock %}
 {% block active_nav-authors %}class="active"{% endblock %}
-{% block title %}Index des contributeurs{% endblock %}
+{% block title %}Liste der Mitwirkenden{% endblock %}
 
-{% block billboard %}<h2><a href="/contributeurs/">Contributeurs</a></h2>{% endblock %}
+{% block billboard %}<h2><a href="/contributeurs/">Mitwirkende</a></h2>{% endblock %}
 
 {% block content %}
-<h1>Liste des contributeurs</h1>
+<h1>Liste der Mitwirkenden</h1>
 <div class="content first-content">
-    <h2 class="deck">Quelques informations au sujet des contributeurs du site</h2>
-    <p>N'hésitez pas à <a href="/participer/">contribuer vous aussi</a>.</p>
+    <h2 class="deck">Nachfolgend ein paar Informationen über alle Mitwirkenden an django-de</h2>
+    <p>Nicht zögern, <a href="/participate/">jeder kann mitmachen</a>.</p>
     <ul class="linklist ">
     {% for author in author_list %}
         <li id="{{ author.slug }}">
             <h3>
                 {% if author.url %}
-                <a href="{{ author.url }}" title="Accès à son site personnel (sortie)">
+                <a href="{{ author.url }}" title="Link zur persönlichen Homepage (extern)">
                 {% endif %}
                 {{ author.name }}
                 {% if author.url %}
@@ -31,10 +31,10 @@
 {% endblock %}
 
 {% block content-related %}
-    <h2>Comment participer</h2>
+    <h2>Wie kann ich mithelfen?</h2>
     <p>
-        Django-fr est en cours de développement/traduction. Toutes les
-        contributions sont bien sûr les bienvenues.
+        Django-de wird von Freiwilligen entwickelt und übersetzt. 
+        Unterstützung dabei ist jederzeit willkommen.
     </p>
-    <p><a href="/participer/" class="more-about">En savoir plus...</a></p>
+    <p><a href="/participate/" class="more-about">Mehr erfahren...</a></p>
 {% endblock %}
