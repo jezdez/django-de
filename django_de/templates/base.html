@@ -1,84 +1,77 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Content-Language" content="fr-fr" />
-		<title>Django-fr | {% block title %}Le Framework Web python pour les perfectionnistes{% endblock %}</title>
-		<meta name="ROBOTS" content="ALL" />
-		<meta http-equiv="imagetoolbar" content="no" />
-		<meta name="MSSmartTagsPreventParsing" content="true" />
-		<meta name="Copyright" content="GPL" />
-		<meta name="keywords" content="Django, Python, framework, open-source,
-        francophone, framework web, documentation" />
-		<meta name="description" content="Django est un framework Web Python de
-        haut niveau encourageant un développement rapide et bien fait, un design
-        pragmatique." />
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Language" content="de" />
+        <title>Django-de | {% block title %}Das Python Web Framework für Perfektionisten{% endblock %}</title>
+        <meta name="ROBOTS" content="ALL" />
+        <meta http-equiv="imagetoolbar" content="no" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta name="Copyright" content="GPL" />
+        <meta name="keywords" content="Django, Python, framework, open-source,
+        deutschsprachig, framework web, documentation, dokumentation" />
+        <meta name="description" content="Django ist ein Web Framework, das
+        schnelles Entwickeln von sauberen, pragmatischen Lösungen {ermöglicht|fördert|unterstützt|*}." />
         <link rel="stylesheet" href="/site_media/theme/screen.css" type="text/css" title="Normal" media="screen"/>
         <link rel="shortcut icon" type="image/x-icon" href="/site_media/theme/favicon.ico" />
         {% block extrahead %}{% endblock %}
-	</head>
+    </head>
 
-	<body id="{% block sectionid %}generic{% endblock %}" class="{% block coltype %}default{% endblock %}">
+    <body id="{% block sectionid %}generic{% endblock %}" class="{% block coltype %}default{% endblock %}">
     <div><a id="top"> </a></div>
-	<div id="root">
+    <div id="root">
         <div id="topObj"></div>
-		<div id="body_head">
-			<h1 id="logo"><a href="/" title="Django-fr"><span>Django-fr</span></a></h1>
+        <div id="body_head">
+            <h1 id="logo"><a href="/" title="Django-de"><span>Django-de</span></a></h1>
             <ul id="nav-global">
-				<li id="nav-homepage">
+                <li id="nav-homepage">
                     <a href="/" {% block active_nav-homepage %}{% endblock %}>
-                        Accueil
+                        Start
                     </a>
                 </li>
-				<li id="nav-download">
+                <li id="nav-download">
                     <a href="/download/"{% block active_nav-download %}{% endblock %}>
-                        Téléchargement
+                        Download
                     </a>
                 </li>
-				<li id="nav-documentation">
+                <li id="nav-documentation">
                     <a href="/documentation/"{% block active_nav-documentation %}{% endblock %}>
-                        Documentation
+                        Dokumentation
                     </a>
                 </li>
-				<li id="nav-authors">
+                <li id="nav-authors">
                     <a href="/authors/"{% block active_nav-authors %}{% endblock %}>
-                        Contributeurs
+                        Autoren
                     </a>
                 </li>
-				<li id="nav-links">
-                    <a href="/links/"{% block active_nav-links %}{% endblock %}>
-                        Liens
+                <li id="nav-participate">
+                    <a href="/participate/"{% block active_nav-participate %}{% endblock %}>
+                        Mitmachen
                     </a>
                 </li>
-				<li id="nav-participate">
-                    <a href="/join/"{% block active_nav-participate %}{% endblock %}>
-                        Participer
-                    </a>
-                </li>
-			</ul>
-		</div>
+            </ul>
+        </div>
         <!-- END Header -->
-		<div id="billboard">{% block billboard %}{% endblock %}</div>
-		<div id="columnwrap">
-			{% block columnwrap %}
-				<div id="content-main">
-				{% block content %}{% endblock %}
-				</div>
-				<!-- END #content-main -->
-			{% endblock %}
+        <div id="billboard">{% block billboard %}{% endblock %}</div>
+        <div id="columnwrap">
+            {% block columnwrap %}
+                <div id="content-main">
+                {% block content %}{% endblock %}
+                </div>
+                <!-- END #content-main -->
+            {% endblock %}
             <div class="cale"></div>
-		</div>
-		<!-- END #content -->
-		<div id="footer">
-			<p>
-                Django-fr regroupe la communauté francophone des utilisateurs
-                du <a href="http://www.djangoproject.com" title="Site officiel"
-                >framework web python Django</a>. Django est une marque déposée
-                par Lawrence Journal-World.
+        </div>
+        <!-- END #content -->
+        <div id="footer">
+            <p>
+                Django-de ist ein deutschsprachiger Treffpunkt von und für
+                Benutzer des <a href="http://www.djangoproject.com" title="Offzielle Seite">Python Web Frameworks Django</a>.
+                Django ist eine eingetragene Marke von Lawrence Journal-World.
             </p>
-		</div>
-	</div>
-	</body>
+        </div>
+    </div>
+    </body>
 </html>
 

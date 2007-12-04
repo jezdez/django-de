@@ -1,4 +1,4 @@
-# Django settings for djangode project.
+# Django settings for django_de project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -51,7 +51,7 @@ SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,7 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
 )
 
-ROOT_URLCONF = 'djangode.appsurls'
+ROOT_URLCONF = 'django_de.urls'
 
 import os.path
 
@@ -71,7 +71,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_PATH, '../templates'),
+    os.path.join(PROJECT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -81,8 +81,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
 
-    'djangode.apps.authors',
-    'djangode.apps.documentation',
-    'djangode.apps.links',
+    'django_de.apps.authors',
+    'django_de.apps.documentation',
     'tagging',
 )

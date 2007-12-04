@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from djangode.apps.documentation.models import Documentation
+from django_de.apps.documentation.models import Documentation
 
 urlpatterns = patterns('django.views.generic.list_detail',
     (r'^(?P<slug>[-\w]+)/$', 'object_detail',

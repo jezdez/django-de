@@ -12,18 +12,18 @@
     <h2 class="deck">Quelques informations au sujet des contributeurs du site</h2>
     <p>N'hésitez pas à <a href="/participer/">contribuer vous aussi</a>.</p>
     <ul class="linklist ">
-    {% for contributor in contributor_list %}
-        <li id="{{ contributor.slug }}">
+    {% for author in author_list %}
+        <li id="{{ author.slug }}">
             <h3>
-                {% if contributor.url %}
-                <a href="{{ contributor.url }}" title="Accès à son site personnel (sortie)">
+                {% if author.url %}
+                <a href="{{ author.url }}" title="Accès à son site personnel (sortie)">
                 {% endif %}
-                {{ contributor.name }}
-                {% if contributor.url %}
+                {{ author.name }}
+                {% if author.url %}
                 </a>
                 {% endif %}
             </h3>
-            <div class="bio">{{ contributor.bio }}</div>
+            <div class="bio">{{ author.bio }}</div>
         </li>
     {% endfor %}
     </ul>

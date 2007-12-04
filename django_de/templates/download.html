@@ -3,116 +3,108 @@
 {% block sectionid %}download{% endblock %}
 {% block title %}Comment obtenir Django{% endblock %}
 {% block active_nav-download %}class="active"{% endblock %}
-{% block billboard %}<h2>Téléchargement</h2>{% endblock %}
+{% block billboard %}<h2>Download</h2>{% endblock %}
 
 {% block content %}
-<h1>Comment obtenir Django</h1>
+<h1>Woher bekomme ich Django?</h1>
 <div class="content first-content">
     <p>
-        Django est disponible en open-source sous la
+        Django ist eine Open-Source-Software, die unter der 
         <a href="http://code.djangoproject.com/file/django/trunk/LICENSE"
-        >licence BSD</a>. Il n'a aucune dépendance avec d'autres bibliothèques
-        Python. Il y a plusieurs manières de l'obtenir&nbsp;:
+        >BSD-Lizenz</a> veröffentlicht wird. Es benötigt Python 2.3 oder höher
+        und hängt von keiner anderen Python-Bibliothek ab. Sie können sich Django
+        auf verschiedene Art und Weise besorgen:
     </p>
 
-    <h2>Option 1. Prendre la dernière version de développement</h2>
+    <h2>1. Möglichkeit: Laden Sie sich die aktuellste Entwicklerversion herunter</h2>
 
     <p>
-        La dernière version de Django est celle qui est sur le dépôt subversion
-        (le système de contrôle des révisions). Obtenez la  en utilisant cette
-        commande shell, qui nécessite l'installation préalable de
-        <a href="http://subversion.tigris.org/">Subversion</a>&nbsp;:</p>
+        Die neuste und beste Django-Version befindet sich in unserem Subversion
+        Repository (unser Versionskontrollsystem). Laden Sie es sich mit
+        folgendem Kommandozeilenbefehl mittels <a href="http://subversion.tigris.org/">Subversion</a> herunter:
+    </p>
 
     <p class="literal-block">
         <code>svn co http://code.djangoproject.com/svn/django/trunk/</code>
     </p>
 
-    <h2>Option 2. Prendre la dernière version officielle</h2>
+    <h2>2. Möglichkeit: Laden Sie sich die letzte offizielle Version herunter</h2>
 
     <p>
-        La dernière version officielle est 0.96. Soyez conscient qu'il est
-        possible que des parties de l'API de Django soient modifiées tant que la
-        version 1.0 n'est pas sortie. Consultez
-        <a href="http://www.djangoproject.com/documentation/api_stability/"
-        >stabilité de l'API</a> pour obtenir des informations plus complètes.
-        Soyez assurés que nous documentons chaque changement affectant la
-        rétro-compatibilité <a href="http://code.djangoproject.com/wiki/BackwardsIncompatibleChanges"
-        >de façon très détaillée</a> pour faciliter les mises à jour.
+        Die letzte offizielle Version ist 0.96.1 Bitte beachten Sie, dass wir 
+        eventuell noch Änderungen an der API vornehmen, bevor wir Version 1.0
+        veröffentlichen. Bitte lesen Sie die Dokumentation zur 
+        <a href="http://www.djangoproject.com/documentation/api_stability/">API-Stabilität</a>,
+        um mehr dazu zu erfahren. Alle Änderungen, die nicht mit einer älteren Version
+        kompatibel sind, werden von uns <a href="http://code.djangoproject.com/wiki/BackwardsIncompatibleChanges"
+        >detailiert dokumentiert</a>, um eine
+        Aktualisierung zu erleichtern.
+        
     </p>
 
-    <p>Voici comment obtenir la version 0.96&nbsp;:</p>
+    <p>So bekommen Sie Version 0.96.1:</p>
 
     <p>
-        Premièrement, téléchargez <a href="http://www.djangoproject.com/download/0.96/tarball/"
-        >Django-0.96.tar.gz</a>. Puis&nbsp;:
+        Laden Sie zuerst <a href="http://www.djangoproject.com/download/0.96/tarball/"
+        >Django-0.96.tar.gz</a>. Danach:
     </p>
 
     <pre class="literal-block"><code>
 tar xzvf Django-0.96.tar.gz
 cd Django-0.96
-sudo python setup.py install
-    </code></pre>
+sudo python setup.py install</code></pre>
+
+    <h2>Sobald Sie es heruntergeladen haben</h2>
 
     <p>
-        Sachez que la dernière commande va automatiquement télécharger et
-        installer <a href="http://peak.telecommunity.com/DevCenter/setuptools"
-        >setuptools</a> si vous ne l'avez pas déjà installé. Cela requiert une
-        connexion internet fonctionnelle.
-    </p>
-
-    <h2>Une fois que vous l'avez</h2>
-
-    <p>
-        Consulter le <a href="http://www.djangoproject.com/documentation/install/"
-        >guide d'installation</a> pour de plus amples explications.
+        Lesen Sie die <a href="http://www.djangoproject.com/documentation/install/"
+        >Installationsanleitung</a> für eine genaue Beschreibung.
     </p>
 
     <p>
-        Et abonnez vous à la <a href="http://groups.google.com/group/django-users"
-        >liste de diffusion des utilisateurs de Django (anglais)</a>, où d'autres
-        utilisateurs et les développeurs eux-mêmes font tout pour aider leurs
-        semblables.
+        Schauen Sie auf jeden Fall bei der <a href="http://groups.google.com/group/django-users"
+        >django-users Mailingliste (englisch)</a> vorbei, wo sich viele
+        Django-Anwender und Entwickler tummeln und sich gegenseitig helfen.
     </p>
 </div>
 {% endblock %}
 
 {% block content-related %}
-<h2>Pour les impatients :</h2>
-<p>Téléchargez la dernière version :</p>
+<h2>Für die Ungeduldigen :</h2>
+<p>Laden Sie die letzte offizielle Version:</p>
 <ul>
     <li class="button-download">
-        <a href="http://www.djangoproject.com/download/0.96/tarball/">Django-0.96.tar.gz</a>
+        <a href="http://www.djangoproject.com/download/0.96.1/tarball/">Django-0.96.1.tar.gz</a>
     </li>
 </ul>
-<h2>Quelle version est la meilleure ?</h2>
+<h2>Welche Version ist besser?</h2>
 <p>
-    Nous améliorons Django chaque jour, et réussissons plutôt bien à conserver
-    une certaine stabilité dans le code.
+    Wir verbessern Django fast jeden Tag und sind darin geübt, Code stabil
+    zu halten. Daher ist die neuste Entwicklerversion eine sichere
+    und einfache Möglichkeit, an neue Funktionen zu kommen, noch bevor sie in
+    einer offiziellen Version enthalten sind.
 </p>
 <p>
-    Par conséquent, utiliser la dernière version de Django est sûr et vous donne
-    facilement accès aux dernière fonctionnalités qui ont été ajoutées.  Si vous
-    choisissez de suivre la version en développement, gardez à l'esprit qu'il
-    peut y avoir quelques changements introduisant des incompatibilités avec les
-    versions précédentes. Il vous faudra
-    <a href="http://code.djangoproject.com/timeline">surveiller de près les
-    modifications</a>.
+    Wenn Sie sich für die Entwicklerversion entscheiden, bedenken Sie bitte,
+    dass es ab und Änderungen vorgenommen werden, die mit einer älteren
+    Version unkompatibel sind. Sie sollten deswegen immer ein Auge auf den
+    <a href="http://code.djangoproject.com/timeline">Entwicklungsverlauf</a> werden.
 </p>
 <p>
-    Si vous cherchez une version stable à déployer et si vous ne vous préoccupez
-    pas de la prochaine version, vous préférerez utiliser la dernière version
-    officielle (qui inclura toujours des notes détaillées sur toutes les
-    opérations que vous aurez à faire durant la mise à jour).
+    Sollten Sie auf der Suche nach einer stabilen Produktivumgebung sein und
+    auf die nächste Veröffentlichung warten können, arbeiten Sie am besten mit
+    der letzten offiziellen Version. Detailierte Informationen über die
+    notwendigen Anpassungen während Aktualisierungen finden sich in jeder
+    neuen Version.
 </p>
 
-
-<h2>Précédentes versions :</h2>
+<h2>Vorherige Versionen :</h2>
 <ul>
     <li class="button-download">
-        <a href="http://www.djangoproject.com/download/0.95/tarball/">Django-0.95.tar.gz</a>
+        <a href="http://www.djangoproject.com/download/0.95.2/tarball/">Django-0.95.2.tar.gz</a>
     </li>
     <li class="button-download">
-        <a href="http://www.djangoproject.com/download/0.91/tarball/">Django-0.91.tar.gz</a>
+        <a href="http://www.djangoproject.com/download/0.91.1/tarball/">Django-0.91.1.tar.gz</a>
     </li>
     <li class="button-download">
         <a href="http://www.djangoproject.com/download/0.90/tarball/">Django-0.90.tar.gz</a>

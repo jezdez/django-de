@@ -1,11 +1,11 @@
 from django.conf.urls.defaults import *
-from djangode.apps.authors.models import Contributor
+from django_de.apps.authors.models import Author
 
 urlpatterns = patterns('django.views.generic.list_detail',
     (r'^$', 'object_list',
         dict(
-            queryset = Contributor.objects.all(),
-            template_object_name = 'contributor',
+            queryset = Author.objects.all(),
+            template_object_name = 'author',
             allow_empty=True,
         ),
     )
