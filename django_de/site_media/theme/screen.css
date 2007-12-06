@@ -40,7 +40,7 @@ img{
 }
 a,
 a:link{
-    color:#b46702;
+    color:#52772b;
     text-decoration:none;
 }
 a:hover{
@@ -61,17 +61,11 @@ a:visited{
 */
 #body_head{
     height:65px;
-    background-image:url("./background/background_dark_header_for_billboard.png");
-    background-position:top left;
-    background-repeat:repeat-x;
 }
 #body_head h1{
     margin:0 10px 0 10px;
     padding:5px 0 0 5px;
     height:59px;
-    background-image:url("./background/background_light_header_for_billboard.png");
-    background-position:top left;
-    background-repeat:repeat-x;
 }
 #body_head h1 a{
     display:block;
@@ -94,7 +88,7 @@ a:visited{
     Éléments de la navigation principale
 */
 #body_head ul{
-    margin:5px 10px 0 0;
+    margin:0 10px 0 0;
     padding:0;
     position:absolute;
     top:0;
@@ -109,7 +103,7 @@ a:visited{
 }
 #body_head li a,
 #body_head li a:link{
-    color:#787b51;
+    color:#333;
     text-decoration:none;
     padding:33px 10px 0 10px;
     height:27px;
@@ -121,7 +115,7 @@ a:visited{
 }
 #body_head li a.active,
 #body_head li a:hover{
-    color:#d48722;
+    color:#92cc47;
     background-image:url("./background/background_navigation_items.png");
     background-position:top left;
     background-repeat:repeat-x;
@@ -178,7 +172,7 @@ a:visited{
 
 /* Tête de chapitre */
 #content-main h1{
-    color:#2c472c;
+    color:#000;
     margin:0;
     padding:15px;
     font-size:22px;
@@ -215,7 +209,7 @@ html > body #content-main{
     width:69%;
 }
 #content-main div.content{
-    color:#3f3f39;
+    color:#333;
     background-image:url("./background/background_corpus.png");
     background-position:top left;
     background-repeat:repeat-x;
@@ -240,10 +234,10 @@ body.rest-document #content-main div.first-content{
     padding:8px 0 8px 0;
     font-size:19px;
     font-weight:bold;
-    color:#cbc347;
+    color:#000;
 }
 #content-main div.first-content h2{
-    color:#b8b149;
+    color:#000;
 }
 #content-main div.content h3{
     font-size:16px;
@@ -559,7 +553,7 @@ div.sidebar h2{
     margin:0;
     padding:12px 0 6px 0;
     font-size:16px;
-    color:#a3b563;
+    color:#666;
 }
 div.sidebar p{
     margin:0;
@@ -606,7 +600,7 @@ div.sidebar dt{
     font-weight:bold;
 }
 div.sidebar dt a{
-    color:#b46702;
+    color:#52772b;
 }
 div.sidebar dd{
     margin:0 2px 9px 2px;
@@ -697,9 +691,6 @@ div.sidebar div.adcell{
     background-position:bottom left;
     background-repeat:repeat-x;
 }
-div.sidebar div.adcell:hover{
-    background-color:#f0f2d9;
-}
 
 /* ________________________________________
     Fortunes
@@ -733,8 +724,6 @@ div.vote{
     margin:0 0 0 0;
     padding:10px 8px 10px 8px;
     background-color:#e2e8da;
-    border-left:10px solid #b9c9a3;
-    border-right:10px solid #b9c9a3;
     font-size:12px;
     color:#899973;
 }
@@ -742,7 +731,7 @@ html>body #footer{
     margin:0;
 }
 #footer a{
-    color:#d48722;
+    color:#52772b;
     text-decoration:none;
 }
 #footer p{
