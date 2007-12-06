@@ -2,80 +2,75 @@
 
 {% block sectionid %}participate{% endblock %}
 {% block active_nav-participate %}class="active"{% endblock %}
-{% block title %}Comment participer à Django-fr{% endblock %}
-{% block billboard %}<h2>Participer</h2>{% endblock %}
+{% block title %}Wie kann ich bei Django-de mitmachen?{% endblock %}
+{% block billboard %}<h2>Mitmachen</h2>{% endblock %}
 
 {% block content %}
-<h1>Comment participer à Django-fr</h1>
+<h1>Wie kann ich bei Django-de mitmachen?</h1>
 <div class="content first-content">
     <p>
-        Vous pouvez participer à plusieurs niveaux en fonction de votre temps
-        libre et de votre motivation&nbsp;:
+        Es gibt verschiedene Möglichkeiten mitzumachen, je nach dem wieviel
+        Zeit und Motivation du hast:
     </p>
-    <h2>Traduire les pages de documentation</h2>
+    <h2>Übersetzung der Dokumentation</h2>
     <p>
-        Il suffit de récupérer dans le répertoire <code>/docs</code> de votre
-        installation de django les fichiers texte correspondant à la page et de
-        le traduire. Pour éviter de faire le travail en double, il vaut mieux
-        s'inscrire à la mailing-list des contributeurs du site. Envoyez ensuite
-        votre traduction sur la liste en vous assurant de sa validité grâce à la
-        commande suivante&nbsp;:
+        Es reicht, wenn du dir aus dem <code>/docs</code> Verzeichnis deiner
+        lokalen Django-Version eine Datei als Vorlage aussuchst und die
+        Übersetzung in eine andere Textdatei tippst.
     </p>
-    <pre class="literal-block"><code>rst2html fichier.txt fichier.html</code></pre>
     <p>
-        S'il n'est pas valide, des messages d'erreur apparaîtront vous indiquant
-        les paragraphes incriminés (en cas de doute, la liste est là pour vous
-        aider). Il faut avoir préalablement installé le paquet
-        <code>python-docutils</code>.
+        Um zu verhindern, dass mehrere Leute an derselben Datei arbeiten,
+        öffne bitte ein Ticket im <a href="http://trac.django-de.org">Trac</a>
+        und halte uns dort über deine Fortschritte auf dem Laufenden.
+        Wenn du fertig bist oder die Arbeit an jemanden anderes übergeben
+        willst, hänge bitte die Datei mit der Übersetzung an das Ticket an.
     </p>
-    <h2>Reporter un bug sur ce site</h2>
     <p>
-        Si vous trouvez un bug de fonctionnement, une faute d'orthographe, une 
-	faute de frappe sur ce site, consultez le 
-	<a href="http://trac.django-fr.org/">trac</a> de django-fr. Vous pourrez
-	ainsi vérifier si le bug à déjà été repéré et assigné, et dans le cas
-	contraire créer un ticket pour le reporter.
+        Du kannst überprüfen, ob die Formatierung korrekt ist, in dem du
+        folgenden Kommandozeilenbefehl ausführst:
     </p>
-    <h2>Ajouter des liens</h2>
+    <pre class="literal-block"><code>rst2html datei.txt datei.html</code></pre>
     <p>
-        Vous pouvez les <a href="/liens/ajouter/" title="Ajouter un lien"
-        >ajouter anonymement ou grâce à votre identifiant de contributeur</a>.
-        Ils n'apparaîtront pas directement mais après modération de façon à
-        garantir la pertinence des adresses proposées (et surtout à se protéger
-        du spam).
+        Sollten dabei Fehler angezeigt werden, füge die Fehlermeldung dem
+        Ticket hinzu oder kontaktiere uns im IRC-Raum
+        <a href="irc://chat.freenode.net/#django-de">#django-de</a>. Das Python
+        Modul <code>python-docutils</code> muß auf jeden Fall installiert sein.
     </p>
-    <h2>Participer au développement du framework</h2>
+    <h2>Einen Fehler auf der Seite melden</h2>
     <p>
-        Dans ce cas, il va falloir maîtriser la langue de shakespeare. Un bon
-        point de départ est l'inscription sur la
-        <a href="http://groups.google.com/group/django-developers"
-        title="S'abonner à la liste de diffusion (sortie du site)"
-        >liste de diffusion de développement</a> et la
+        Wenn du einen Tippfehler auf dieser Seite, in den anderen Texten oder
+        der Dokumentation gefunden hast, kannst du auf <a href="http://trac.django-fr.org/
+        ">trac.django-de.org</a> nachsehen, ob der Fehler schon einmal gemeldet
+        wurde und &ndash; wenn nötig &ndash; einen eigenen Fehlerbericht anlegen.
+    </p>
+    <h2>An der Entwicklung von Django teilnehmen</h2>
+    <p>
+        In diesem Falls, solltest du fließend Englisch können, am besten
+        an der <a href="http://groups.google.com/group/django-developers"
+        title="Mailingliste aufrufen (externe Seite)"
+        >Mailingliste für die Entwickler</a> teilnehmen und versuchen, die
         <a href="http://code.djangoproject.com/report"
-        title="Accès au gestionnaire de bugs (sortie du site)"
-        >consultation du gestionnaire de bugs</a> de façon à corriger ceux à
-        votre portée (mieux vaut toujours commencer petit en proposant des
-        patchs de façon à devenir un contributeur de confiance par la suite).
+        title="Fehlerberichte aufrufen (externe Seite)"
+        >gefundenen Fehler</a> zu beheben. Fang lieber klein an und steigere
+        dich nach und nach.
     </p>
 </div>
 {% endblock %}
 
 {% block content-related %}
-<h2>Tout simplement en parler</h2>
+<h2>Ums kurz zu machen</h2>
 <p>
-    Ça demande peu de ressources mais ça contribue à l'enrichissement des
-    utilisateurs et donc des contributeurs potentiels, c'est la force des
-    projets Open-source. Une grande passion commence parfois par un simple
-    billet de blog ;-).
+    Mit nur sehr wenig Aufwand erreicht man oft Erstaunliches. Mit deiner Hilfe
+    kann Django noch besser werden und die Anwender- und Entwicklergemeinde
+    vergrößert werden.
+</p>
+<p>    
+    Davon profitierst nicht nur du, sondern auch deine vielen Open-Source-Mitstreiter.
+    Denn manchmal fängt eine Leidenschaft mit einem einfachen Fehlerbericht an :)
 </p>
 <p>
-    <a href="http://lists.afpy.org/cgi-bin/mailman/listinfo/django"
-    >La mailing-list francophone consacrée à django</a> peut vous permet de
-    suivre et participer aux discussions de fond.
-</p>
-<p>
-    Notre canal IRC <strong>#django-fr</strong> sur le serveur
-    <strong>irc.freenode.net</strong> vous est ouvert pour rencontrer la
-    communauté francophone de Django et poser vos questions en temps réel.
+    In unserem IRC-Raum <a href="irc://chat.freenode.net/#django-de"><strong
+    >#django-de</strong></a> auf dem Server <strong>irc.freenode.net</strong>
+    kannst du viele von uns regelmäßig treffen.
 </p>
 {% endblock %}
