@@ -2,12 +2,12 @@
 
 {% block sectionid %}links{% endblock %}
 {% block active_nav-links %}class="active"{% endblock %}
-{% block title %}Index des liens{% endblock %}
+{% block title %}Links zum Thema Django{% endblock %}
 
-{% block billboard %}<h2><a href="/liens/">Liens</a></h2>{% endblock %}
+{% block billboard %}<h2><a href="/links/">Links</a></h2>{% endblock %}
 
 {% block content %}
-<h1>Liens relatifs à Django pour le mois de {{ month|date:"F Y"|lower }}</h1>
+<h1>Links zum Thema Django aus dem Monat {{ month|date:"F Y"|lower }}</h1>
 <div class="content">
     {% for link in link_list %}
         <h3 id="{{ link.slug }}">
@@ -19,12 +19,12 @@
 {% endblock %}
 
 {% block content-related %}
-    <h2>Rester informer</h2>
+    <h2>Informiert bleiben</h2>
     <p>
-        <a href="/rss/liens/" title="S'abonner au flux"
-        >Flux RSS des derniers ajouts</a>
+        <a href="/rss/links/" title="RSS Feed abonnieren"
+        >RSS Feed der letzten Links</a>
     </p>
-    <h2>Ajouter un lien</h2>
-    <p>L'ajout de lien est modéré a priori.</p>
-    <p><a href="/liens/ajouter/" class="link-add">Proposer un nouveau lien</a></p>
+    <h2>Einen Link hinzufügen</h2>
+    <p>Alle Links werden vor der Veröffentlichung geprüft.</p>
+    <p><a href="/links/add/" class="link-add">Einen neuen Link vorschlagen</a></p>
 {% endblock %}

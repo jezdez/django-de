@@ -3,9 +3,9 @@
 
 {% block sectionid %}links{% endblock %}
 {% block active_nav-links %}class="active"{% endblock %}
-{% block title %}Index des liens{% endblock %}
+{% block title %}Links zum Thema Django{% endblock %}
 
-{% block billboard %}<h2><a href="/liens/">Links</a></h2>{% endblock %}
+{% block billboard %}<h2><a href="/links/">Links</a></h2>{% endblock %}
 
 {% block content %}
 <h1>Liste der letzten Links</h1>
@@ -40,12 +40,12 @@
 {% block content-related %}
     <h2>Informiert bleiben</h2>
     <p>
-        <a href="/rss/liens/" title="RSS Feed abonnieren"
+        <a href="/rss/links/" title="RSS Feed abonnieren"
         >RSS Feed der letzten Links</a>
     </p>
     <h2>Einen Link hinzufügen</h2>
     <p>Alle Links werden vor der Veröffentlichung geprüft.</p>
-    <p><a href="/liens/ajouter/" class="link-add">Einen neuen Link vorschlagen</a></p>
+    <p><a href="/links/add/" class="link-add">Einen neuen Link vorschlagen</a></p>
     <h2>Tags</h2>
     <ul id="tag_cloud">
     {% tags_for_model documentation.Documentation as documentation_list %}
