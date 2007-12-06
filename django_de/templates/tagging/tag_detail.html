@@ -3,17 +3,17 @@
 
 {% block sectionid %}links{% endblock %}
 {% block active_nav-links %}class="active"{% endblock %}
-{% block title %}Index des liens{% endblock %}
+{% block title %}Quellen zu Django zum Thema {{ tag }}{% endblock %}
 
 {% block billboard %}<h2>Tags</h2>{% endblock %}
 
 {% block content %}
-<h1>Ressources pour le tag "{{ tag }}"</h1>
+<h1>Quellen mit Tag "{{ tag }}"</h1>
 <div class="content">
 
 {% tagged_objects tag in documentation.Documentation as documentation_list %}
 {% if documentation_list %}
-    <h2>Dans la documentation</h2>
+    <h2>In der Dokumentation</h2>
     <ul class="linklist doclist">
     {% for documentation in documentation_list %}
         <li>
@@ -27,7 +27,7 @@
 
 {% tagged_objects tag in links.Link as link_list %}
 {% if link_list %}
-    <h2>Dans les liens</h2>
+    <h2>In den Links</h2>
     <ul class="linklist">
     {% for link in link_list %}
         <li>
