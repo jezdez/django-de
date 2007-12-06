@@ -2,7 +2,7 @@
 {% load tagging_tags %}
 
 {% block active_nav-documentation %}class="active"{% endblock %}
-{% block title %}Documentation | {{ documentation.title }}{% endblock %}
+{% block title %}Dokumentation | {{ documentation.title }}{% endblock %}
 {% block coltype %}rest-document{% endblock %}
 
 {% block content %}
@@ -13,28 +13,28 @@
 {% endblock %}
 
 {% block content-related %}
-    <h2>Informations</h2>
+    <h2>Informationen</h2>
     <ul class="quick_link">
         <li>
             <a href="http://www.djangoproject.com/documentation/{{ documentation.slug }}/"
-               title="Accès à cette page en anglais"
-            >Accès à cette page en anglais</a> (non traduite)
+               title="Die offizielle Dokumentation (englisch)"
+            >Die offizielle Dokumentation</a> (nicht übersetzt)
         </li>
         <li>
-            Révision de la traduction : {{ documentation.revision }}
-            (version {{ documentation.version }})
+            Revision der Übersetzung : {{ documentation.revision }}
+            (Version {{ documentation.version }})
         </li>
     </ul>
-    <h2>Accès rapide</h2>
+    <h2>Schnellzugriff</h2>
     <div class="quick_link">
     {{ documentation.toc_html|safe }}
     </div>
-    <h2>Traducteur(s)</h2>
+    <h2>Übersetzer</h2>
     <ul class="contributor_link">
     {% for author in documentation.authors.all %}
         <li>
             <a href="{{ author.get_absolute_url }}"
-               title="Accès au profil de {{ author.name }}"
+               title="Profil von {{ author.name }}"
             >{{ author.name }}</a>
         </li>
     {% endfor %}
