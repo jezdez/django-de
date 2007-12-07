@@ -40,7 +40,7 @@ img{
 }
 a,
 a:link{
-    color:#216833;
+    color:#3C782D;
     text-decoration:none;
     font-weight: bold;
 }
@@ -113,8 +113,8 @@ a:hover{
 }
 #body_head li a.active,
 #body_head li a:hover{
-    color:#1A5127;
-	background-color: #D0F1D0;
+    color:#235725;
+	background-color: #D6F1B7;
 }
 
 /* ________________________________________
@@ -122,18 +122,19 @@ a:hover{
 */
 #billboard{
     margin:0;
-    padding:15px 0 0 0;
-    background-color:#3AA157;
-    border: 1px solid #2B8341;
-    border-bottom-color: #D9D9D9;
-    border-width: 1px 0 1px;
+    padding:0px 0 0 0;
+    background-color:#52AA4D;
+    border-top: 1px solid #3C782D;
+    border-bottom: 1px solid #3C782D;
 }
 #billboard h2{
     color:white;
     margin:0;
-    padding:0 0 14px 16px;
+    padding:15px 0 12px 16px;
     font-size:20px;
     font-weight:bold;
+	border-top: 1px solid #449039;
+    border-bottom: 1px solid #449039;
 }
 #billboard h2 a{
     color:white;
@@ -144,31 +145,31 @@ a:hover{
     padding: 2px 0 0;
     font-size:14px;
     font-weight:bold;
-    color:#1A5127;
+    color:#235725;
 }
 
 /* ________________________________________
     Éléments globaux du cadre principale de contenu
 */
 #columnwrap {
-    background-color:#E9FFE5;
+    background-color:#EAFEDC;
 }
 /* Pour le mode 3colonnes */
 #subwrap {
-    background-color:#E9FFE5;
+    background-color:#EAFEDC;
     width:93%;
     float:left;
 }
 
 /* Tête de chapitre */
 #content-main h1{
-    color:#1C3520;
+    color:#333;
     margin:0;
     padding:13px 15px 10px;
     font-size:22px;
     font-weight:bold;
-    background-color: #E9FFE5;
-    border-bottom: 1px solid #D0F1D0;
+    background-color: #EAFEDC;
+    border-bottom: 1px solid #D6F1B7;
 }
 body.rest-document #content-main .first-content h1{
     padding:13px 0 10px;
@@ -203,13 +204,13 @@ html > body #content-main{
     color:#333;
     margin:0;
     padding:8px 15px 12px 15px;
-    background-color: #E9FFE5;
+    background-color: #EAFEDC;
 }
 
 #content-main div.first-content{
     background-color: white;
-    border-bottom: 1px solid #D0F1D0;
-    border-right: 1px solid #D0F1D0;
+    border-bottom: 1px solid #D6F1B7;
+    border-right: 1px solid #D6F1B7;
 }
 
 #content-main div.first-content p {
@@ -242,6 +243,7 @@ div.content p{
     margin:7px 0 10px 0;
     padding:0;
     font-size:14px;
+    line-height: 17px;
 }
 #content-main div.content div.bio{
     font-size:14px;
@@ -270,10 +272,10 @@ textarea.codedump { font-size:10px; color:#234f32; width:100%; background:#E0FFB
 .note, .admonition {
     margin:16px 0 16px 0;
     padding:16px;
-    border:1px solid #D0F1D0;
+    border:1px solid #D6F1B7;
 }
 .admonition-title {
-    color:#216833;
+    color:#3C782D;
     font-weight:bold;
     margin-top:0 !important;
     margin-bottom:0 !important;
@@ -292,8 +294,8 @@ table.docutils td p { margin-top:0; margin-bottom:.5em; }
 #content-main div.content pre,
 #content-main div.content .literal-block{
     width:100%;
-    background-color:#E9FFE5;
-    border:1px solid #D0F1D0;
+    background-color:#EAFEDC;
+    border:1px solid #D6F1B7;
     margin:6px 0 6px 0;
     padding:4px 8px;
     overflow:auto;
@@ -506,7 +508,7 @@ span.error{
     float:right;
     padding:1% 2%;
     width:24%;
-    background-color: #D0F1D0;
+    background-color: #D6F1B7;
 }
 #content-extra{
     float:right;
@@ -699,7 +701,7 @@ div.vote{
 #footer{
     margin:0 0 0 0;
     padding:10px 8px 10px 8px;
-    background-color:#E9FFE5;
+    background-color:#EAFEDC;
     font-size:12px;
     color:#666;
 }
@@ -707,7 +709,7 @@ html>body #footer{
     margin:0;
 }
 #footer a{
-    color:#216833;
+    color:#3C782D;
     text-decoration:none;
 }
 #footer p{
