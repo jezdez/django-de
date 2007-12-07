@@ -6,8 +6,8 @@
 {% block coltype %}rest-document{% endblock %}
 
 {% block content %}
+<h1>{{ documentation.title }}</h1>
 <div class="content first-content">
-    <h1>{{ documentation.title }}</h1>
     {{ documentation.content_html|safe }}
 </div>
 {% endblock %}

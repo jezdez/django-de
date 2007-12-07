@@ -13,11 +13,11 @@ html{
     background-color:white;
 }
 body{
+    font-family: Arial, Helvetica, sans-serif;
     margin:0;
     padding:0;
     height:100%;
     width:100%;
-    font-family:sans-serif;
     background-color:#f0f2d9;
 }
 html > body{
@@ -40,15 +40,13 @@ img{
 }
 a,
 a:link{
-    color:#52772b;
+    color:#216833;
     text-decoration:none;
+    font-weight: bold;
 }
 a:hover{
-    color:#d48722;
-    text-decoration:underline;
-}
-a:visited{
-    color:#944702;
+    color:#000;
+    text-decoration:none;
 }
 
 /* ________________________________________
@@ -60,18 +58,18 @@ a:visited{
     Éléments de l'entete
 */
 #body_head{
-    height:65px;
+    height:59px;
 }
 #body_head h1{
     margin:0 10px 0 10px;
-    padding:5px 0 0 5px;
+    padding:0 0 0 5px;
     height:59px;
 }
 #body_head h1 a{
     display:block;
     margin:0;
     padding:0;
-    width:151px;
+    width:160px;
     height:59px;
     background-image:url("./logo.png");
     background-position:top left;
@@ -88,7 +86,7 @@ a:visited{
     Éléments de la navigation principale
 */
 #body_head ul{
-    margin:0 10px 0 0;
+    margin:25px 10px 0 0;
     padding:0;
     position:absolute;
     top:0;
@@ -105,8 +103,8 @@ a:visited{
 #body_head li a:link{
     color:#333;
     text-decoration:none;
-    padding:33px 10px 0 10px;
-    height:27px;
+    padding:8px 10px 0 10px;
+    height:26px;
     display:block;
     float:left;
     font-size:14.5px;
@@ -115,10 +113,8 @@ a:visited{
 }
 #body_head li a.active,
 #body_head li a:hover{
-    color:#92cc47;
-    background-image:url("./background/background_navigation_items.png");
-    background-position:top left;
-    background-repeat:repeat-x;
+    color:#1A5127;
+	background-color: #D0F1D0;
 }
 
 /* ________________________________________
@@ -126,21 +122,18 @@ a:visited{
 */
 #billboard{
     margin:0;
-    padding:14px 0 0 0;
-    background-color:#92cc47;
-    background-image:url("./background/background_billboard_top.png");
-    background-position:top left;
-    background-repeat:repeat-x;
+    padding:15px 0 0 0;
+    background-color:#3AA157;
+    border: 1px solid #2B8341;
+    border-bottom-color: #D9D9D9;
+    border-width: 1px 0 1px;
 }
 #billboard h2{
     color:white;
     margin:0;
     padding:0 0 14px 16px;
-    font-size:18px;
+    font-size:20px;
     font-weight:bold;
-    background-image:url("./background/background_billboard_bottom.png");
-    background-position:bottom left;
-    background-repeat:repeat-x;
 }
 #billboard h2 a{
     color:white;
@@ -148,38 +141,39 @@ a:visited{
 #billboard h2 span{
     display:block;
     margin:0;
-    padding:0;
+    padding: 2px 0 0;
     font-size:14px;
     font-weight:bold;
-    color:#52772b;
+    color:#1A5127;
 }
 
 /* ________________________________________
     Éléments globaux du cadre principale de contenu
 */
 #columnwrap {
-    background-color:#f0f2d9;
+    background-color:#E9FFE5;
 }
 /* Pour le mode 3colonnes */
 #subwrap {
-    background-color:#f5f7ee;
-    width:73%;
+    background-color:#E9FFE5;
+    width:93%;
     float:left;
-    background-image:url("./vertical_green_dot.gif");
-    background-position:top right;
-    background-repeat:repeat-y;
 }
 
 /* Tête de chapitre */
 #content-main h1{
-    color:#000;
+    color:#1C3520;
     margin:0;
-    padding:15px;
+    padding:13px 15px 10px;
     font-size:22px;
     font-weight:bold;
+    background-color: #E9FFE5;
+    border-bottom: 1px solid #D0F1D0;
 }
-body.rest-document #content-main h1{
-    padding:15px 0 15px 0;
+body.rest-document #content-main .first-content h1{
+    padding:13px 0 10px;
+    background: none;
+	border:none;
 }
 
 /*#content-main div.header_content p{
@@ -193,16 +187,13 @@ body.rest-document #content-main h1{
 /* Contenu principal */
 #content-main{
     float:left;
-    width:72%;
+    width:69%;
     margin:0;
     padding:0;
     background:white;
-    background-image:url("./vertical_green_dot.gif");
-    background-position:top right;
-    background-repeat:repeat-y;
 }
 html > body #content-main{
-    width:73%;
+    width:70%;
 }
 /* Spécialement pour le Mode 3colonnes */
 #subwrap #content-main{
@@ -210,37 +201,37 @@ html > body #content-main{
 }
 #content-main div.content{
     color:#333;
-    background-image:url("./background/background_corpus.png");
-    background-position:top left;
-    background-repeat:repeat-x;
-    margin:0 1px 0 0;
+    margin:0;
     padding:8px 15px 12px 15px;
+    background-color: #E9FFE5;
 }
-body.rest-document #content-main div.content{
-    background-image:url("./background/background_corpus_without_dot.png");
-}
+
 #content-main div.first-content{
-    background-color:#f5f9f8;
-    background-image:url("./background/background_corpus_first-content.png");
-    background-position:top left;
-    background-repeat:repeat-x;
+    background-color: white;
+    border-bottom: 1px solid #D0F1D0;
+    border-right: 1px solid #D0F1D0;
 }
-body.rest-document #content-main div.first-content{
-    background-image:url("./background/background_corpus_first-content_without_dot.png");
+
+#content-main div.first-content p {
+	color: #444;
 }
 
 #content-main div.content h2{
     margin:0 0 0 0;
-    padding:8px 0 8px 0;
-    font-size:19px;
+    padding:8px 0 0;
+    font-size:18px;
     font-weight:bold;
-    color:#000;
+    color:#333;
 }
 #content-main div.first-content h2{
-    color:#000;
+    color:#333;
+    padding:8px 0 4px 0;
+    font-size: 16px;
 }
+
 #content-main div.content h3{
     font-size:16px;
+    margin-bottom: 0.5em;
 }
 
 #content-main div.content div.bio{
@@ -279,31 +270,19 @@ textarea.codedump { font-size:10px; color:#234f32; width:100%; background:#E0FFB
 .note, .admonition {
     margin:16px 0 16px 0;
     padding:16px;
-    border:1px solid #9bb678;
+    border:1px solid #D0F1D0;
 }
 .admonition-title {
-    color:#6b8648;
+    color:#216833;
     font-weight:bold;
     margin-top:0 !important;
     margin-bottom:0 !important;
-}
-.admonition-philosophie {
-    padding-left:65px;
-    background:url(./icons/ktip.png) .8em .8em no-repeat;
-}
-.admonition-note {
-    padding-left:65px;
-    background:url(./icons/reminders.png) .8em .8em no-repeat;
-}
-.admonition-behind-the-scenes {
-    padding-left:65px;
-    background:url(./icons/misc.png) .8em .8em no-repeat;
 }
 .admonition .last {
     margin-bottom:0 !important;
 }
 /* Tableaux dans des documents ReST */
-#content-main table { color:#000; }
+#content-main table { color:#333; }
 table.docutils { border-collapse:collapse; }
 table.docutils thead th { border-bottom:2px solid #dfdfdf; text-align:left; }
 table.docutils td, table.docutils th { border-bottom:1px solid #dfdfdf; padding:4px 2px;}
@@ -313,11 +292,10 @@ table.docutils td p { margin-top:0; margin-bottom:.5em; }
 #content-main div.content pre,
 #content-main div.content .literal-block{
     width:100%;
-    background-color:#e7f1d9;
-    border:1px solid #9bb678;
-    border-width:1px 0;
+    background-color:#E9FFE5;
+    border:1px solid #D0F1D0;
     margin:6px 0 6px 0;
-    padding:4px;
+    padding:4px 8px;
     overflow:auto;
 }
 html>body #content-main div.content pre,
@@ -526,8 +504,9 @@ span.error{
 */
 #content-related{
     float:right;
-    padding:0 2% 0 1%;
-    width:23%;
+    padding:1% 2%;
+    width:24%;
+    background-color: #D0F1D0;
 }
 #content-extra{
     float:right;
@@ -547,18 +526,18 @@ span.error{
 div.sidebar{
     margin:0;
     padding:0 15px 25px 15px;
-    color:#79745a;
+    color:#666;
 }
 div.sidebar h2{
     margin:0;
     padding:12px 0 6px 0;
-    font-size:16px;
-    color:#666;
+    font-size:18px;
+    color:#555;
 }
 div.sidebar p{
     margin:0;
     padding:4px 0 6px 0;
-    font-size:13px;
+    font-size:14px;
 }
 
 /* listes à puces ou numériques */
@@ -687,9 +666,6 @@ div.sidebar ul.contributor_link li a{
 div.sidebar div.adcell{
     margin:0 1px 0 0;
     padding:0 15px 15px 15px;
-    background-image:url("./horizontal_green_dot.gif");
-    background-position:bottom left;
-    background-repeat:repeat-x;
 }
 
 /* ________________________________________
@@ -723,15 +699,15 @@ div.vote{
 #footer{
     margin:0 0 0 0;
     padding:10px 8px 10px 8px;
-    background-color:#e2e8da;
+    background-color:#E9FFE5;
     font-size:12px;
-    color:#899973;
+    color:#666;
 }
 html>body #footer{
     margin:0;
 }
 #footer a{
-    color:#52772b;
+    color:#216833;
     text-decoration:none;
 }
 #footer p{
