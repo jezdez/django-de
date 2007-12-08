@@ -1,6 +1,6 @@
 # Django settings for django_de project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
