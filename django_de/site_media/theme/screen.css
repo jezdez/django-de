@@ -49,6 +49,10 @@ a:hover{
     text-decoration:none;
 }
 
+abbr {
+    border-bottom: 1px dotted #3C782D;
+}
+
 /* ________________________________________
     Container globale de toute les éléments
 */
@@ -71,9 +75,11 @@ a:hover{
     padding:0;
     width:160px;
     height:59px;
+/*  Noch keine Freigabe vorhanden
     background-image:url("./logo.png");
     background-position:top left;
     background-repeat:no-repeat;
+*/
 }
 #body_head h1 span{
     display:none;
