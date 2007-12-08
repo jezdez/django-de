@@ -85,3 +85,8 @@ INSTALLED_APPS = (
     'django_de.apps.documentation',
     'tagging',
 )
+
+try:
+    from local_settings import *
+except ImportError:
+    DEBUG = True
