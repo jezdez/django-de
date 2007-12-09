@@ -7,8 +7,8 @@ from django.conf import settings
 from django_de.apps.authors.models import Author
 
 class Release(models.Model):
-    version = models.CharField(_("version"), maxlength=20, unique=True)
-    repository_path = models.CharField(_("repository path"), maxlength=50, help_text="(i.e. '0.95' or '0.95-bugfixes')")
+    version = models.CharField(_("version"), max_length=20, unique=True)
+    repository_path = models.CharField(_("repository path"), max_length=50, help_text="(i.e. '0.95', '0.95-bugfixes' or 'trunk')")
     release_date = models.DateField(_("release date"))
 
     class Meta:
