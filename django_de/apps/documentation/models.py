@@ -37,6 +37,7 @@ def get_choices(path=None):
         yield choice    
 
 class Documentation(models.Model):
+    title = models.CharField(_('title'), max_length=100)
     slug = models.SlugField(_('slug'), help_text=_('used for URL'), choices=get_choices(settings.DOCS_SVN_PATH))
     version = models.CharField(_('version'), max_length=20, choices=get_choices())
 
