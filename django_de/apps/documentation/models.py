@@ -24,14 +24,13 @@ def get_choices(path=None):
 
 class Release(models.Model):
     version = models.CharField(_("version"), max_length=20, unique=True, choices=get_choices())
-    repository_path = models.CharField(_("repository path"), max_length=50, help_text="(i.e. '0.95' or 'trunk')")
     release_date = models.DateField(_("release date"))
 
     class Meta:
         ordering = ('-release_date',)
 
     class Admin:
-        list_display = ("version", "repository_path", "release_date")
+        list_display = ("version", "release_date")
 
     def __unicode__(self):
         return self.version
@@ -50,7 +49,7 @@ def _get_svnroot(version, subpath):
             subpath = os.path.join(subpath, version)
         else:
             rel = get_object_or_404(Release, version=version)
-            subpath = os.path.join(subpath, rel.repository_path)
+            subpath = os.path.join(subpath, rel.version)
         docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
     try:
         client.info2(docroot, recurse=False)
