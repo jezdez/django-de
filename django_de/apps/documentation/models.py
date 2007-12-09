@@ -1,4 +1,5 @@
-﻿from django.db import models
+import os
+from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
