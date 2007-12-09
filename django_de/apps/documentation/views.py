@@ -19,10 +19,9 @@ def doc_index(request, version=None):
     doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
     doclist.sort()
     
-    documentation_list = Documentation.objects.filter(version=version)
+    documentation_list = Documentation.objects.filter(release__version=version)
     template_list = ["documentation/%s_index.html" % version, "documentation/index.html"]
     context ={
-        "version": version,
         "all_versions": Release.objects.all(),
         "documentation_list": documentation_list
     }
@@ -30,7 +29,7 @@ def doc_index(request, version=None):
 
 def doc_detail(request, slug, version=None):
     client, version, docroot = get_svnroot(version, settings.DOCS_SVN_PATH)
-    documentation = get_object_or_404(Documentation, version=version, slug=slug)
+    documentation = get_object_or_404(Documentation, release__version=version, slug=slug)
 
     docpath = urlparse.urljoin(docroot, slug+".txt")
     try:
@@ -48,7 +47,6 @@ def doc_detail(request, slug, version=None):
     context = {
         "documentation": documentation,
         "parts": parts, 
-        "version": version,
         "revision": info.rev.number, 
         "all_versions": Release.objects.all(), 
         "slug": slug,
