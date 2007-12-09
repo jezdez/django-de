@@ -47,7 +47,7 @@ def _get_svnroot(version, subpath):
     else:
         if version is None:
             version = "trunk"
-            subpath = os.path.join(subpath, version)
+            subpath = os.path.join(subpath, version+"/")
         else:
             rel = get_object_or_404(Release, version=version)
             subpath = os.path.join(subpath, rel.version)
@@ -89,7 +89,7 @@ class Documentation(models.Model):
         except pysvn.ClientError:
             self.title = self.slug
             super(Documentation, self).save()
-        cache_key = "django_de:docs:%s:%s:%s" % (self.release.version, self.slug, info.rev.number)
+        cache_key = "django_de:docs:%s:%s:%s" % (version, self.slug, info.rev.number)
         parts = cache.get(cache_key)
         if parts is None:
             parts = builder.build_document(client.cat(docpath))
