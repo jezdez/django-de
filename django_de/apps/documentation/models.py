@@ -1,4 +1,4 @@
-import os
+﻿import os
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
@@ -26,9 +26,9 @@ class Release(models.Model):
 
 def get_choices(path=None):
     from utils import get_svnroot
-    client, version, docroot = get_svnroot(None, path)
-    choicelist = client.ls(docroot, recurse=False)
-    choicelist = [os.path.splitext(os.path.basename(doc.name))[0] for choice in choicelist]
+    client, version, root = get_svnroot(None, path)
+    choicelist = client.ls(root, recurse=False)
+    choicelist = [os.path.splitext(os.path.basename(choice.name))[0] for choice in choicelist]
     choicelist.sort()
     choices = []
     for choice in choicelist:
