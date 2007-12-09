@@ -15,10 +15,10 @@ def get_svnroot(version, subpath):
     else:
         if version is None:
             version = "trunk"
-            subpath = os.path.join("trunk/", subpath)
+            subpath = os.path.join(subpath, "trunk/")
         else:
             rel = get_object_or_404(Release, version=version)
-            subpath = os.path.join(rel.repository_path, subpath)
+            subpath = os.path.join(subpath, rel.repository_path)
         docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
 
     try:
