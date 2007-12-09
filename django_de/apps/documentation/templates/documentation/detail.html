@@ -1,14 +1,14 @@
-﻿{% extends "base_docs.html" %}
+{% extends "base_docs.html" %}
 {% load tagging_tags %}
 
 {% block active_nav-documentation %}class="active"{% endblock %}
-{% block title %}Dokumentation | {{ documentation.title }}{% endblock %}
+{% block title %}Dokumentation | {{ parts.title }}{% endblock %}
 {% block coltype %}rest-document{% endblock %}
 
 {% block content %}
-<h1>{{ documentation.title }}</h1>
+<h1>{{ parts.title }}</h1>
 <div class="content first-content">
-    {{ documentation.content_html|safe }}
+    {{ parts.body|safe }}
 </div>
 {% endblock %}
 
@@ -21,13 +21,13 @@
             >Die offizielle Dokumentation</a> (nicht übersetzt)
         </li>
         <li>
-            Revision der Übersetzung : {{ documentation.revision }}
+            Revision der Übersetzung : {{ revision }}
             (Version {{ documentation.version }})
         </li>
     </ul>
     <h2>Schnellzugriff</h2>
     <div class="quick_link">
-    {{ documentation.toc_html|safe }}
+    {{ parts.toc|safe }}
     </div>
     <h2>Übersetzer</h2>
     <ul class="contributor_link">
