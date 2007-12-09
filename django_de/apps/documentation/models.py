@@ -5,7 +5,6 @@ from django.conf import settings
 
 from django_de.apps.authors.models import Author
 
-
 class Release(models.Model):
     version = models.CharField(_("version"), maxlength=20, unique=True)
     repository_path = models.CharField(_("repository path"), maxlength=50, help_text="(i.e. '0.95' or '0.95-bugfixes')")
@@ -25,7 +24,7 @@ class Release(models.Model):
     get_absolute_url = permalink(get_absolute_url)
 
 def get_choices(path=None):
-    from django_de.apps.documentation.utils import get_svnroot
+    from utils import get_svnroot
     client, version, docroot = get_svnroot(None, path)
     choicelist = client.ls(docroot, recurse=False)
     choicelist = [os.path.splitext(os.path.basename(doc.name))[0] for choice in choicelist]
