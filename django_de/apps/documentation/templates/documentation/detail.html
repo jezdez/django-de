@@ -1,11 +1,11 @@
 {% extends "base_docs.html" %}
 
 {% block active_nav-documentation %}class="active"{% endblock %}
-{% block title %}Dokumentation | {{ parts.title }}{% endblock %}
+{% block title %}Dokumentation | {{ documentation.title }}{% endblock %}
 {% block coltype %}rest-document{% endblock %}
 
 {% block content %}
-<h1>{{ parts.title }}</h1>
+<h1>{{ documentation.title }}</h1>
 <div class="content first-content">
     {{ parts.body|safe }}
 </div>
