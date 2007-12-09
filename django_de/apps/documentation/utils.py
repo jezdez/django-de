@@ -11,7 +11,7 @@ def get_svnroot(version, subpath):
     client = pysvn.Client()
 
     if subpath is None:
-        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, "docs")
+        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, settings.DOCS_SVN_PATH)
     else:
         if version is None:
             version = "trunk"
