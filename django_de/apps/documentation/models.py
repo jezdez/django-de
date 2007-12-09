@@ -1,16 +1,18 @@
 ﻿import os
+import urlparse
+import pysvn
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
+from django.http import Http404
 from django.conf import settings
+from django.shortcuts import get_object_or_404, render_to_response
 
 from django_de.apps.authors.models import Author
 from django_de.apps.documentation import builder
-from django_de.apps.documentation.utils import get_svnroot
 
 def get_choices(path=None):
-    from django_de.apps.documentation.utils import get_svnroot
-    client, version, root = get_svnroot(None, path)
+    client, version, root = _get_svnroot(None, path)
     choicelist = client.ls(root, recurse=False)
     choicelist = [os.path.splitext(os.path.basename(choice.name))[0] for choice in choicelist]
     choicelist.sort()
@@ -38,6 +40,24 @@ class Release(models.Model):
         return ('django_de.apps.documentaion.views.doc_index', [self.version])
     get_absolute_url = permalink(get_absolute_url)
 
+def _get_svnroot(version, subpath):
+    client = pysvn.Client()
+    if subpath is None:
+        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, settings.DOCS_SVN_PATH)
+    else:
+        if version is None:
+            version = "trunk"
+            subpath = os.path.join(subpath, version)
+        else:
+            rel = get_object_or_404(Release, version=version)
+            subpath = os.path.join(subpath, rel.repository_path)
+        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
+    try:
+        client.info2(docroot, recurse=False)
+    except pysvn.ClientError:
+        raise Http404("Bad SVN path: %s" % docroot)
+    return client, version, docroot
+
 class Documentation(models.Model):
     title = models.CharField(_('title'), max_length=200)
     slug = models.SlugField(_('document'), help_text=_('Available documentation files in SVN repository'), choices=get_choices(settings.DOCS_SVN_PATH))
@@ -62,7 +82,7 @@ class Documentation(models.Model):
     get_absolute_url = permalink(get_absolute_url)
 
     def save(self):
-        client, version, docroot = get_svnroot(self.release.version, settings.DOCS_SVN_PATH)
+        client, version, docroot = _get_svnroot(self.release.version, settings.DOCS_SVN_PATH)
         docpath = urlparse.urljoin(docroot, self.slug+".txt")
         try:
             name, info = client.info2(docpath)[0]

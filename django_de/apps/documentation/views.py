@@ -7,12 +7,11 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
-from django_de.apps.documentation.models import Release, Documentation
+from django_de.apps.documentation.models import Release, Documentation, _get_svnroot
 from django_de.apps.documentation import builder
-from django_de.apps.documentation.utils import get_svnroot
 
 def doc_index(request, version=None):
-    client, version, docroot = get_svnroot(version, settings.DOCS_SVN_PATH)
+    client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
     doclist = client.ls(docroot, recurse=False)
     
     # Convert list of URLs to list of document slugs.
@@ -28,7 +27,7 @@ def doc_index(request, version=None):
     return render_to_response(template_list, context, RequestContext(request, {}))
 
 def doc_detail(request, slug, version=None):
-    client, version, docroot = get_svnroot(version, settings.DOCS_SVN_PATH)
+    client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
     documentation = get_object_or_404(Documentation, release__version=version, slug=slug)
 
     docpath = urlparse.urljoin(docroot, slug+".txt")
