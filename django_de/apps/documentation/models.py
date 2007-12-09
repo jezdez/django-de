@@ -58,5 +58,5 @@ class Documentation(models.Model):
         return self.slug
 
     def get_absolute_url(self):
-         return ('django_de.apps.documentaion.views.doc_detail', [self.slug])
+         return ('django_de.apps.documentation.views.doc_detail', [self.slug])
     get_absolute_url = permalink(get_absolute_url)
