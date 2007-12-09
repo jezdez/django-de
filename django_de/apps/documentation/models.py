@@ -25,7 +25,7 @@ class Release(models.Model):
     get_absolute_url = permalink(get_absolute_url)
 
 def get_choices(path=None):
-    from utils import get_svnroot
+    from django_de.apps.documentation.utils import get_svnroot
     client, version, root = get_svnroot(None, path)
     choicelist = client.ls(root, recurse=False)
     choicelist = [os.path.splitext(os.path.basename(choice.name))[0] for choice in choicelist]
