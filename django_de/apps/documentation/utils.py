@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 
 from django_de.apps.documentation.models import Release, Documentation
 
-def _get_svnroot(version, subpath):
+def get_svnroot(version, subpath):
     client = pysvn.Client()
 
     if subpath is None:
