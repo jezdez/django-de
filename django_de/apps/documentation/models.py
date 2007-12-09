@@ -68,7 +68,7 @@ class Documentation(models.Model):
 
     class Admin:
         list_display = ('title', 'slug')
-        list_filter = ('authors')
+        list_filter = ('authors',)
         search_fields = ('title', 'summary')
 
     class Meta:
