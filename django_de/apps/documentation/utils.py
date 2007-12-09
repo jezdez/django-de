@@ -11,7 +11,7 @@ def get_svnroot(version, subpath):
     client = pysvn.Client()
 
     if subpath is None:
-        docroot = settings.DJANGO_SVN_ROOT
+        docroot = settings.DOCS_SVN_ROOT
     else:
         if version is None:
             version = "trunk"
@@ -19,7 +19,7 @@ def get_svnroot(version, subpath):
         else:
             rel = get_object_or_404(Release, version=version)
             subpath = os.path.join(rel.repository_path, subpath)
-        docroot = urlparse.urljoin(settings.DJANGO_SVN_ROOT, subpath)
+        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
 
     try:
         client.info2(docroot, recurse=False)
