@@ -3,7 +3,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('',
     (r'^admin/',         include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
-#    (r'^author/', include('django_de.apps.authors.urls')),
+    (r'^author/', include('django_de.apps.authors.urls')),
 )
 
 urlpatterns += patterns('django.views.generic.simple',
