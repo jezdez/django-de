@@ -18,10 +18,7 @@ body{
     padding:0;
     height:100%;
     width:100%;
-    background-color:#f0f2d9;
-}
-html > body{
-    background-color:white;
+    background-color:#fff;
 }
 hr,
 .cale{
@@ -116,11 +113,16 @@ abbr {
     font-size:14.5px;
     white-space:nowrap;
     list-style-type:none;
+    margin: -1px 0 0 -1px;
+    border:1px solid #fff;
+    border-bottom-width:0;
 }
 #body_head li a.active,
 #body_head li a:hover{
     color:#235725;
 	background-color: #D6F1B7;
+    border:1px solid #c6eb9a;
+    border-bottom-width:0;
 }
 
 /* ________________________________________
@@ -157,12 +159,11 @@ abbr {
 /* ________________________________________
     Éléments globaux du cadre principale de contenu
 */
-#columnwrap {
+#columnwrap, #subwrap {
     background-color:#EAFEDC;
 }
 /* Pour le mode 3colonnes */
 #subwrap {
-    background-color:#EAFEDC;
     width:93%;
     float:left;
 }
@@ -198,9 +199,6 @@ body.rest-document #content-main .first-content h1{
     margin:0;
     padding:0;
     background:white;
-}
-html > body #content-main{
-    width:70%;
 }
 /* Spécialement pour le Mode 3colonnes */
 #subwrap #content-main{
@@ -299,16 +297,12 @@ table.docutils td p { margin-top:0; margin-bottom:.5em; }
 /* Divers mises en formes dans les documents ReST */
 #content-main div.content pre,
 #content-main div.content .literal-block{
-    width:100%;
+    width:auto;
     background-color:#EAFEDC;
     border:1px solid #D6F1B7;
     margin:6px 0 6px 0;
     padding:4px 8px;
     overflow:auto;
-}
-html>body #content-main div.content pre,
-html>body #content-main div.content .literal-block{
-    width:auto;
 }
 
 /* Liste à puces lambda */
@@ -511,7 +505,7 @@ span.error{
 */
 #content-related{
     float:right;
-    padding:1% 2%;
+    padding:10px 20px;
     width:24%;
     background-color: #D6F1B7;
 }
@@ -535,6 +529,7 @@ div.sidebar{
     padding:0 15px 25px 15px;
     color:#666;
     border-bottom: 1px solid #c6eb9a;
+    border-left: 1px solid #c6eb9a;
 }
 div.sidebar h2{
     margin:0;
@@ -675,32 +670,6 @@ div.sidebar div.adcell{
     margin:0 1px 0 0;
     padding:0 15px 15px 15px;
 }
-
-/* ________________________________________
-    Fortunes
-*/
-
-div.fortune{
-    border-bottom:1px dashed #d48722;
-    padding-left:15px;
-}
-div.vote{
-    float:right;
-    margin-top:-2em;
-    text-align:center;
-    width:4em;
-}
-.irc dt{
-    float:left;
-    text-align:right;
-    width:9.8em;
-}
-.irc dd{
-    margin-left:10em;
-    border-left:2px solid #92cc47;
-    padding-left:0.5em;
-}
-
 /* ________________________________________
     Éléments du pied de page
 */
@@ -710,9 +679,6 @@ div.vote{
     background-color:#EAFEDC;
     font-size:12px;
     color:#666;
-}
-html>body #footer{
-    margin:0;
 }
 #footer a{
     color:#3C782D;
@@ -729,4 +695,3 @@ html>body #footer{
     padding:0;
     text-align:right;
 }
-
