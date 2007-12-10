@@ -50,7 +50,7 @@ def _get_svnroot(version, subpath):
             subpath = os.path.join(subpath, "trunk/")
         else:
             rel = get_object_or_404(Release, version=version)
-            subpath = os.path.join(subpath, rel.version)
+            subpath = os.path.join(subpath, rel.version)+"/"
         docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
     try:
         client.info2(docroot, recurse=False)
@@ -83,7 +83,7 @@ class Documentation(models.Model):
 
     def save(self):
         client, version, docroot = _get_svnroot(self.release.version, settings.DOCS_SVN_PATH)
-        docpath = urlparse.urljoin(docroot, "/%s.txt" % self.slug)
+        docpath = urlparse.urljoin(docroot, "%s.txt" % self.slug)
         try:
             name, info = client.info2(docpath)[0]
         except pysvn.ClientError:
