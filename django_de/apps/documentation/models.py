@@ -83,7 +83,7 @@ class Documentation(models.Model):
 
     def save(self):
         client, version, docroot = _get_svnroot(self.release.version, settings.DOCS_SVN_PATH)
-        docpath = urlparse.urljoin(docroot, self.slug+".txt")
+        docpath = urlparse.urljoin(docroot, "/%s.txt" % self.slug)
         try:
             name, info = client.info2(docpath)[0]
         except pysvn.ClientError:
