@@ -70,6 +70,14 @@ class Documentation(models.Model):
         list_display = ('title', 'slug')
         list_filter = ('authors',)
         search_fields = ('title', 'summary')
+        fields = (
+            (None, {
+                'fields': ('release', 'slug', 'summary', 'order')
+            }),
+            (None, {
+                'fields' : ('authors',)
+            }),
+        )
 
     class Meta:
         ordering = ('order', 'slug', 'title')
