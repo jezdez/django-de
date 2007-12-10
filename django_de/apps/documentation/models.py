@@ -67,7 +67,7 @@ class Documentation(models.Model):
     order = models.SmallIntegerField(_('position in the index'))
 
     class Admin:
-        list_display = ('title', 'slug')
+        list_display = ('title_and_version', 'slug')
         list_filter = ('authors',)
         search_fields = ('title', 'summary')
 
@@ -97,3 +97,12 @@ class Documentation(models.Model):
                 cache.set(cache_key, parts, 60*60)
             self.title = parts["title"]
             super(Documentation, self).save()
+
+    def title_and_version(self):
+        if self.title:
+            title = self.title
+        else:
+            title = self.slug
+        return "%s (%s)" % (title, self.release.version)
+    title_and_version.short_description = _('title')
+    
