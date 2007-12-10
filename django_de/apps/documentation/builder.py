@@ -9,11 +9,17 @@ from docutils import nodes
 from docutils.core import publish_parts
 from docutils.writers import html4css1
 
+overide = {
+    'initial_header_level': 2,
+    'default_reference_context': 'view',
+    'link_base': '',
+}
+
 def build_document(text):
     """
     Build a doc file into a dict of HTML bits.
     """
-    return publish_parts(text, writer=DjangoHTMLWriter(), settings_overrides={'initial_header_level': 2})
+    return publish_parts(text, writer=DjangoHTMLWriter(), settings_overrides=overide)
 
 docstring_re = re.compile(r"([\"']{3})(.*?)(\1)", re.DOTALL|re.MULTILINE)
 def build_model_document(text):
