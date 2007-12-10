@@ -47,7 +47,7 @@ def _get_svnroot(version, subpath):
     else:
         if version is None:
             version = "trunk"
-            subpath = os.path.join(subpath, version+"/")
+            subpath = os.path.join(subpath, "trunk/")
         else:
             rel = get_object_or_404(Release, version=version)
             subpath = os.path.join(subpath, rel.version)
