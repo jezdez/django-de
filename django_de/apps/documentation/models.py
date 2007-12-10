@@ -59,7 +59,7 @@ def _get_svnroot(version, subpath):
     return client, version, docroot
 
 class Documentation(models.Model):
-    title = models.CharField(_('title'), help_text=_('Automatically filled from documentation file'), max_length=200, editable=False, blank=True)
+    title = models.CharField(_('title'), help_text=_('Automatically filled from documentation file'), max_length=200, editable=False, blank=True, null=True)
     slug = models.SlugField(_('document'), help_text=_('Documentation file from live SVN repository'), choices=get_choices(settings.DOCS_SVN_PATH))
     release = models.ForeignKey(Release, help_text=_("Show the Django release version it belongs to"))
     authors = models.ManyToManyField(Author, verbose_name=_('authors'))
@@ -70,10 +70,6 @@ class Documentation(models.Model):
         list_display = ('title', 'slug')
         list_filter = ('authors',)
         search_fields = ('title', 'summary')
-        fields = (
-            (None, {'fields': ('title', 'slug', 'summary')}),
-            (_('Meta'), {'fields' : ('release', 'order', 'authors')}),
-        )
 
     class Meta:
         ordering = ('order', 'slug', 'title')
