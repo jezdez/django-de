@@ -1,0 +1,40 @@
+{% extends "base_2col.html" %}
+
+{% block sectionid %}authors{% endblock %}
+{% block active_nav-authors %}class="active"{% endblock %}
+{% block title %}Liste der Mitwirkenden{% endblock %}
+
+{% block billboard %}<h2><a href="/contributeurs/">Mitwirkende</a></h2>{% endblock %}
+
+{% block content %}
+<h1>Liste der Mitwirkenden</h1>
+<div class="content first-content">
+    <h2 class="deck">Nachfolgend ein paar Informationen über alle Mitwirkenden an django-de</h2>
+    <p>Nicht zögern, <a href="/participate/">jeder kann mitmachen</a>.</p>
+    <ul class="linklist ">
+    {% for author in author_list %}
+        <li id="{{ author.slug }}">
+            <h3>
+                {% if author.url %}
+                <a href="{{ author.url }}" title="Link zur persönlichen Homepage (extern)">
+                {% endif %}
+                {{ author.name }}
+                {% if author.url %}
+                </a>
+                {% endif %}
+            </h3>
+            <div class="bio">{{ author.bio }}</div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block content-related %}
+    <h2>Wie kann ich mithelfen?</h2>
+    <p>
+        Django-de wird von Freiwilligen entwickelt und übersetzt. 
+        Unterstützung dabei ist jederzeit willkommen.
+    </p>
+    <p><a href="/participate/" class="more-about">Mehr erfahren...</a></p>
+{% endblock %}
