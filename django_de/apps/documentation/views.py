@@ -29,7 +29,7 @@ def index(request, version=None):
 def detail(request, slug, version=None):
     client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
     documentation = get_object_or_404(Documentation, release__version=version, slug=slug)
-
+    
     docpath = urlparse.urljoin(docroot, slug+".txt")
     try:
         name, info = client.info2(docpath)[0]
