@@ -334,7 +334,6 @@ div.content ol li{
 div.bio{
     margin:0;
     padding:4px;
-    border-top:1px dotted #b46702;
 }
 
 /* Liste de liens */
@@ -594,7 +593,6 @@ div.sidebar dt a{
 div.sidebar dd{
     margin:0 2px 9px 2px;
     padding:2px 2px 9px 2px;
-    border-bottom:1px dotted #d9d4ca;
 }
 
 /* Force le margin en concurrence */
