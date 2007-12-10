@@ -59,9 +59,9 @@ def _get_svnroot(version, subpath):
     return client, version, docroot
 
 class Documentation(models.Model):
-    title = models.CharField(_('title'), max_length=200)
-    slug = models.SlugField(_('document'), help_text=_('Available documentation files in SVN repository'), choices=get_choices(settings.DOCS_SVN_PATH))
-    release = models.ForeignKey(Release, help_text=_("Belongs to which Django release?"))
+    title = models.CharField(_('title'), help_text=_('Automatically filled from documentation file'), max_length=200, editable=False, blank=True)
+    slug = models.SlugField(_('document'), help_text=_('Documentation file from live SVN repository'), choices=get_choices(settings.DOCS_SVN_PATH))
+    release = models.ForeignKey(Release, help_text=_("Show the Django release version it belongs to"))
     authors = models.ManyToManyField(Author, verbose_name=_('authors'))
     summary = models.TextField(_('description'), help_text=_('HTML please, in a p tag'))
     order = models.SmallIntegerField(_('position in the index'))
@@ -71,12 +71,8 @@ class Documentation(models.Model):
         list_filter = ('authors',)
         search_fields = ('title', 'summary')
         fields = (
-            (None, {
-                'fields': ('release', 'slug', 'summary', 'order')
-            }),
-            (None, {
-                'fields' : ('authors',)
-            }),
+            (None, {'fields': ('title', 'slug', 'summary')}),
+            (_('Meta'), {'fields' : ('release', 'order', 'authors')}),
         )
 
     class Meta:
@@ -97,10 +93,11 @@ class Documentation(models.Model):
         except pysvn.ClientError:
             self.title = self.slug
             super(Documentation, self).save()
-        cache_key = "django_de:docs:%s:%s:%s" % (version, self.slug, info.rev.number)
-        parts = cache.get(cache_key)
-        if parts is None:
-            parts = builder.build_document(client.cat(docpath))
-            cache.set(cache_key, parts, 60*60)
-        self.title = parts["title"]
-        super(Documentation, self).save()
+        else:
+            cache_key = "django_de:docs:%s:%s:%s" % (version, self.slug, info.rev.number)
+            parts = cache.get(cache_key)
+            if parts is None:
+                parts = builder.build_document(client.cat(docpath))
+                cache.set(cache_key, parts, 60*60)
+            self.title = parts["title"]
+            super(Documentation, self).save()
