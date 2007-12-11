@@ -6,7 +6,7 @@ cache_period = 60*60
 urlpatterns = patterns('',
     (r'^$', cache_page(direct_to_template, cache_period), {'template': 'homepage.html'}),
     (r'^download/', cache_page(direct_to_template, cache_period), {'template': 'download.html'}),
-    (r'^impressum/', cache_page(direct_to_template, cache_period), {'template': 'impressum.html'}),
+    (r'^imprint/', cache_page(direct_to_template, cache_period), {'template': 'impressum.html'}),
     (r'^participate/', cache_page(direct_to_template, cache_period), {'template': 'participate.html'}),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
