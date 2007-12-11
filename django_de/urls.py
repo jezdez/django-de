@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     (r'^participate/', cache_page(direct_to_template, cache_period), {'template': 'participate.html'}),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
-    (r'^author/', include('django_de.apps.authors.urls')),
+    (r'^authors/', include('django_de.apps.authors.urls')),
 )
 
 import os.path, settings
