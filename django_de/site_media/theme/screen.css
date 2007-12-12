@@ -317,7 +317,7 @@ div.content ol{
     margin:0;
     padding:6px 13px 6px 0;
     font-size:14px;
-    list-style-type:upper-latin;
+    list-style-type:decimal;
 }
 div.content ol li{
     margin-left:26px;
