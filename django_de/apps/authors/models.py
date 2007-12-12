@@ -19,4 +19,4 @@ class Author(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return '/author/#%s' % (self.slug)
+        return '/authors/#%s' % (self.slug)
