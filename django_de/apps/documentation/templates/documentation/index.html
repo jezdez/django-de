@@ -22,8 +22,8 @@
     {% for documentation in documentation_list %}
         <li>
             <a href="{{ documentation.get_absolute_url }}"
-            title="{{ documentation.title }}">{{ documentation.title }}</a>
-            <p>{{ documentation.summary }}</p>
+            title="{{ documentation.title }}">{{ documentation.title|safe }}</a>
+            <p>{{ documentation.summary|safe }}</p>
         </li>
     {% endfor %}
     </ul>
