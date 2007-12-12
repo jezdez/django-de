@@ -209,6 +209,7 @@ body.rest-document #content-main .first-content h1{
 
 #content-main div.first-content p {
 	color: #444;
+    line-height: 1.4em;
 }
 
 #content-main div.content h2{
@@ -237,7 +238,7 @@ div.content p{
     margin:7px 0 10px 0;
     padding:0;
     font-size:14px;
-    line-height: 1.4em;
+    line-height: 17px;
 }
 #content-main div.content div.bio{
     font-size:14px;
