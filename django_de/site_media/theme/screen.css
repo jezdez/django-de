@@ -182,14 +182,6 @@ body.rest-document #content-main .first-content h1{
 	border:none;
 }
 
-/*#content-main div.header_content p{
-    color:#77a63a;
-    margin:0;
-    padding:0 0 0 2px;
-    font-size:16px;
-    font-weight:bold;
-}*/
-
 /* Contenu principal */
 #content-main{
     float:left;
@@ -245,7 +237,7 @@ div.content p{
     margin:7px 0 10px 0;
     padding:0;
     font-size:14px;
-    line-height: 17px;
+    line-height: 1.4em;
 }
 #content-main div.content div.bio{
     font-size:14px;
