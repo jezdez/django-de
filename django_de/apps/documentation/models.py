@@ -1,6 +1,5 @@
 ﻿import os
 import urlparse
-import pysvn
 from django.core.cache import cache
 from django.db import models
 from django.db.models import permalink
@@ -13,15 +12,20 @@ from django_de.apps.authors.models import Author
 from django_de.apps.documentation import builder
 
 def get_choices(path=None):
-    client, version, root = _get_svnroot(None, path)
-    choicelist = client.ls(root, recurse=False)
-    choicelist = [os.path.splitext(os.path.basename(choice.name))[0] for choice in choicelist]
-    choicelist.sort()
-    choices = []
-    for choice in choicelist:
-        choices.append((choice, choice))
-    for choice in choices:
-        yield choice
+    try:
+        import pysvn
+    except ImportError:
+        yield (None, None)
+    else:
+        client, version, root = _get_svnroot(None, path)
+        choicelist = client.ls(root, recurse=False)
+        choicelist = [os.path.splitext(os.path.basename(choice.name))[0] for choice in choicelist]
+        choicelist.sort()
+        choices = []
+        for choice in choicelist:
+            choices.append((choice, choice))
+        for choice in choices:
+            yield choice
 
 class Release(models.Model):
     version = models.CharField(_("version"), max_length=20, unique=True, choices=get_choices())

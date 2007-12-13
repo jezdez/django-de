@@ -77,6 +77,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.sitemaps',
     'django_de.apps.authors',
     'django_de.apps.documentation',
 )

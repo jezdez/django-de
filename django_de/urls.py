@@ -1,6 +1,19 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.views.decorators.cache import cache_page
+from django.contrib.sitemaps import GenericSitemap
+
+from django_de.apps.documentation.models import Documentation
+from django_de.apps.authors.models import Author
+from django_de.sitemaps import StaticFileSitemap
+
+doc_dict = {
+    'queryset': Documentation.objects.all(),
+}
+
+author_dict = {
+    'queryset': Author.objects.all(),
+}
 
 cache_period = 60*60
 urlpatterns = patterns('',
@@ -11,6 +24,30 @@ urlpatterns = patterns('',
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
+)
+
+static_urls = []
+for pattern in urlpatterns:
+    print pattern.callback
+    if pattern.callback is not None:
+        if pattern.callback.__module__ == 'django.utils.decorators':
+            # We are being called as a decorator, i.e. cache_page
+            callback = pattern.callback.func_closure[1].cell_contents
+    else:
+        callback = pattern.callback
+    if callback == direct_to_template:
+        path = "/" + pattern.reverse_helper()
+        print path
+        static_urls.append(path)
+
+sitemaps = {
+    'documentation': GenericSitemap(doc_dict, priority=0.6),
+    'authors': GenericSitemap(author_dict, priority=0.6),
+    'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
+}
+
+urlpatterns += patterns('',
+    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 )
 
 import os.path, settings
