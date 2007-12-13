@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render_to_response
+from django.contrib.sitemaps import ping_google
 
 from django_de.apps.authors.models import Author
 from django_de.apps.documentation import builder
@@ -106,6 +107,10 @@ class Documentation(models.Model):
                 cache.set(cache_key, parts, 60*60)
             self.title = parts["title"]
             super(Documentation, self).save()
+        try:
+            ping_google()
+        except Exception:
+            pass
 
     def title_and_version(self):
         if self.title:
