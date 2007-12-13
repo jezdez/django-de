@@ -45,22 +45,27 @@ class Release(models.Model):
     get_absolute_url = permalink(get_absolute_url)
 
 def _get_svnroot(version, subpath):
-    client = pysvn.Client()
-    if subpath is None:
-        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, settings.DOCS_SVN_PATH)
-    else:
-        if version is None:
-            version = "trunk"
-            subpath = os.path.join(subpath, "trunk/")
-        else:
-            rel = get_object_or_404(Release, version=version)
-            subpath = os.path.join(subpath, rel.version)+"/"
-        docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
     try:
-        client.info2(docroot, recurse=False)
-    except pysvn.ClientError:
-        raise Http404("Bad SVN path: %s" % docroot)
-    return client, version, docroot
+        import pysvn
+    except ImportError:
+        pass
+    else:
+        client = pysvn.Client()
+        if subpath is None:
+            docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, settings.DOCS_SVN_PATH)
+        else:
+            if version is None:
+                version = "trunk"
+                subpath = os.path.join(subpath, "trunk/")
+            else:
+                rel = get_object_or_404(Release, version=version)
+                subpath = os.path.join(subpath, rel.version)+"/"
+            docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, subpath)
+        try:
+            client.info2(docroot, recurse=False)
+        except pysvn.ClientError:
+            raise Http404("Bad SVN path: %s" % docroot)
+        return client, version, docroot
 
 class Documentation(models.Model):
     title = models.CharField(_('title'), editable=False, max_length=200, blank=True)
