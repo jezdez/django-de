@@ -1,0 +1,21 @@
+{% extends "base_2col.html" %}
+
+{% block sectionid %}505{% endblock %}
+{% block title %}Fehler gefunden{% endblock %}
+{% block billboard %}<h2>Fehler gefunden!</h2>{% endblock %}
+
+{% block content %}
+<h1>Wir haben eben einen Fehler im System entdeckt</h1>
+<div class="content first-content">
+    <p>
+        Django erlaubt <strong>sehr schnell</strong> zu entwickeln, daher lassen sich
+        Fehler leider nicht immer ausschließen. Ein Administrator kümmert sich aber
+        gerade schon daram.
+    </p>
+</div>
+{% endblock %}
+
+{% block content-related %}
+<h2>Fehler gefunden?</h2>
+<p>Wird beim Aufrufen einer Web-Adresse ein Fehler entdeckt, antwortet der Server mit dem HTTP-Fehlercode 500.</p>
+{% endblock %}
