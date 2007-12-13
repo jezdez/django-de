@@ -261,6 +261,7 @@ div.content blockquote{
 .sidebar .literal { color:#234f32; background:transparent; font-size:11px; }
 pre, .literal-block { font-size:medium; background:#E0FFB8; border:1px solid #94da3a; border-width:1px 0; margin: 1em 0; padding: .3em .4em; overflow: auto; }
 dt .literal, table .literal { background:none; }
+dl.docutils dd { font-size: 14px; line-height: 1.4em; }
 textarea.codedump { font-size:10px; color:#234f32; width:100%; background:#E0FFB8; border:1px solid #94da3a; border-width:1px 0; padding: .3em .4em; }
 
 /* Encart de notes des documents ReST */
