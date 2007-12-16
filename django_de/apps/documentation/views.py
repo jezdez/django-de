@@ -7,7 +7,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
-from django_de.apps.documentation.models import Release
+from django_de.apps.documentation.models import Release, _get_svnroot
 from django_de.apps.documentation import builder
 
 def index(request, version=None):
