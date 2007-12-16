@@ -6,26 +6,43 @@
 {% block content %}
 <h1>Deutsche Übersetzung der Dokumentation</h1>
 <div class="content first-content">
-    <h2 class="deck">
+    <h2>
         Hier ist die Übersetzung der <a href="http://www.djangoproject.com/documentation/"
-        class="quick_links">offiziellen Dokumentation</a> im Gange.
+        >offiziellen Dokumentation</a> im Gange.
     </h2>
     <p>
-    {% if documentation_list %}
-        Nachfolgend sind alle Seiten aufgelistet, die bereits übersetzt wurden.
-    {% else %}
-        Wir haben leider noch keine Seite der Dokumentation fertig übersetzt.
-        Wir würden uns über <a href="/participate/">deine Hilfe</a> sehr freuen.
-    {% endif %}
+    Nachfolgend sind alle Seiten aufgelistet, die bereits übersetzt wurden.
     </p>
-    <ul class="linklist doclist">
-    {% for documentation in documentation_list %}
+    <h2>The essential documentation</h2>
+    <p>
+        Am besten liest du dir folgende grundlegende Dokumentation durch. Den
+        Rest (im "Referenz"-Abschnitt unten) kannst du lesen, sobald du die
+        entsprechende Funktionen benötigst.
+    </p>
+    <ul>
         <li>
-            <a href="{{ documentation.get_absolute_url }}"
-            title="{{ documentation.title }}">{{ documentation.title|safe }}</a>
-            <p>{{ documentation.summary|safe }}</p>
+            <a href="/documentation/overview/" title="Django Überblick"
+            >Django auf einen Blick</a>
         </li>
-    {% endfor %}
+        <li>
+            <a href="/documentation/install/" title="Wie installiert man Django"
+            >Installationsanleitung</a>
+        </li>
+    </ul>
+    <h2>Referenz</h2>
+    <ul>
+        <li>
+            <a href="/documentation/shortcuts/" title="Verschiedene praktische Hilfsfunktionen und -klassen."
+            >shortcut-Funktionen</a>
+        </li>
+        <li>Die django.contrib Erweiterungen
+            <ul>
+                <li>
+                    <a href="/documentation/webdesign/" title="Hilfsfunktionen für Web-Designer."
+                    >django.contrib.webdesign</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
 {% endblock %}
@@ -37,4 +54,17 @@
         jede Unterstützung bei Übersetzungen und Betrieb.
     </p>
     <p><a href="/participate/" class="more-about">Mehr erfahren...</a></p>
+    <h2>Dokumentation mit Google durchsuchen</h2>
+    <form action="http://www.google.com/search" method="get">
+        <p><input type="text" name="as_q" /> <input type="submit" value="Los" /></p>
+        <input type="hidden" name="as_sitesearch" value="www.django-de.org" />
+    </form>
+    
+    <h2>Hilfe bekommen</h2>
+    <ul class="toc">
+        <li><a href="irc://irc.freenode.net/django-de">#django-de IRC channel</a></li>
+        <li><a href="http://groups.google.com/group/django-de">Django-de Mailingliste</a></li>
+        <li><a href="http://trac.django-de.org/newticket">Fehler melden</a></li>
+    </ul>
+
 {% endblock %}

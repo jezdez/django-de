@@ -1,13 +1,21 @@
 {% extends "base_docs.html" %}
 
 {% block active_nav-documentation %}class="active"{% endblock %}
-{% block title %}Dokumentation | {{ parts.title }}{% endblock %}
+{% block title %}Dokumentation | {{ doc.title }}{% endblock %}
 {% block coltype %}rest-document{% endblock %}
 
 {% block content %}
-<h1>{{ parts.title }}</h1>
+<h1>{{ doc.title }}</h1>
+
 <div class="content first-content">
-    {{ parts.body|safe }}
+    {% ifequal version "trunk" %}
+    <h2>
+        Diese Dokumentation gilt für Djangos Entwicklerversion, die zum Teil
+        erhebliche Unterschiede zur letzten veröffentlichen Version aufweist.
+    </h2>
+    {% endifequal %}
+
+    {{ doc.body|safe }}
 </div>
 {% endblock %}
 
@@ -15,27 +23,18 @@
     <h2>Informationen</h2>
     <ul class="quick_link">
         <li>
-            <a href="http://www.djangoproject.com/documentation/{{ documentation.slug }}/"
+            <a href="http://www.djangoproject.com/documentation/{{ slug }}/"
                title="Die offizielle Dokumentation (englisch)"
             >Die offizielle Dokumentation</a> (englisch)
         </li>
         <li>
             Revision der Übersetzung : {{ revision }}
-            (Version {{ documentation.release.version }})
+            Geändert: {{ update_date }}
+            Version: {{ version }})
         </li>
     </ul>
     <h2>Schnellzugriff</h2>
     <div class="quick_link">
-    {{ parts.toc|safe }}
+    {{ doc.toc|safe }}
     </div>
-    <h2>Übersetzer</h2>
-    <ul class="contributor_link">
-    {% for author in documentation.authors.all %}
-        <li>
-            <a href="{{ author.get_absolute_url }}"
-               title="Profil von {{ author.name }}"
-            >{{ author.name }}</a>
-        </li>
-    {% endfor %}
-    </ul>
 {% endblock %}

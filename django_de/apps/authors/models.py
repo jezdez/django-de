@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Author(models.Model):
     name = models.CharField(_('name'), core=True, max_length=50, unique=True)
-    slug = models.SlugField(_('slug'), prepopulate_from=('name',), help_text=_('for direct access on an author\'s page'))
+    slug = models.SlugField(_('slug'), prepopulate_from=('name',), help_text=_('for direct access on the website of an author'))
     email = models.EmailField(_('email adress'))
     url = models.URLField(_('personal website'), null=True, blank=True, verify_exists=False)
     bio = models.TextField(_('bio'), help_text=_('HTML please, optional'), null=True, blank=True)

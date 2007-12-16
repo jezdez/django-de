@@ -7,7 +7,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
-from django_de.apps.documentation.models import Release, Documentation, _get_svnroot
+from django_de.apps.documentation.models import Release
 from django_de.apps.documentation import builder
 
 def index(request, version=None):
@@ -18,18 +18,17 @@ def index(request, version=None):
     doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
     doclist.sort()
     
-    documentation_list = Documentation.objects.filter(release__version=version)
     template_list = ["documentation/%s_index.html" % version, "documentation/index.html"]
     context ={
+        "version": version,
         "all_versions": Release.objects.all(),
-        "documentation_list": documentation_list
+        "document_list": doclist
     }
     return render_to_response(template_list, context, RequestContext(request, {}))
 
 def detail(request, slug, version=None):
     client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
-    documentation = get_object_or_404(Documentation, release__version=version, slug=slug)
-    
+
     docpath = urlparse.urljoin(docroot, slug+".txt")
     try:
         name, info = client.info2(docpath)[0]
@@ -44,11 +43,11 @@ def detail(request, slug, version=None):
     
     template_list = ["documentation/%s_detail.html" % version, "documentation/detail.html"]
     context = {
-        "documentation": documentation,
-        "parts": parts, 
+        "doc": parts, 
         "revision": info.rev.number, 
         "all_versions": Release.objects.all(), 
         "slug": slug,
+        "version": version,
         "update_date": datetime.datetime.fromtimestamp(info.last_changed_date),
     }
     return render_to_response(template_list, context, RequestContext(request, {}))

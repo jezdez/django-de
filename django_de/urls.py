@@ -3,30 +3,24 @@ from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.views.decorators.cache import cache_page
 from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 
-from django_de.apps.documentation.models import Documentation
-from django_de.apps.authors.models import Author
 from django_de.sitemaps import StaticFileSitemap
-
-doc_dict = {
-    'queryset': Documentation.objects.all(),
-}
-
-author_dict = {
-    'queryset': Author.objects.all(),
-}
 
 static_urls = (
     '/',
+    '/authors/',
     '/download/',
     '/imprint/',
     '/participate/',
+    '/documentation/overview/',
+    '/documentation/install/',
+    '/documentation/webdesign/',
+    '/documentation/shortcuts/',
 )
 
 sitemaps = {
-    'documentation': GenericSitemap(doc_dict, priority=0.6),
-    'authors': GenericSitemap(author_dict, priority=0.6),
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
 }
 
@@ -39,7 +33,7 @@ urlpatterns = patterns('',
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
-    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+    (r'^sitemap.xml$', cache_page(sitemap, cache_period*6), {'sitemaps': sitemaps}),
 )
 
 if settings.DEBUG:
