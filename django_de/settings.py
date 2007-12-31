@@ -1,5 +1,5 @@
 import os, platform
-DEVELOPMENT_MODE = (platform.node() != "websushi.org")
+DEVELOPMENT_MODE = (platform.node() != "tichy.websushi.org")
 
 ADMINS = (('Jannis Leidel', 'jannis@leidel.info'),)
 MANAGERS = ADMINS
@@ -8,7 +8,7 @@ if DEVELOPMENT_MODE:
     DEBUG = True
     PREPEND_WWW = False
     CACHE_BACKEND = "file:///tmp/"
-    DOCS_SVN_ROOT = "http://svn.django-de.org/"
+    DOCS_SVN_ROOT = "http://www.django-de.org/svn/django/"
     DATABASE_ENGINE = 'sqlite3'
     DATABASE_NAME = 'django_de.db'
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
