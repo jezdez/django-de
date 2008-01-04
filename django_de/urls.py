@@ -23,6 +23,7 @@ static_urls = (
     '/documentation/settings/',
     '/documentation/redirects/',
     '/documentation/tutorial01/',
+    '/documentation/sites/',
 )
 
 sitemaps = {
