@@ -10,14 +10,19 @@ from django_de.sitemaps import StaticFileSitemap
 
 static_urls = (
     '/',
+    '/trac/',
     '/authors/',
     '/download/',
     '/imprint/',
     '/participate/',
+    '/documentation/',
     '/documentation/overview/',
     '/documentation/install/',
     '/documentation/webdesign/',
     '/documentation/shortcuts/',
+    '/documentation/settings/',
+    '/documentation/redirects/',
+    '/documentation/tutorial01/',
 )
 
 sitemaps = {
