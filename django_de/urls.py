@@ -27,6 +27,8 @@ static_urls = (
     '/documentation/api_stability/',
     '/documentation/documentation/',
     '/documentation/faq/',
+    '/documentation/outputting_csv/',
+    '/documentation/add_ons/',
 )
 
 sitemaps = {
