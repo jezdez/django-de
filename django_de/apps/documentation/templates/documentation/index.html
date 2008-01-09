@@ -22,18 +22,28 @@
     <ul>
         <li>
             <a href="/documentation/overview/" title="Django auf einen Blick"
-            >Django Überblick</a>
+            >Überblick</a>
         </li>
         <li>
             <a href="/documentation/install/" title="Wie installiert man Django"
             >Installationsanleitung</a>
         </li>
-        <li>Tutorial: Deine erste Django Anwendung
+        <li>Tutorial: Deine erste Django-Anwendung
             <ul>
                 <li>
-                    <a href="/documentation/tutorial01/" title="Deine erste Django Anwendung, Teil 1"
+                    <a href="/documentation/tutorial01/" title="Deine erste Django-Anwendung, Teil 1"
                     >Teil 1: Initialisierung, Datenmodelle entwerfen, Datenbankzugriffe</a>
                 </li>
+                <li>
+                    Teil 2: Die automatisch generierte Administrationsoberfläche
+                </li>
+                <li>
+                    Teil 3: Öffentlich erreichbare Views erstellen
+                </li>
+                <li>
+                    Teil 4: Formulare einfach verarbeiten und Generic Views 
+                </li>
+
             </ul>
         </li>
         <li>
@@ -48,21 +58,75 @@
     <h2>Referenz</h2>
     <ul>
         <li>
+            Die Utilities django-admin.py und manage.py
+        </li>
+        <li>
+            Datenmodelle: Datenmodelle erstellen | Beispiele | Die Datenbank API | Transaktionen
+        </li>
+        <li>
+            Templates: Anleitung für HTML-Autoren | Anleitung für Python-Programmierer
+        </li>
+        <li>
+            Die newforms-Bibliothek | Die alte Formular- und Manipulations-Bibliothek
+        </li>
+        <li>
+            Django-Anwendugnen testen
+        </li>
+        <li>
+            Sessions
+        </li>
+        <li>
+            Cache
+        </li>
+        <li>
+            Internationalisierung
+        </li>
+        <li>
+            Middleware
+        </li>
+        <li>
             <a href="/documentation/settings/" title="Konfiguration und Einstellungen"
             >Einstellungen</a>
         </li>
         <li>
-            <a href="/documentation/url_dispatch/" title="URL Verwaltung und Konfiguration"
-            >URL Konfiguration</a>
+            <a href="/documentation/url_dispatch/" title="URL-Verwaltung und Konfiguration"
+            >URL-Konfiguration</a>
         </li>
-        
+        <li>
+            Request- und Response-Objekte
+        </li>
+        <li>
+            <a href="/documentation/generic_views/" title="Generische Views"
+            >Generic Views</a>
+        </li>
+        <li>
+            Authentifizierung
+        </li>
         <li>
             <a href="/documentation/shortcuts/" title="Verschiedene praktische Hilfsfunktionen und -klassen."
             >shortcut-Funktionen</a>
         </li>
+        <li>
+            Unicode-Daten in Django
+        </li>
         <li><a href="/documentation/add_ons/" title="Verschiedene mitgelieferte Django Erweiterungen"
         >Die django.contrib Erweiterungen</a>
             <ul>
+                <li>
+                    Contenttypes (<code>django.contrib.contenttypes</code>)
+                </li>
+                <li>
+                    Schutz vor "Cross Site Request Forgery"-Angriffen (<code>django.contrib.csrf</code>)
+                </li>
+                <li>
+                    Databrowse (<code>django.contrib.databrowse</code>)
+                </li>
+                <li>
+                    Flatpages (<code>django.contrib.flatpages</code>)
+                </li>
+                <li>
+                    Formular-Vorschauen (<code>django.contrib.formtools</code>)
+                </li>
                 <li>
                     <a href="/documentation/redirects/" title="Optionale Umleitungsanwendung."
                     >Umleitungen</a> (<code>django.contrib.redirects</code>)
@@ -72,17 +136,25 @@
                     >Sites</a> (<code>django.contrib.sites</code>)
                 </li>
                 <li>
+                    Sitemaps (<code>django.contrib.sitemaps</code>)
+                </li>
+                <li>
+                    Feeds (RSS und Atom) (<code>django.contrib.syndication</code>)
+                </li>
+                <li>
                     <a href="/documentation/webdesign/" title="Hilfsfunktionen für Web-Designer."
                     >Hilfsfunktionen für Web-Designer</a> (<code>django.contrib.webdesign</code>)
                 </li>
             </ul>
         </li>
     </ul>
-    <h2>Et cetera</h2>
+    <h2>Django-Anwendungen in Betrieb nehmen (Deployment)</h2>
     <ul>
         <li>
-            <a href="/documentation/api_stability/" title="Stabilität der Django APIs"
-            >API Stabilität</a>
+            Django mit mod_python benutzen
+        </li>
+        <li>
+            Django mit FastCGI, SCGI oder AJP benutzen
         </li>
     </ul>
     <h2>Spezifische Aufgaben</h2>
@@ -96,10 +168,39 @@
             >Bereitstellen statischer Dateien</a>
         </li>
         <li>
+            E-Mails versenden
+        </li>
+        <li>
+            Integration mit einer bereits bestehenden Datenbank (Introspektion)
+        </li>
+        <li>
+            Dynamisch PDF ausgeben
+        </li>
+        <li>
             <a href="/documentation/outputting_csv/" title="Dynamische CSV Ausgaben"
             >Dynamisch CSV ausgeben</a>
         </li>
     </ul>
+    <h2>Et cetera</h2>
+    <ul>
+        <li>
+            Software-Design und die Philosophie dahinter
+        </li>
+        <li>
+            Wie man bei Django mitmachen kann
+        </li>
+        <li>
+            CSS-Leitfaden für Djangos Administrationsoberfläche 
+        </li>
+        <li>
+            <a href="/documentation/api_stability/" title="Stabilität der Django APIs"
+            >API-Stabilität</a>
+        </li>
+        <li>
+            Rückwärts-inkompatible Änderungen
+        </li>
+    </ul>
+
 </div>
 {% endblock %}
 
