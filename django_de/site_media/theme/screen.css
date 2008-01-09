@@ -59,12 +59,12 @@ abbr {
     Éléments de l'entete
 */
 #body_head{
-    height:59px;
+    height:60px;
 }
 #body_head h1{
     margin:0 10px 0 10px;
     padding:0 0 0 5px;
-    height:59px;
+    height:60px;
 }
 #body_head h1 a{
     display:block;
@@ -87,7 +87,8 @@ abbr {
     Éléments de la navigation principale
 */
 #body_head ul{
-    margin:25px 10px 0 0;
+    background-color: #fff;
+    margin:26px 10px 0 0;
     padding:0;
     position:absolute;
     top:0;
@@ -222,7 +223,7 @@ body.rest-document #content-main .first-content h1{
 #content-main div.first-content h2{
     color:#333;
     padding:8px 0 4px 0;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #content-main div.content h3{
