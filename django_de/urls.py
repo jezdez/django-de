@@ -33,7 +33,7 @@ static_urls = (
     # '/documentation/request_response/',
     # '/documentation/generic_views/',
     # '/documentation/url_dispatch/'
-) + ["/documentation/%s/" % document for document in get_documents()]
+) + tuple(["/documentation/%s/" % document for document in get_documents()])
 
 sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
