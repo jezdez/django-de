@@ -7,6 +7,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 
 from django_de.sitemaps import StaticFileSitemap
+from django_de.apps.documentation.views import get_documents
 
 static_urls = (
     '/',
@@ -16,20 +17,23 @@ static_urls = (
     '/imprint/',
     '/participate/',
     '/documentation/',
-    '/documentation/overview/',
-    '/documentation/install/',
-    '/documentation/webdesign/',
-    '/documentation/shortcuts/',
-    '/documentation/settings/',
-    '/documentation/redirects/',
-    '/documentation/tutorial01/',
-    '/documentation/sites/',
-    '/documentation/api_stability/',
-    '/documentation/documentation/',
-    '/documentation/faq/',
-    '/documentation/outputting_csv/',
-    '/documentation/add_ons/',
-)
+    # '/documentation/overview/',
+    # '/documentation/install/',
+    # '/documentation/tutorial01/',
+    # '/documentation/faq/',
+    # '/documentation/webdesign/',
+    # '/documentation/shortcuts/',
+    # '/documentation/settings/',
+    # '/documentation/redirects/',
+    # '/documentation/sites/',
+    # '/documentation/api_stability/',
+    # '/documentation/documentation/',
+    # '/documentation/outputting_csv/',
+    # '/documentation/add_ons/',
+    # '/documentation/request_response/',
+    # '/documentation/generic_views/',
+    # '/documentation/url_dispatch/'
+) + ["/documentation/%s/" % document for document in get_documents()]
 
 sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')

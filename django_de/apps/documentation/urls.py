@@ -1,8 +1,12 @@
 from django.conf.urls.defaults import *
+from django.views.decorators.cache import cache_page
 
-urlpatterns = patterns('django_de.apps.documentation.views',
-    (r'^$', 'index'),
-    (r'^(?P<version>[\d.]+)/$', 'index'),
-    (r'^(?P<slug>[\w\.-]+)/$', 'detail'),
-    (r'^(?P<version>[\d.]+)/(?P<slug>[\w\.-]+)/$', 'detail'),
+from django_de.apps.documentation.views import index, detail
+
+cache_period = 60*60
+urlpatterns = patterns('',
+    (r'^$', cache_page(index, cache_period)),
+    (r'^(?P<version>[\d.]+)/$', cache_page(index, cache_period)),
+    (r'^(?P<slug>[\w\.-]+)/$', detail),
+    (r'^(?P<version>[\d.]+)/(?P<slug>[\w\.-]+)/$', detail),
 )
