@@ -17,22 +17,6 @@ static_urls = (
     '/imprint/',
     '/participate/',
     '/documentation/',
-    # '/documentation/overview/',
-    # '/documentation/install/',
-    # '/documentation/tutorial01/',
-    # '/documentation/faq/',
-    # '/documentation/webdesign/',
-    # '/documentation/shortcuts/',
-    # '/documentation/settings/',
-    # '/documentation/redirects/',
-    # '/documentation/sites/',
-    # '/documentation/api_stability/',
-    # '/documentation/documentation/',
-    # '/documentation/outputting_csv/',
-    # '/documentation/add_ons/',
-    # '/documentation/request_response/',
-    # '/documentation/generic_views/',
-    # '/documentation/url_dispatch/'
 ) + tuple(["/documentation/%s/" % document for document in get_documents()])
 
 sitemaps = {
