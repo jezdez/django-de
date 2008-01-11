@@ -8,6 +8,7 @@ from django.conf import settings
 
 from django_de.sitemaps import StaticFileSitemap
 from django_de.apps.documentation.views import get_documents
+from django_de.utils import cache_status
 
 static_urls = (
     '/',
@@ -32,6 +33,7 @@ urlpatterns = patterns('',
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
+    (r'^cache_status/$', cache_status),
     (r'^sitemap.xml$', cache_page(sitemap, cache_period*6), {'sitemaps': sitemaps}),
 )
 
