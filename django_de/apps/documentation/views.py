@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django_de.apps.documentation.models import Release, _get_svnroot
 from django_de.apps.documentation import builder
 
-def get_documents():
+def get_documents(version=None):
     client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
     doclist = client.ls(docroot, recurse=False)
     
