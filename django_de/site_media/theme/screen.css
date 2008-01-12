@@ -686,9 +686,9 @@ div.sidebar div.adcell{
     text-decoration:none;
 }
 #footer p{
-    margin:2px 0 2px 0;
+    margin:2px 0 2px 8px;
     padding:0;
-    text-align:center;
+    text-align:left;
     font-weight:bold;
 }
 #footer p.topanchor{
