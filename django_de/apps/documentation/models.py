@@ -6,8 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from django.dispatch import dispatcher
 
+from django_de.signals import post_commit, pre_commit
 from django_de.apps.documentation import builder
+from django_de.generator import quick_publish, quick_delete, StaticGeneratorException
 
 def get_choices(path=None):
     try:
@@ -24,6 +27,16 @@ def get_choices(path=None):
             choices.append((choice, choice))
         for choice in choices:
             yield choice
+
+def get_documents(version=None):
+    """
+    Returns a list of document slugs available in the SVN.
+    """
+    client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
+    doclist = client.ls(docroot, recurse=False)
+    doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
+    doclist.sort()
+    return doclist
 
 class Release(models.Model):
     version = models.CharField(_("version"), max_length=20, unique=True, choices=get_choices())
@@ -65,3 +78,19 @@ def _get_svnroot(version, subpath):
         except pysvn.ClientError:
             raise Http404("Bad SVN path: %s" % docroot)
         return client, version, docroot
+
+def generate_static_docs(signal, repos_path, revision):
+    for release in Release.objects.all():
+        urls = ["%s%s/" % (release.get_absolute_url(), doc) for doc in get_documents(release.version)]
+        try:
+            if signal == pre_commit:
+                quick_delete(urls)
+            elif signal == post_commit:
+                quick_publish(urls)
+        except StaticGeneratorException, e:
+            from django.core.mail import mail_admins
+            mail_admins("Error: SVN commit", e, fail_silently=True)
+            sys.exit(e)
+
+dispatcher.connect(generate_static_docs, signal=post_commit)
+dispatcher.connect(generate_static_docs, signal=pre_commit)

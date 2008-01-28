@@ -9,16 +9,6 @@ from django.template import RequestContext
 from django_de.apps.documentation.models import Release, _get_svnroot
 from django_de.apps.documentation import builder
 
-def get_documents(version=None):
-    client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
-    doclist = client.ls(docroot, recurse=False)
-    
-    # Convert list of URLs to list of document slugs.
-    doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
-    doclist.sort()
-    
-    return doclist
-
 def index(request, version=None):
     template_list = ["documentation/%s_index.html" % version, "documentation/index.html"]
     return render_to_response(template_list, {"version": version,}, RequestContext(request, {}))
