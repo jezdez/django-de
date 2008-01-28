@@ -82,7 +82,11 @@ def get_documents():
         return tuple(["/documentation/%s/" % doc for doc in doclist])
 
 def generate_static_docs(signal, repo, rev):
-    mail_admins("Yeah: SVN commit!", e, fail_silently=True)
+    """
+    Deletes or generates static documentation files depending on the given
+    signal.
+    """
+    mail_admins("Yeah: SVN revision %s committed!" % rev, e, fail_silently=True)
     for release in Release.objects.all():
         urls = get_documents(release.version)
         try:
