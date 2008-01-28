@@ -86,6 +86,7 @@ def generate_static_docs(signal, repo, rev):
     Deletes or generates static documentation files depending on the given
     signal.
     """
+
     mail_admins("Yeah: SVN revision %s committed!" % rev, e, fail_silently=True)
     for release in Release.objects.all():
         urls = get_documents(release.version)
