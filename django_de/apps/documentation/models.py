@@ -74,12 +74,14 @@ def get_documents():
     """
     Returns a list of document slugs available in the SVN.
     """
+    all_docs = []
     for release in Release.objects.all():
         client, version, docroot = _get_svnroot(release.version, settings.DOCS_SVN_PATH)
         doclist = client.ls(docroot, recurse=False)
         doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
         doclist.sort()
-        return tuple(["/documentation/%s/" % doc for doc in doclist])
+        all_docs.extend(["/documentation/%s/" % doc for doc in doclist])
+    return tuple(all_docs)
 
 def generate_static_docs(signal, repo, rev):
     """
@@ -87,16 +89,14 @@ def generate_static_docs(signal, repo, rev):
     signal.
     """
     mail_admins("Yeah: SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
-    for release in Release.objects.all():
-        urls = get_documents(release.version)
-        try:
-            if signal == pre_commit:
-                quick_delete(urls)
-            elif signal == post_commit:
-                quick_publish(urls)
-        except StaticGeneratorException:
-            mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
-            sys.exit(e)
+    urls = get_documents()
+    try:
+        if signal == pre_commit:
+            quick_delete(urls)
+        elif signal == post_commit:
+            quick_publish(urls)
+    except StaticGeneratorException:
+        mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
 
 dispatcher.connect(generate_static_docs, signal=post_commit)
 dispatcher.connect(generate_static_docs, signal=pre_commit)
