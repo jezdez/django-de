@@ -7,6 +7,7 @@ from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.dispatch import dispatcher
+from django.core.mail import mail_admins
 
 from django_de.signals import post_commit, pre_commit
 from django_de.apps.documentation import builder
@@ -80,7 +81,8 @@ def get_documents():
         doclist.sort()
         return tuple(["/documentation/%s/" % doc for doc in doclist])
 
-def generate_static_docs(signal, repos_path, revision):
+def generate_static_docs(signal, repo, rev):
+    mail_admins("Yeah: SVN commit!", e, fail_silently=True)
     for release in Release.objects.all():
         urls = get_documents(release.version)
         try:
@@ -89,7 +91,6 @@ def generate_static_docs(signal, repos_path, revision):
             elif signal == post_commit:
                 quick_publish(urls)
         except StaticGeneratorException, e:
-            from django.core.mail import mail_admins
             mail_admins("Error: SVN commit", e, fail_silently=True)
             sys.exit(e)
 
