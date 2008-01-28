@@ -19,3 +19,4 @@ for release in Release.objects.all():
         print "done."
 
 
+
