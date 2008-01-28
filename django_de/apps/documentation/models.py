@@ -88,7 +88,7 @@ def generate_static_docs(signal, repo, rev):
     Deletes or generates static documentation files depending on the given
     signal.
     """
-    mail_admins("Yeah: SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
+    mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
     urls = get_documents()
     try:
         if signal == pre_commit:
