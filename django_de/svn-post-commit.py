@@ -24,3 +24,4 @@ for release in Release.objects.all():
         print e
     else:
         print "done."
+
