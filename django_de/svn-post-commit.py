@@ -11,17 +11,9 @@ from django_de.generator import quick_publish, quick_delete, StaticGeneratorExce
 for release in Release.objects.all():
     urls = ["%s%s/" % (release.get_absolute_url(), doc) for doc in get_documents(release.version)]
     try:
-        print "Cleaning up the static documentation files.."
-        quick_delete(urls)
-    except StaticGeneratorException, e:
-        print e
-    else:
-        print "done."
-    try:
-        print "Publishing new versions.."
+        print "Generating static files.."
         quick_publish(urls)
     except StaticGeneratorException:
         print e
     else:
         print "done."
-
