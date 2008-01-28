@@ -23,4 +23,3 @@ if __name__ == '__main__':
         sys.stderr.write("Usage: %s REPOS TXN\n" % (sys.argv[0]))
     else:
         main()
-
