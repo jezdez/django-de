@@ -5,9 +5,11 @@ sys.path.insert(0, "/home/django-de/lib")
 os.environ['DJANGO_SETTINGS_MODULE'] = "django_de.settings"
 
 from django.dispatch import dispatcher
+from django.db.models.loading import get_models
 from django_de.signals import pre_commit
 
 def main():
+    get_models()
     dispatcher.send(signal=pre_commit, sender=None, repo=sys.argv[1], rev=sys.argv[2])
 
 if __name__ == '__main__':
