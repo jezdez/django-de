@@ -95,7 +95,7 @@ def generate_static_docs(signal, repo, rev):
             elif signal == post_commit:
                 quick_publish(urls)
         except StaticGeneratorException:
-            mail_admins("Error: SVN commit", "error while generating", fail_silently=True)
+            mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
             sys.exit(e)
 
 dispatcher.connect(generate_static_docs, signal=post_commit)
