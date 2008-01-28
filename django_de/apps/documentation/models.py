@@ -86,7 +86,7 @@ def get_documents():
 def generate_static_docs(signal, repo, rev):
     """
     Deletes or generates static documentation files depending on the given
-    signal.
+    signal
     """
     mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
     urls = get_documents()
