@@ -78,7 +78,7 @@ def get_documents():
         doclist = client.ls(docroot, recurse=False)
         doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
         doclist.sort()
-        return tuple(["%s%s/" % (release.get_absolute_url(), doc) for doc in doclist])
+        return tuple(["/documentation/%s/" % doc for doc in doclist])
 
 def generate_static_docs(signal, repos_path, revision):
     for release in Release.objects.all():
