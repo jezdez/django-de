@@ -6,7 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 
 from django_de.sitemaps import StaticFileSitemap
-from django_de.apps.documentation.views import get_documents
+from django_de.apps.documentation.models import get_documents
 from django_de.utils import cache_status
 
 static_urls = (
@@ -17,7 +17,7 @@ static_urls = (
     '/imprint/',
     '/participate/',
     '/documentation/',
-) + tuple(["/documentation/%s/" % document for document in get_documents()])
+) + get_documents()
 
 sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')

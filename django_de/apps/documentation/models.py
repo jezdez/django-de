@@ -28,16 +28,6 @@ def get_choices(path=None):
         for choice in choices:
             yield choice
 
-def get_documents(version=None):
-    """
-    Returns a list of document slugs available in the SVN.
-    """
-    client, version, docroot = _get_svnroot(version, settings.DOCS_SVN_PATH)
-    doclist = client.ls(docroot, recurse=False)
-    doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
-    doclist.sort()
-    return doclist
-
 class Release(models.Model):
     version = models.CharField(_("version"), max_length=20, unique=True, choices=get_choices())
     release_date = models.DateField(_("release date"))
@@ -79,9 +69,20 @@ def _get_svnroot(version, subpath):
             raise Http404("Bad SVN path: %s" % docroot)
         return client, version, docroot
 
+def get_documents():
+    """
+    Returns a list of document slugs available in the SVN.
+    """
+    for release in Release.objects.all():
+        client, version, docroot = _get_svnroot(release.version, settings.DOCS_SVN_PATH)
+        doclist = client.ls(docroot, recurse=False)
+        doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
+        doclist.sort()
+        return tuple(["%s%s/" % (release.get_absolute_url(), doc) for doc in doclist])
+
 def generate_static_docs(signal, repos_path, revision):
     for release in Release.objects.all():
-        urls = ["%s%s/" % (release.get_absolute_url(), doc) for doc in get_documents(release.version)]
+        urls = get_documents(release.version)
         try:
             if signal == pre_commit:
                 quick_delete(urls)
