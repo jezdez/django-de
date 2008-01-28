@@ -1,7 +1,6 @@
 import os
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
-from django.views.decorators.cache import cache_page
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
@@ -24,17 +23,16 @@ sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
 }
 
-cache_period = 60*60
 urlpatterns = patterns('',
-    (r'^$', cache_page(direct_to_template, cache_period), {'template': 'homepage.html'}),
-    (r'^download/', cache_page(direct_to_template, cache_period), {'template': 'download.html'}),
-    (r'^imprint/', cache_page(direct_to_template, cache_period), {'template': 'impressum.html'}),
-    (r'^participate/', cache_page(direct_to_template, cache_period), {'template': 'participate.html'}),
+    (r'^$', direct_to_template, {'template': 'homepage.html'}),
+    (r'^download/', direct_to_template, {'template': 'download.html'}),
+    (r'^imprint/', direct_to_template, {'template': 'impressum.html'}),
+    (r'^participate/', direct_to_template, {'template': 'participate.html'}),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
     (r'^cache_status/$', cache_status),
-    (r'^sitemap.xml$', cache_page(sitemap, cache_period*6), {'sitemaps': sitemaps}),
+    (r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}),
 )
 
 if settings.DEBUG:

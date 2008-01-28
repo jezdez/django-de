@@ -39,7 +39,7 @@ class Release(models.Model):
         return self.version
 
     def get_absolute_url(self):
-        return ('django_de.apps.documentaion.views.index', [self.version])
+        return ('django_de.apps.documentation.views.index', [self.version])
     get_absolute_url = permalink(get_absolute_url)
 
 def _get_svnroot(version, subpath):
