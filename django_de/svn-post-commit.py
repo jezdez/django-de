@@ -13,7 +13,7 @@ for release in Release.objects.all():
     try:
         print "Generating static files.."
         quick_publish(urls)
-    except StaticGeneratorException:
+    except StaticGeneratorException, e:
         print e
     else:
         print "done."
