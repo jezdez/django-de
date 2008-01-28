@@ -86,7 +86,6 @@ def generate_static_docs(signal, repo, rev):
     Deletes or generates static documentation files depending on the given
     signal.
     """
-
     mail_admins("Yeah: SVN revision %s committed!" % rev, e, fail_silently=True)
     for release in Release.objects.all():
         urls = get_documents(release.version)
@@ -95,8 +94,8 @@ def generate_static_docs(signal, repo, rev):
                 quick_delete(urls)
             elif signal == post_commit:
                 quick_publish(urls)
-        except StaticGeneratorException, e:
-            mail_admins("Error: SVN commit", e, fail_silently=True)
+        except StaticGeneratorException:
+            mail_admins("Error: SVN commit", "error while generating", fail_silently=True)
             sys.exit(e)
 
 dispatcher.connect(generate_static_docs, signal=post_commit)
