@@ -20,3 +20,4 @@ for release in Release.objects.all():
         quick_publish(urls)
     except StaticGeneratorException:
         pass
+
