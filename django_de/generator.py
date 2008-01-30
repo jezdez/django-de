@@ -25,6 +25,7 @@ __version__ = '1.1, 2007-01-09'
 # THE SOFTWARE.
 
 import os
+import threading
 from django.http import HttpRequest
 from django.core.handlers.base import BaseHandler
 from django.db.models.base import ModelBase
@@ -48,7 +49,7 @@ class DummyHandler(BaseHandler):
 class StaticGeneratorException(Exception):
     pass
 
-class StaticGenerator(object):
+class StaticGenerator(threading.Thread):
     """
     The StaticGenerator class is created for Django applications, like a blog,
     that are not updated per request.
@@ -73,6 +74,7 @@ class StaticGenerator(object):
     """
     
     def __init__(self, resources):
+        threading.Thread.__init__(self)
         self.resources = self.extract_resources(resources)
         self.server_name = self.get_server_name()
         try:
@@ -195,8 +197,10 @@ class StaticGenerator(object):
     
 def quick_publish(resources):
     gen = StaticGenerator(resources)
+    gen.start()
     gen.publish()
     
 def quick_delete(resources):
     gen = StaticGenerator(resources)
+    gen.start()
     gen.delete()
