@@ -94,7 +94,7 @@ class StaticFilesThread(Thread):
         self.repo = repo
         self.rev = rev
 
-    def run():
+    def run(self):
         """
         Deletes or generates static documentation files depending on the
         received signal.
