@@ -17,7 +17,7 @@ def main():
     """
     repo=sys.argv[1]
     rev=sys.argv[2]
-    mail_admins("SVN revision %s committed!" % self.rev, "SVN repo: %s" % self.repo, fail_silently=True)
+    mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
     urls = get_documents()
     try:
         quick_publish(urls)
