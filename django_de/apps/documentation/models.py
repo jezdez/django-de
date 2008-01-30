@@ -1,18 +1,13 @@
 ﻿import os
 import urlparse
-from threading import Thread
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from django.dispatch import dispatcher
-from django.core.mail import mail_admins
 
-from django_de.signals import post_commit, pre_commit
 from django_de.apps.documentation import builder
-from django_de.generator import quick_publish, quick_delete, StaticGeneratorException
 
 def get_choices(path=None):
     try:
@@ -83,31 +78,3 @@ def get_documents():
         doclist.sort()
         all_docs.extend(["/documentation/%s/" % doc for doc in doclist])
     return tuple(all_docs)
-
-class StaticFilesThread(Thread):
-    """
-    Starts the generation of static files for faster SVN committs.
-    """
-    def __init__(self, signal, repo, rev):
-        Thread.__init__(self)
-        self.signal = signal
-        self.repo = repo
-        self.rev = rev
-
-    def run(self):
-        """
-        Deletes or generates static documentation files depending on the
-        received signal.
-        """
-        mail_admins("SVN revision %s committed!" % self.rev, "SVN repo: %s" % self.repo, fail_silently=True)
-        urls = get_documents()
-        try:
-            quick_publish(urls)
-        except StaticGeneratorException:
-            mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
-
-def generate_static_files(signal, repo, rev):
-    static_file_generator = StaticFilesThread(signal, repo, rev)
-    static_file_generator.start()
-
-dispatcher.connect(generate_static_files, signal=post_commit)
