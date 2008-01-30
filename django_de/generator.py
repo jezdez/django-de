@@ -25,6 +25,7 @@ __version__ = '1.1, 2007-01-09'
 # THE SOFTWARE.
 
 import os
+import thread
 import threading
 from django.http import HttpRequest
 from django.core.handlers.base import BaseHandler
@@ -180,7 +181,8 @@ class StaticGenerator(threading.Thread):
     def publish(self):
         """Publishes all resources"""
         for path in self.resources:
-            self.publish_from_path(path)
+            thread.start_new_thread(self.publish_from_path, (path,))
+            #self.publish_from_path(path)
             
     def delete_from_path(self, path):
         """Deletes file, attempts to delete directory"""
