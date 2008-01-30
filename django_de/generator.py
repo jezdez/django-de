@@ -200,3 +200,4 @@ def quick_publish(resources):
 def quick_delete(resources):
     gen = StaticGenerator(resources)
     gen.delete()
+
