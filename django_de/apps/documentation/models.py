@@ -1,5 +1,6 @@
 ﻿import os
 import urlparse
+from threading import Thread
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
@@ -83,20 +84,27 @@ def get_documents():
         all_docs.extend(["/documentation/%s/" % doc for doc in doclist])
     return tuple(all_docs)
 
-def generate_static_docs(signal, repo, rev):
-    """
-    Deletes or generates static documentation files depending on the given
-    signal.
-    """
-    mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
-    urls = get_documents()
-    try:
-        if signal == pre_commit:
-            quick_delete(urls)
-        elif signal == post_commit:
-            quick_publish(urls)
-    except StaticGeneratorException:
-        mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
+class StaticFilesThread(Thread):
+    def __init__(self, signal, repo, rev):
+        Thread.__init__(self)
+        self.signal = signal
+        self.repo = repo
+        self.rev = rev
 
-dispatcher.connect(generate_static_docs, signal=post_commit)
-dispatcher.connect(generate_static_docs, signal=pre_commit)
+    def run():
+        """
+        Deletes or generates static documentation files depending on the
+        received signal.
+        """
+        mail_admins("SVN revision %s committed!" % self.rev, "SVN repo: %s" % self.repo, fail_silently=True)
+        urls = get_documents()
+        try:
+            quick_publish(urls)
+        except StaticGeneratorException:
+            mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
+
+def generate_static_files(signal, repo, rev):
+    static_file_generator = StaticFilesThread(signal, repo, rev)
+    static_file_generator.start()
+
+dispatcher.connect(generate_static_files, signal=post_commit)
