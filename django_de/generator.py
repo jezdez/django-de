@@ -25,6 +25,7 @@ __version__ = '1.1, 2007-01-09'
 # THE SOFTWARE.
 
 import os
+import threading
 from django.http import HttpRequest
 from django.core.handlers.base import BaseHandler
 from django.db.models.base import ModelBase
@@ -48,7 +49,7 @@ class DummyHandler(BaseHandler):
 class StaticGeneratorException(Exception):
     pass
 
-class StaticGenerator(object):
+class StaticGenerator(threading.Thread):
     """
     The StaticGenerator class is created for Django applications, like a blog,
     that are not updated per request.
@@ -72,14 +73,22 @@ class StaticGenerator(object):
     
     """
     
-    def __init__(self, resources):
+    def __init__(self, resources, delete=False):
+        threading.Thread.__init__(self)
+        self.delete = delete
         self.resources = self.extract_resources(resources)
         self.server_name = self.get_server_name()
         try:
             self.web_root = getattr(settings, 'WEB_ROOT')
         except AttributeError:
             raise StaticGeneratorException('You must specify WEB_ROOT in settings.py')
-
+    
+    def run(self):
+        if not self.delete:
+            self.publish()
+        else:
+            self.delete()
+        
     def extract_resources(self, resources):
         """Takes a list of resources, and gets paths by type"""
         extracted = []
@@ -194,9 +203,10 @@ class StaticGenerator(object):
             self.delete_from_path(path)
     
 def quick_publish(resources):
-    gen = StaticGenerator(resources)
-    gen.publish()
+    for r in resources:
+        gen = StaticGenerator((r,))
+        gen.start()
     
 def quick_delete(resources):
-    gen = StaticGenerator(resources)
-    gen.delete()
+    gen = StaticGenerator(resources, delete=True)
+    gen.start()
