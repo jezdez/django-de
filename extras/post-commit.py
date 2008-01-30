@@ -10,8 +10,6 @@ from django.core.mail import mail_admins
 from django_de.apps.documentation.models import get_documents
 from django_de.generator import quick_publish, StaticGeneratorException
 
-
-
 def main():
     """
     Deletes or generates static documentation files depending on the
