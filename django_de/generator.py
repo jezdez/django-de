@@ -73,14 +73,21 @@ class StaticGenerator(threading.Thread):
     
     """
     
-    def __init__(self, resources):
+    def __init__(self, resources, delete=False):
         threading.Thread.__init__(self)
+        self.delete = delete
         self.resources = self.extract_resources(resources)
         self.server_name = self.get_server_name()
         try:
             self.web_root = getattr(settings, 'WEB_ROOT')
         except AttributeError:
             raise StaticGeneratorException('You must specify WEB_ROOT in settings.py')
+    
+    def run(self):
+        if not delete:
+            self.publish()
+        else:
+            self.delete()
         
     def extract_resources(self, resources):
         """Takes a list of resources, and gets paths by type"""
@@ -198,9 +205,7 @@ class StaticGenerator(threading.Thread):
 def quick_publish(resources):
     gen = StaticGenerator(resources)
     gen.start()
-    gen.publish()
     
 def quick_delete(resources):
-    gen = StaticGenerator(resources)
+    gen = StaticGenerator(resources, delete=True)
     gen.start()
-    gen.delete()
