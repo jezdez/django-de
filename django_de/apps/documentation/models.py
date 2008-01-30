@@ -86,7 +86,7 @@ def get_documents():
 
 class StaticFilesThread(Thread):
     """
-    Starts the generation of static files for faster SVN committs
+    Starts the generation of static files for faster SVN committs.
     """
     def __init__(self, signal, repo, rev):
         Thread.__init__(self)
