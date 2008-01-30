@@ -13,7 +13,7 @@ from django_de.generator import quick_publish, StaticGeneratorException
 
 class StaticFilesThread(threading.Thread):
     """
-    Starts the generation of static files for faster SVN committs.
+    Starts the generation of static files for faster SVN committs in a thread.
     """
     def __init__(self, repo, rev):
         threading.Thread.__init__(self)
