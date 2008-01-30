@@ -25,8 +25,6 @@ __version__ = '1.1, 2007-01-09'
 # THE SOFTWARE.
 
 import os
-import thread
-import threading
 from django.http import HttpRequest
 from django.core.handlers.base import BaseHandler
 from django.db.models.base import ModelBase
@@ -50,7 +48,7 @@ class DummyHandler(BaseHandler):
 class StaticGeneratorException(Exception):
     pass
 
-class StaticGenerator(threading.Thread):
+class StaticGenerator(object):
     """
     The StaticGenerator class is created for Django applications, like a blog,
     that are not updated per request.
@@ -74,22 +72,14 @@ class StaticGenerator(threading.Thread):
     
     """
     
-    def __init__(self, resources, delete=False):
-        threading.Thread.__init__(self)
-        self.delete = delete
+    def __init__(self, resources):
         self.resources = self.extract_resources(resources)
         self.server_name = self.get_server_name()
         try:
             self.web_root = getattr(settings, 'WEB_ROOT')
         except AttributeError:
             raise StaticGeneratorException('You must specify WEB_ROOT in settings.py')
-    
-    def run(self):
-        if not self.delete:
-            self.publish()
-        else:
-            self.delete()
-        
+
     def extract_resources(self, resources):
         """Takes a list of resources, and gets paths by type"""
         extracted = []
@@ -181,8 +171,7 @@ class StaticGenerator(threading.Thread):
     def publish(self):
         """Publishes all resources"""
         for path in self.resources:
-            thread.start_new_thread(self.publish_from_path, (path,))
-            #self.publish_from_path(path)
+            self.publish_from_path(path)
             
     def delete_from_path(self, path):
         """Deletes file, attempts to delete directory"""
@@ -206,8 +195,8 @@ class StaticGenerator(threading.Thread):
     
 def quick_publish(resources):
     gen = StaticGenerator(resources)
-    gen.start()
+    gen.publish()
     
 def quick_delete(resources):
-    gen = StaticGenerator(resources, delete=True)
-    gen.start()
+    gen = StaticGenerator(resources)
+    gen.delete()

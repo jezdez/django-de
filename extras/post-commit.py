@@ -8,7 +8,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = "django_de.settings"
 
 from django.core.mail import mail_admins
 from django_de.apps.documentation.models import get_documents
-from django_de.generator import StaticGenerator, StaticGeneratorException
+from django_de.generator import quick_publish, StaticGeneratorException
 
 def main():
     """
@@ -18,10 +18,8 @@ def main():
     repo=sys.argv[1]
     rev=sys.argv[2]
     mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
-    urls = get_documents()
     try:
-        gen = StaticGenerator(urls)
-        gen.start()
+        quick_publish(get_documents())
     except StaticGeneratorException:
         mail_admins("Error: SVN commit", "error while generating static files", fail_silently=True)
 
