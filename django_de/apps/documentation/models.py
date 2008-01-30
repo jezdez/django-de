@@ -85,6 +85,9 @@ def get_documents():
     return tuple(all_docs)
 
 class StaticFilesThread(Thread):
+    """
+    Starts the generation of static files for faster SVN committs
+    """
     def __init__(self, signal, repo, rev):
         Thread.__init__(self)
         self.signal = signal
