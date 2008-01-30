@@ -84,7 +84,7 @@ class StaticGenerator(threading.Thread):
             raise StaticGeneratorException('You must specify WEB_ROOT in settings.py')
     
     def run(self):
-        if not delete:
+        if not self.delete:
             self.publish()
         else:
             self.delete()
