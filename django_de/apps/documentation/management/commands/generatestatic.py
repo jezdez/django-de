@@ -2,7 +2,7 @@ from django.core.management.base import NoArgsCommand
 from optparse import make_option
 
 from django_de.apps.documentation.models import get_documents
-from django_de.generator import StaticGenerator, StaticGeneratorException
+from django_de.generator import quick_publish, StaticGeneratorException
 
 class Command(NoArgsCommand):
     option_list = NoArgsCommand.option_list + (
@@ -18,9 +18,6 @@ class Command(NoArgsCommand):
         rev = options.get('rev', None)
 
         try:
-            for document in get_documents():
-                print "Generating static file: %s" % document
-                gen = StaticGenerator((document,))
-                gen.publish()
+            quick_publish(get_documents())
         except StaticGeneratorException:
             pass

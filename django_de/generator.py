@@ -171,6 +171,7 @@ class StaticGenerator(object):
     def publish(self):
         """Publishes all resources"""
         for path in self.resources:
+            print "Generating: %s" % path
             self.publish_from_path(path)
             
     def delete_from_path(self, path):
