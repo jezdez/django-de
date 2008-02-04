@@ -6,7 +6,7 @@ from django_de.apps.documentation.generator import quick_publish, StaticGenerato
 class Command(NoArgsCommand):
     help = 'Used to autogenerate static files from SVN repository.'
 
-    def handle_noargs(self):
+    def handle_noargs(self, **options):
         try:
             quick_publish(get_documents())
         except StaticGeneratorException:
