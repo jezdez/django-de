@@ -11,7 +11,7 @@ class Command(NoArgsCommand):
         make_option('--rev', dest='rev', default=None,
             help='The revision number.'),
     )
-    help = 'Used to autogenerate static files.'
+    help = 'Used to autogenerate static files from SVN repository.'
 
     def handle_noargs(self, **options):
         repo = options.get('repo', None)
