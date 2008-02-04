@@ -14,7 +14,7 @@ def main():
     Deletes or generates static documentation files depending on the
     received signal.
     """
-    repo, rev = sys.argv[1:2]
+    repo, rev = sys.argv[1:3]
     mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s" % repo, fail_silently=True)
     call_command('generatestatic', **{'repo': repo, 'rev': rev})
     
