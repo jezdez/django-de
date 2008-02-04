@@ -19,7 +19,8 @@ class Command(NoArgsCommand):
 
         try:
             for document in get_documents():
+                print "Generating static file: %s" % document
                 gen = StaticGenerator((document,))
-                gen.start()
+                gen.publish()
         except StaticGeneratorException:
             pass
