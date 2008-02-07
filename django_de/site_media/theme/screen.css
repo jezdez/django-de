@@ -645,9 +645,6 @@ div.sidebar ul.toc ul li a{
     background-position:3px 3px;
     background-repeat:no-repeat;
 }
-div.sidebar ul.toc ul ul li a .pre{
-    color: #79745a;
-}
 
 /* Liste de liens contributeur */
 div.sidebar ul.contributor_link li{
