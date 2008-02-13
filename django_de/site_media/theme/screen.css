@@ -50,6 +50,12 @@ abbr {
     border-bottom: 1px dotted #3C782D;
 }
 
+a.jumper{
+    float: right;
+    color: #ccc;
+    padding-top: 8px !important;
+}
+
 /* ________________________________________
     Container globale de toute les éléments
 */
@@ -229,6 +235,7 @@ body.rest-document #content-main .first-content h1{
 #content-main div.content h3{
     font-size:16px;
     margin-bottom: 0.5em;
+    padding:8px 0 0 0;
 }
 
 #content-main div.content div.bio{

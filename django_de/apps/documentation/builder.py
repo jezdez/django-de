@@ -138,7 +138,16 @@ class DjangoHTMLTranslator(html4css1.HTMLTranslator):
     #        self.context.append("</p>\n")
     #    else:
     #        html4css1.HTMLTranslator.visit_title(self, node, move_ids=0)
-    
+
+    def visit_title(self, node, move_ids=1):
+        try:
+            href = node.parent['ids'][0]
+            self.body.append(self.starttag(node.parent, "a", '', HREF='#'+str(href), CLASS='jumper'))
+            self.body.append('&para;</a>\n')
+        except IndexError:
+            pass
+        html4css1.HTMLTranslator.visit_title(self, node, move_ids=0)
+
     #
     # Apply smartypants to content when not inside literals
     #
