@@ -627,7 +627,7 @@ div.sidebar ul.linklist li.button-download a{
 div.sidebar ul.toc{
     font-weight:bold;
 }
-div.sidebar ul.toc li{
+div.sidebar ul.toc li, div.sidebar ul.quick_link li{
     margin-left:0;
     padding-left:0;
     list-style-type:none;
@@ -636,21 +636,18 @@ div.sidebar ul.toc li{
 div.sidebar ul.toc li a{
     display:block;
     margin:4px 0 0 0;
-    padding:0 0 0 20px;
     font-size:13px;
-    background-image:url("./bullets/0024_chevrons.gif");
-    background-position:2px 2px;
-    background-repeat:no-repeat;
 }
 div.sidebar ul.toc ul{
     margin:0 3px 8px 16px;
     padding:0;
     font-weight:normal;
 }
-div.sidebar ul.toc ul li a{
-    background-image:url("./bullets/0129_ibullet.gif");
-    background-position:3px 3px;
-    background-repeat:no-repeat;
+div.sidebar ul.toc ul li {
+    list-style-type: square;
+}
+div.sidebar ul.toc li p{
+	padding: 2px 0 0;
 }
 
 /* Liste de liens contributeur */
