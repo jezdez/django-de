@@ -14,15 +14,13 @@
     <ul class="linklist ">
     {% for author in author_list %}
         <li id="{{ author.slug }}">
-            <h3>
-                {% if author.url %}
-                <a href="{{ author.url }}" title="Link zur persönlichen Homepage (extern)">
-                {% endif %}
-                {{ author.name }}
-                {% if author.url %}
-                </a>
-                {% endif %}
-            </h3>
+            {% if author.url %}
+            <a href="{{ author.url }}" title="Link zur persönlichen Homepage (extern)">
+            {% endif %}
+            {{ author.name }}
+            {% if author.url %}
+            </a>
+            {% endif %}
             <div class="bio">{{ author.bio }}</div>
         </li>
     {% endfor %}
