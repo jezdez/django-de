@@ -634,6 +634,7 @@ div.sidebar ul.toc li, div.sidebar ul.quick_link li{
     list-style-image:none;
 }
 div.sidebar ul.toc li a{
+    padding:0;
     display:block;
     margin:4px 0 0 0;
     font-size:13px;
