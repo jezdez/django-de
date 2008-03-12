@@ -31,10 +31,7 @@ def update_feeds():
         sys.stdout.write('\nDoing %s (Keyword-Check: %s):\n' % (feed.feed_url,
                                                                 yesno(feed.keyword_check, "Ja,Nein"))
                                                                 )
-        
-        # Feed parsen
-        parsed_feed = feedparser.parse(feed.feed_url)
-        
+               
         # Prüfe ob die maximale Error-Anzahl erreicht ist,
         # dann deaktviere den Feed
         if feed.errors >= settings.AGGREGATOR_MAX_ERRORS:
@@ -47,6 +44,9 @@ def update_feeds():
             mail_admins('Community: Feed wurde deaktiviert', message, True)            
             
             continue
+        
+        # Feed parsen
+        parsed_feed = feedparser.parse(feed.feed_url)
         
         # Prüfe, ob die Feed-URL einen echten Feed zurück gibt, sonst 
         # erhöhe den Error-Zähler um 1
