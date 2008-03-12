@@ -13,7 +13,11 @@ from django.core.mail import mail_admins
 socket.setdefaulttimeout(5)
 
 # FIXME: Path zum Projekt aendern
-sys.path.append( "/home/martin/Workspace/django-de")
+sys.path.append("/home/martin/Workspace/django-de")
+
+# FIXME: Nur eine Idee; ist das sicher?
+sys.path.append(os.path.realpath('%s/../../../../../' % __file__))
+
 os.environ['DJANGO_SETTINGS_MODULE'] = "django_de.settings"
 
 def update_feeds():
