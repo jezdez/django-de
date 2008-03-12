@@ -1,7 +1,9 @@
 import os, platform
 DEVELOPMENT_MODE = (platform.node() != "tichy.websushi.org")
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (('Jannis Leidel', 'jannis@leidel.info'),)
+
 MANAGERS = ADMINS
 
 if DEVELOPMENT_MODE:
@@ -10,7 +12,7 @@ if DEVELOPMENT_MODE:
     CACHE_BACKEND = "file:///tmp/"
     DOCS_SVN_ROOT = "http://www.django-de.org/svn/django/"
     DATABASE_ENGINE = 'sqlite3'
-    DATABASE_NAME = 'django_de.db'
+    DATABASE_NAME = os.path.join(PROJECT_PATH, 'django_de.db')
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
 else:
     DEBUG = False
@@ -70,7 +72,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'django_de.urls'
 
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIRS = [os.path.join(PROJECT_PATH, 'templates')]
 
 INSTALLED_APPS = (
@@ -82,4 +83,18 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django_de.apps.authors',
     'django_de.apps.documentation',
+    'django_de.apps.aggregator',
 )
+
+# ##############################################################################
+# Aggregator Settings
+# ##############################################################################
+
+# Nach wie vielen Fehlversuchen (404, Feed kaputt etc.) soll der Feed als
+# "nicht public" markiert werden
+AGGREGATOR_MAX_ERRORS = 24 # Bei stuendlichem Feed-Check wuerde der Feed 
+                           # nach 1 Tag als kaputt gewertet werden.
+
+# Gravatar-Kram
+AGGREGATOR_GRAVATAR_DEFAULT_IMAGE = 'https://www.django-de.org/site_media/theme/gravatar.png'
+AGGREGATOR_GRAVATAR_SIZE = 50

@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-11 23:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:14 models.py:96 models.py:123 models.py:158
+msgid "Public"
+msgstr ""
+
+#: models.py:15
+msgid "Feed URL"
+msgstr ""
+
+#: models.py:16
+msgid "Homepage URL"
+msgstr ""
+
+#: models.py:17
+msgid "Homepage Title"
+msgstr ""
+
+#: models.py:21
+msgid "Check each entry for keywords (see below)"
+msgstr ""
+
+#: models.py:21
+msgid ""
+"If this is a weblog or a category-feed with only django-related entries, you "
+"may uncheck this."
+msgstr ""
+
+#: models.py:22 models.py:71
+msgid "Keywords"
+msgstr ""
+
+#: models.py:22
+msgid "All lowercase, seperate by spaces"
+msgstr ""
+
+#: models.py:25
+msgid "Error Counter"
+msgstr ""
+
+#: models.py:31
+msgid "Feed"
+msgstr ""
+
+#: models.py:32
+msgid "Feeds"
+msgstr ""
+
+#: models.py:58
+msgid "Status"
+msgstr ""
+
+#: models.py:63
+msgid "Core Feed Data"
+msgstr ""
+
+#: models.py:77
+msgid "Debug"
+msgstr ""
+
+#: models.py:100 models.py:138
+msgid "Items"
+msgstr ""
+
+#: models.py:105
+msgid "KW Check"
+msgstr ""
+
+#: models.py:110
+msgid "Link to Homepage"
+msgstr ""
+
+#: models.py:123
+msgid "Disable this Feed-Entry instead of deleting it"
+msgstr ""
+
+#: models.py:137
+msgid "Item"
+msgstr ""
+
+#: views.py:23
+#, python-format
+msgid "\"%s\" was deleted"
+msgstr ""
+
+#: views.py:28
+#, python-format
+msgid "\"%s\" was opened"
+msgstr ""
+
+#: views.py:33
+#, python-format
+msgid "\"%s\" was closed"
+msgstr ""
+
+#: templates/admin/aggregator/change_list.html:4
+msgid "Are you sure?"
+msgstr ""
+
+#: templates/admin/aggregator/change_list.html:7
+msgid "Marked Items"
+msgstr ""
+
+#: templates/admin/aggregator/change_list.html:8
+msgid "Close"
+msgstr ""
+
+#: templates/admin/aggregator/change_list.html:9
+msgid "Open"
+msgstr ""
+
+#: templates/admin/aggregator/change_list.html:10
+msgid "Delete"
+msgstr ""

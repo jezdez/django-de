@@ -1,0 +1,112 @@
+{% extends "base_2col.html" %}
+
+{% block sectionid %}community{% endblock %}
+{% block active_nav-community %}class="active"{% endblock %}
+{% block title %}Community{% endblock %}
+{% block billboard %}<h2><a href="/community/">Community</a></h2>{% endblock %}
+{% block extrahead %}
+<style type="text/css" media="screen, projection">
+    div.community-image{
+        float: left;
+        padding: 8px 0 0 0;
+    }
+    
+    div.community-image img{
+        padding: 3px;
+        background-color: White;
+    }
+    
+    div.community-image a:hover img{
+        background-color: green;
+    }
+    
+    div.community-content{
+        margin-left: 70px;
+    }
+    
+    div.community-content h3{
+        margin: 0 0 3px 0;
+    }
+    div.community-content p.subheadline{
+        font-size: 0.75em;
+        margin: 0;
+    }
+    div.community-content p.summary{
+        font-size: 0.8em;
+    }
+    
+    div.community-spacer{
+        height: 20px;
+        clear: both;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Community</h1>
+    
+    {% for item in item_list %}
+    {% ifchanged %}
+    <div class="content first-content">
+        <h2 style="margin: 2px 0; padding: 0;">{{ item.published_original|date:"F Y" }}</h2>
+    </div>
+    {% endifchanged %}
+    
+    <div class="content" id="{{ item.guid|escape }}">
+        <div class="community-image">
+            <a href="{{ item.url }}"><img src="{{ item.feed.get_gravatar_url }}" alt="Gravatar" title=""/></a>
+        </div>
+        <div class="community-content">
+            <h3>{{ item.title|safe }}</h3>
+            <p class="subheadline">
+                Von <a href="{{ item.feed.url }}">{{ item.feed.title }}</a>
+                geschrieben am {{ item.published_original|date:"d. F Y H:i" }} Uhr</p>
+            <p class="summary">{{ item.summary|truncatewords:"40"|safe }}</p>
+            <p class="more"><strong>Weiter lesen:</strong> <a href="{{ item.url }}">{{ item.title|safe }} &rarr;</a></p>
+        </div>
+    </div>
+    {% endfor %}
+    
+    {% if not page_range|length_is:"1" %}
+    {% spaceless %}
+    <div class="content first-content" style="font-size: 0.8em; padding: 10px 0 10px 95px;">
+    	Seite {{ page }} von {{ pages }}&nbsp;&nbsp;
+    	{% if has_previous %}
+    	<a href="?page={{ previous }}">&lArr; Zurück</a>&nbsp;
+    	{% endif %}
+    	{% for p in page_range %}
+    	<a href="?page={{ p }}">{{ p }}</a>&nbsp;
+    	{% endfor %}
+    	{% if has_next %}
+    	<a href="?page={{ next }}">Weiter &rArr;</a>
+    	{% endif %}
+    	<span style="padding-left: 15px;">({{ hits }} Einträge gesamt)</span>
+    </div>
+    {% endspaceless %}
+    {% endif %}
+
+{% endblock %}
+
+{% block content-related %}
+    <h2>Was ist das hier?</h2>
+    <p>Diese Seite fasst die Weblog-Beiträge vieler Djangonauten zusammen.</p>
+    <p>Sie wird derzeit stündlich aktualisiert.</p>
+    
+    <h2>Wer macht mit?</h2>
+    
+    <p>Folgende Weblogs und Personen sind auf dieser Seite zusammengefasst:</p>
+    
+    <ul>
+        {% for feed in feed_list %}
+        <li><a href="{{ feed.url }}">{{ feed.title }}</a></li>
+        {% endfor %}    
+    </ul>
+    
+    <h2>Mitmachen!</h2>
+    
+    <p>Wenn du auch über Django schreibst, kannst du ganz einfach deinen
+        Newsfeed auf <a href="/community/add/">dieser Seite</a> hinzufügen.</p>
+    
+    <p><a href="/community/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "admin/change_list.html" %}
+{% load adminmedia admin_list i18n %}
+{% block result_list %}
+    <form method="post" action="/community/adminactions/{{ cl.opts.app_label }}/{{ cl.opts.module_name }}/" onsubmit="return confirm('{% trans "Are you sure?" %}');">
+    {% result_list cl %}
+    <div class="submit-row" style="padding: 5px;">
+        {% trans "Marked Items" %}:
+        <input type="submit" name="_markclosed" value="{% trans "Close" %}"/>
+        <input type="submit" name="_markopen" value="{% trans "Open" %}"/>
+        <input type="submit" name="_delete" value="{% trans "Delete" %}"/>
+    </div>
+    </form>
+{% endblock %}
