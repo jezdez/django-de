@@ -45,15 +45,15 @@
 {% block content %}
 
     <h1>Community</h1>
+
+    <div class="content first-content">
     
     {% for item in item_list %}
     {% ifchanged %}
-    <div class="content first-content">
-        <h2 style="margin: 2px 0; padding: 0;">{{ item.published_original|date:"F Y" }}</h2>
-    </div>
+    <h2>{{ item.published_original|date:"F Y" }}</h2>
     {% endifchanged %}
     
-    <div class="content" id="{{ item.guid|escape }}">
+    <div class="section" id="{{ item.guid|escape }}">
         <div class="community-image">
             <a href="{{ item.url }}"><img src="{{ item.feed.get_gravatar_url }}" alt="Gravatar" title=""/></a>
         </div>
@@ -67,6 +67,7 @@
         </div>
     </div>
     {% endfor %}
+    </div> 
     
     {% if not page_range|length_is:"1" %}
     {% spaceless %}
