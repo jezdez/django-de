@@ -17,7 +17,7 @@ def main():
     repo, rev = sys.argv[1:3]
     mail_admins("SVN revision %s committed!" % rev, "SVN repo: %s\nhttps://www.django-de.org/trac/changeset/%s/" % (repo, rev), fail_silently=True)
     call_command('generatestatic', **{'repo': repo, 'rev': rev})
-    
+
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         sys.stderr.write("Usage: %s REPOS TXN\n" % (sys.argv[0]))

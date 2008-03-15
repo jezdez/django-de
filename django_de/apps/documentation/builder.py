@@ -28,38 +28,38 @@ def build_model_document(text):
     """
     # We need to parse the model file without actually executing it.
     tree = compiler.parse(text)
-    
+
     # Get the title and blurb from the module's docstring
     title, blurb = tree.doc.strip().split('\n', 1)
     parts = publish_parts(blurb, writer=DjangoHTMLWriter(), settings_overrides={'initial_header_level': 2})
     parts["title"] = title
-    
+
     # Walk the tree and parse out the bits we care about.
     visitor = compiler.walk(tree, ModelSourceVistor())
     parts["api_usage"] = visitor.doctest
     parts["models"] = visitor.models
-    
+
     # Parse out the model source.
     try:
-        model_source = text[:text.index("__test__")]        
+        model_source = text[:text.index("__test__")]
     except ValueError:
         model_source = text
     parts["model_source"] = model_source.replace(tree.doc, "").replace('""""""\n', '\n').strip()
-    
+
     return parts
 
 class ModelSourceVistor:
     """AST visitor for a model module."""
-    
+
     def __init__(self):
         self.doctest = ""
         self.models = []
-    
+
     def visitAssign(self, node):
         assname, valtree = node.getChildren()
         if assname.name == "__test__":
             self.doctest = valtree.getChildren()[1].value
-            
+
     def visitClass(self, node):
         if node.bases and isinstance(node.bases[0], compiler.ast.Getattr) and node.bases[0].attrname == "Model":
             self.models.append(node.name)
@@ -119,15 +119,15 @@ class DjangoHTMLTranslator(html4css1.HTMLTranslator):
     """
     reST -> HTML translator subclass that fixes up the parts of docutils I don't like.
     """
-    
+
     # Prevent name attributes from being generated
     named_tags = []
-    
+
     def __init__(self, document):
         html4css1.HTMLTranslator.__init__(self, document)
         self._in_literal = 0
-    
-    # Remove the default border=1 from <table>    
+
+    # Remove the default border=1 from <table>
     def visit_table(self, node):
         self.body.append(self.starttag(node, 'table', CLASS='docutils'))
 
@@ -158,32 +158,32 @@ class DjangoHTMLTranslator(html4css1.HTMLTranslator):
     def depart_literal_block(self, node):
         html4css1.HTMLTranslator.depart_literal_block(self, node)
         self._in_literal -= 1
-     
+
     def visit_literal(self, node):
         self._in_literal += 1
         try:
             html4css1.HTMLTranslator.visit_literal(self, node)
         finally:
             self._in_literal -= 1
-     
+
     def encode(self, text):
         text = html4css1.HTMLTranslator.encode(self, text)
         if self._in_literal <= 0:
             text = smartypants.smartyPants(text, "qde")
         return text
-    
+
     #
     # Avoid <blockquote>s around merely indented nodes.
     # Adapted from http://thread.gmane.org/gmane.text.docutils.user/742/focus=804
     #
-    
+
     _suppress_blockquote_child_nodes = (
         nodes.bullet_list, nodes.enumerated_list, nodes.definition_list,
         nodes.literal_block, nodes.doctest_block, nodes.line_block, nodes.table
     )
     def _bq_is_valid(self, node):
         return len(node.children) != 1 or not isinstance(node.children[0], self._suppress_blockquote_child_nodes)
-                                        
+
     def visit_block_quote(self, node):
         if self._bq_is_valid(node):
             html4css1.HTMLTranslator.visit_block_quote(self, node)
@@ -191,5 +191,3 @@ class DjangoHTMLTranslator(html4css1.HTMLTranslator):
     def depart_block_quote(self, node):
         if self._bq_is_valid(node):
             html4css1.HTMLTranslator.depart_block_quote(self, node)
-        
-    

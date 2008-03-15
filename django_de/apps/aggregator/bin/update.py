@@ -10,14 +10,11 @@ import feedparser
 
 from django.core.mail import mail_admins
 
-socket.setdefaulttimeout(5)
+socket.setdefaulttimeout(5) # oh oh.
 
-# FIXME: Path zum Projekt aendern
-sys.path.append("/home/martin/Workspace/django-de")
+lib_path = os.path.join(os.path.expanduser("~/lib"))
 
-# FIXME: Nur eine Idee; ist das sicher?
-sys.path.append(os.path.realpath('%s/../../../../../' % __file__))
-
+sys.path.insert(0, lib_path)
 os.environ['DJANGO_SETTINGS_MODULE'] = "django_de.settings"
 
 def update_feeds():
@@ -25,17 +22,17 @@ def update_feeds():
     from django.utils.encoding import smart_unicode
     from django.template.defaultfilters import striptags, yesno
     from django_de.apps.aggregator.models import Feed, Item
-    
+
     feeds = Feed.objects.public()
-    
+
     sys.stdout.write('%s Feeds werden überprüft\n' % len(feeds))
-    
+
     for feed in feeds:
-        
+
         sys.stdout.write('\nDoing %s (Keyword-Check: %s):\n' % (feed.feed_url,
                                                                 yesno(feed.keyword_check, "Ja,Nein"))
                                                                 )
-               
+
         # Prüfe ob die maximale Error-Anzahl erreicht ist,
         # dann deaktviere den Feed
         if feed.errors >= settings.AGGREGATOR_MAX_ERRORS:
@@ -45,14 +42,14 @@ def update_feeds():
 
             # Nachricht an den Admin
             message = 'Wegen zu vieler Fehler wurde der Feed deaktiviert: %s' % feed.feed_url
-            mail_admins('Community: Feed wurde deaktiviert', message, True)            
-            
+            mail_admins('Community: Feed wurde deaktiviert', message, True)
+
             continue
-        
+
         # Feed parsen
         parsed_feed = feedparser.parse(feed.feed_url)
-        
-        # Prüfe, ob die Feed-URL einen echten Feed zurück gibt, sonst 
+
+        # Prüfe, ob die Feed-URL einen echten Feed zurück gibt, sonst
         # erhöhe den Error-Zähler um 1
         if not parsed_feed.version:
             sys.stderr.write("Broken! (%s)\n" % feed.title.encode('utf-8'))
@@ -63,11 +60,11 @@ def update_feeds():
         else:
             feed.errors = 0
             feed.save()
-        
+
         new_item_counter = 0
-                       
-        for entry in parsed_feed.entries:            
-            
+
+        for entry in parsed_feed.entries:
+
             guid = entry.get("id", entry.link).encode(parsed_feed.encoding, "xmlcharrefreplace")
             link = entry.link.encode(parsed_feed.encoding, "xmlcharrefreplace")
 
@@ -76,7 +73,7 @@ def update_feeds():
 
             # ##################################################################
             # Titel parsen und strippen
-            # ##################################################################       
+            # ##################################################################
             title = entry.title.encode(parsed_feed.encoding, "xmlcharrefreplace")
             title = striptags(title)
             title = " ".join(title.split())
@@ -84,7 +81,7 @@ def update_feeds():
 
             # ##################################################################
             # Content ausfindig machen, ein Hoch auf Standards
-            # ##################################################################       
+            # ##################################################################
             if hasattr(entry, "summary"):
                 content = entry.summary
             elif hasattr(entry, "content"):
@@ -93,16 +90,16 @@ def update_feeds():
                 content = entry.description
             else:
                 content = u""
-                
+
             content = content.encode(parsed_feed.encoding, "xmlcharrefreplace")
-            
+
             # Tags und Whitespace-Zeichen aus dem Content enfernen
             content = striptags(content)
             content = " ".join(content.split())
 
             # ##################################################################
             # Keyword Check
-            # ##################################################################       
+            # ##################################################################
             keyword_check_passed = False
             if feed.keyword_check:
                 for keyword in feed.keywords.split():
@@ -116,14 +113,14 @@ def update_feeds():
             else:
                 keyword_check_passed = True
                 sys.stdout.write('  o Beitrag gefunden: %s\n' % title.encode('utf-8'))
-            
+
             # Kein Keyword gefunden: Weg damit
             if not keyword_check_passed:
                 continue
-            
+
             # ##################################################################
             # Datumskram
-            # ##################################################################                        
+            # ##################################################################
             try:
                 if entry.has_key('modified_parsed'):
                     published_original = datetime.datetime.fromtimestamp(time.mktime(entry.modified_parsed))
@@ -145,8 +142,8 @@ def update_feeds():
                 new_item_counter += 1
                 # TODO: hier noch die unmöglichsten Fehler abfangen
                 feed.item_set.create(title=title, url=link, summary=content, guid=guid, published_original=published_original)
-                
+
         sys.stdout.write("OK! (%s neue Beiträge hinzugefügt)\n" % new_item_counter)
-    
+
 if __name__ == "__main__":
     update_feeds()

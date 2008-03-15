@@ -6,7 +6,7 @@ class StaticFilePage:
         self.url = url
     def get_absolute_url(self):
         return self.url
-        
+
 class StaticFileSitemap(Sitemap):
     "Custom Sitemap Class for use with static templates"
     def __init__(self, urls, priority=0.5, changefreq='daily'):
@@ -17,6 +17,6 @@ class StaticFileSitemap(Sitemap):
             urls = [urls]
         for url in urls:
             self.item_list.append(StaticFilePage(url))
-    
+
     def items(self):
         return self.item_list

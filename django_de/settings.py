@@ -43,11 +43,11 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/home/django-de/lib/django_de/site_media/'
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
-MEDIA_URL = ''
+MEDIA_URL = '/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -58,7 +58,6 @@ ADMIN_MEDIA_PREFIX = '/admin_media/'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-    #'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,15 +85,15 @@ INSTALLED_APPS = (
     'django_de.apps.aggregator',
 )
 
-# ##############################################################################
+# ############################################################################
 # Aggregator Settings
-# ##############################################################################
+# ############################################################################
 
 # Nach wie vielen Fehlversuchen (404, Feed kaputt etc.) soll der Feed als
 # "nicht public" markiert werden
-AGGREGATOR_MAX_ERRORS = 24 # Bei stuendlichem Feed-Check wuerde der Feed 
+AGGREGATOR_MAX_ERRORS = 24 # Bei stuendlichem Feed-Check wuerde der Feed
                            # nach 1 Tag als kaputt gewertet werden.
 
 # Gravatar-Kram
-AGGREGATOR_GRAVATAR_DEFAULT_IMAGE = 'https://www.django-de.org/site_media/theme/gravatar.png'
+AGGREGATOR_GRAVATAR_DEFAULT_IMAGE = 'theme/gravatar.png'
 AGGREGATOR_GRAVATAR_SIZE = 50
