@@ -3,14 +3,11 @@ import os
 import sys
 import time
 import socket
-import optparse
 import datetime
 import feedparser
-from optparse import make_option
 
 from django.core.management.base import NoArgsCommand
 from django.conf import settings
-from django.utils.encoding import smart_unicode
 from django.template.defaultfilters import striptags, yesno
 from django.core.mail import mail_admins
 
@@ -20,7 +17,7 @@ socket.setdefaulttimeout(5) #FIXME PLEASE
 
 class Command(NoArgsCommand):
     help = 'Used to update the feeds of the aggregator app.'
-    
+
     def handle_noargs(self, **options):
         feeds = Feed.objects.public()
         sys.stdout.write('%s Feeds werden überprüft\n' % len(feeds))
