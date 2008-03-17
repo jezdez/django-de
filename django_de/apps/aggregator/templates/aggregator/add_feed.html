@@ -1,9 +1,5 @@
 {% extends "aggregator/overview.html" %}
 
-{% block sectionid %}community{% endblock %}
-{% block active_nav-community %}class="active"{% endblock %}
-{% block title %}Community{% endblock %}
-{% block billboard %}<h2><a href="/community/">Community</a></h2>{% endblock %}
 {% block extrahead %}
 <style type="text/css" media="screen, projection">
     ol.form{
@@ -12,7 +8,7 @@
         list-style: none !important;
         width: 440px;
     }
-    
+
     ol.form li{
         margin: 0 !important;
         padding: 10px 25px !important;
@@ -21,26 +17,26 @@
         border-right: 1px solid #D6F1B7;
         font-size: 0.8em;
     }
-    
+
     ol.form label{
         display: block;
         font-weight: bold;
         color: #333333;
         padding: 0 0 5px 0;
     }
-    
+
     ol.form input{
         width: 300px;
         display: block;
         margin-bottom: 3px;
     }
-    
+
     ol.form li.submit input{
         margin: 0;
         width: auto;
     }
-    
-    
+
+
     ul.errorlist, ul.errorlist li{
         margin: 0 !important;
         padding: 0 !important;
@@ -48,7 +44,7 @@
         border: none !important;
         color: #c00;
     }
-    
+
     ul.errorlist li{
         padding-bottom: 4px !important;
     }
@@ -57,34 +53,26 @@
 {% endblock %}
 
 {% block content %}
-
     <h1>Feed hinzufügen</h1>
-    
-    
+
     <div class="content first-content">
-        
         <h2>Was wird von deinem Feed gespeichert?</h2>
-        
+
         <p>Dieser Aggregator speichert die URL und den Inhalt deiner Newsbeiträge
-            deines Feeds. Dabei werden alle Bilder und sonstige Tags aus dem Inhalt 
+            deines Feeds. Dabei werden alle Bilder und sonstige Tags aus dem Inhalt
             entfernt. Im übrigen werden auch nur die ersten 40 Worte angezeigt.</p>
-        
+
         <p>Wenn du wieder aus diesem Aggregator entfernt werden möchtest, wende dich
             bitte an <a href="/imprint/">Jannis</a>.</p>
     </div>
-    
+
     <div class="content">
-        
         <h2>Deine Feed-Daten</h2>
-        
         <form method="post" action=".">
         <ol class="form">
             {{ form.as_ul }}
             <li class="submit"><input type="submit" value="Abschicken"/></li>
         </ol>
-        </form>        
-        
+        </form>
     </div>
-            
-    
 {% endblock %}

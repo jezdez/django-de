@@ -1,10 +1,11 @@
 import re
 import md5
 from urlparse import urljoin
+from urllib import quote
 from django.db import models
 from django.conf import settings
 from django.template.defaultfilters import striptags, escape
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
 from django_de.apps.aggregator.manager import FeedManager, ItemManager
 
@@ -84,8 +85,8 @@ class Feed(models.Model):
         )
 
     def admin_action_checkbox(self):
-        error = (self.errors >= settings.AGGREGATOR_MAX_ERRORS) and _('Broken!') or ''
         enabled = (self.errors >= settings.AGGREGATOR_MAX_ERRORS) and ' disabled="disabled"' or ''
+        error = (self.errors >= settings.AGGREGATOR_MAX_ERRORS) and _('Broken!') or ''
         checkbox = '<input type="checkbox" name="item_id_list" value="%s"%s/> %s' % (self.id, enabled, error)
         return checkbox
     admin_action_checkbox.short_description = ''
@@ -111,14 +112,26 @@ class Feed(models.Model):
     url_link.short_description = _('Link to Homepage')
 
     def get_gravatar_url(self):
-        current_site = Site.objects.get_current()
-        image_url = urljoin(current_site.domain,
-            settings.MEDIA_URL,
-            settings.AGGREGATOR_GRAVATAR_DEFAULT_IMAGE)
-        return 'http://www.gravatar.com/avatar.php?gravatar_id=%s&default=%s&size=%s' % (
+        current_site_domain = Site.objects.get_current().domain
+
+        # By default, Site-Domains don't start with http[s]://
+        if not current_site_domain.startswith('http'):
+            current_site_domain = 'http://%s' % current_site_domain
+
+        # urljoin does not work the way like os.path.join
+        image_url = urljoin(
+            current_site_domain,
+            urljoin(
+                getattr(settings, 'MEDIA_URL', '/site_media/'),
+                getattr(settings, 'AGGREGATOR_GRAVATAR_DEFAULT_IMAGE', 'gravatar.png'),
+            )
+        )
+
+        return 'http://www.gravatar.com/avatar.php?gravatar_id=%s&default=%s&size=%s&rating=%s' % (
                 md5.new(self.owner_email).hexdigest(),
-                escape(image_url),
-                settings.AGGREGATOR_GRAVATAR_SIZE,
+                quote(image_url),
+                getattr(settings, 'AGGREGATOR_GRAVATAR_SIZE', 50),
+                getattr(settings, 'AGGREGATOR_GRAVATAR_RATING', 'G'),
         )
 
     def __unicode__(self):

@@ -65,7 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.cache.CacheMiddleware',
+    #'django.middleware.cache.CacheMiddleware',
     'django.middleware.common.CommonMiddleware',
 )
 
@@ -88,12 +88,15 @@ INSTALLED_APPS = (
 # ############################################################################
 # Aggregator Settings
 # ############################################################################
-
 # Nach wie vielen Fehlversuchen (404, Feed kaputt etc.) soll der Feed als
 # "nicht public" markiert werden
-AGGREGATOR_MAX_ERRORS = 24 # Bei stuendlichem Feed-Check wuerde der Feed
-                           # nach 1 Tag als kaputt gewertet werden.
+AGGREGATOR_MAX_ERRORS = 24
 
-# Gravatar-Kram
+# The path to your default gravatar-image under `MEDIA_URL`
 AGGREGATOR_GRAVATAR_DEFAULT_IMAGE = 'theme/gravatar.png'
+
+# Gravatar image size
 AGGREGATOR_GRAVATAR_SIZE = 50
+
+# Gravatar Rating; must be one of [ G | PG | R | X ]
+AGGREGATOR_GRAVATAR_RATING = 'PG'

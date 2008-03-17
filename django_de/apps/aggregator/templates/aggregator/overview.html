@@ -10,20 +10,20 @@
         float: left;
         padding: 8px 0 0 0;
     }
-    
+
     div.community-image img{
         padding: 3px;
-        background-color: White;
+        background-color: #D6F1B7;
     }
-    
+
     div.community-image a:hover img{
         background-color: green;
     }
-    
+
     div.community-content{
         margin-left: 70px;
     }
-    
+
     div.community-content h3{
         margin: 0 0 3px 0;
     }
@@ -34,25 +34,28 @@
     div.community-content p.summary{
         font-size: 0.8em;
     }
-    
-    div.community-spacer{
-        height: 20px;
-        clear: both;
+
+    div.paginator{
+        font-size: 0.8em; padding: 10px 0 10px 85px !important;
+    }
+
+    div.paginator a strong{
+        padding: 2px 4px;
+        background-color: #52AA4D;
+        color: White;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-
     <h1>Community</h1>
 
     <div class="content first-content">
-    
     {% for item in item_list %}
     {% ifchanged %}
     <h2>{{ item.published_original|date:"F Y" }}</h2>
     {% endifchanged %}
-    
+
     <div class="section" id="{{ item.guid|escape }}">
         <div class="community-image">
             <a href="{{ item.url }}"><img src="{{ item.feed.get_gravatar_url }}" alt="Gravatar" title=""/></a>
@@ -67,47 +70,46 @@
         </div>
     </div>
     {% endfor %}
-    </div> 
-    
+    </div>
+
     {% if not page_range|length_is:"1" %}
     {% spaceless %}
-    <div class="content first-content" style="font-size: 0.8em; padding: 10px 0 10px 95px;">
-    	Seite {{ page }} von {{ pages }}&nbsp;&nbsp;
-    	{% if has_previous %}
-    	<a href="?page={{ previous }}">&lArr; Zurück</a>&nbsp;
-    	{% endif %}
-    	{% for p in page_range %}
-    	<a href="?page={{ p }}">{{ p }}</a>&nbsp;
-    	{% endfor %}
-    	{% if has_next %}
-    	<a href="?page={{ next }}">Weiter &rArr;</a>
-    	{% endif %}
-    	<span style="padding-left: 15px;">({{ hits }} Einträge gesamt)</span>
+    <div class="content first-content paginator">
+        Seite {{ page }} von {{ pages }}&nbsp;&nbsp;
+        {% if has_previous %}
+        <a href="?page={{ previous }}">&lArr; Zurück</a>&nbsp;
+        {% endif %}
+        {% for p in page_range %}
+        <a href="?page={{ p }}">{% ifequal p page %}<strong>{{ p }}</strong>{% else %}{{ p }}{% endifequal %}</a>&nbsp;
+        {% endfor %}
+        {% if has_next %}
+        <a href="?page={{ next }}">Weiter &rArr;</a>
+        {% endif %}
+        <span style="padding-left: 15px;">({{ hits }} Einträge gesamt)</span>
     </div>
     {% endspaceless %}
     {% endif %}
-
 {% endblock %}
 
 {% block content-related %}
     <h2>Was ist das hier?</h2>
     <p>Diese Seite fasst die Weblog-Beiträge vieler Djangonauten zusammen.</p>
     <p>Sie wird derzeit stündlich aktualisiert.</p>
-    
+
     <h2>Wer macht mit?</h2>
-    
+
     <p>Folgende Weblogs und Personen sind auf dieser Seite zusammengefasst:</p>
-    
+
     <ul>
         {% for feed in feed_list %}
         <li><a href="{{ feed.url }}">{{ feed.title }}</a></li>
-        {% endfor %}    
+        {% endfor %}
     </ul>
-    
+
     <h2>Mitmachen!</h2>
-    
+
     <p>Wenn du auch über Django schreibst, kannst du ganz einfach deinen
         Newsfeed auf <a href="/community/add/">dieser Seite</a> hinzufügen.</p>
-    
+
     <p><a href="/community/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
 {% endblock %}

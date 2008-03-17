@@ -5,114 +5,134 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: django_de aggregator 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-11 23:27+0100\n"
-"PO-Revision-Date: 2008-03-11 23:27+0100\n"
+"POT-Creation-Date: 2008-03-17 15:04+0100\n"
+"PO-Revision-Date: 2008-03-17 15:06+0100\n"
 "Last-Translator: Martin Mahner <martin@mahner.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Martin Mahner <martin@mahner.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
 
-#: models.py:14 models.py:96 models.py:123 models.py:158
+#: models.py:17
+#: models.py:98
+#: models.py:145
+#: models.py:180
 msgid "Public"
 msgstr "Öffentlich"
 
-#: models.py:15
+#: models.py:18
 msgid "Feed URL"
 msgstr "Feed URL"
 
-#: models.py:16
+#: models.py:19
 msgid "Homepage URL"
 msgstr "Homepage URL"
 
-#: models.py:17
+#: models.py:20
 msgid "Homepage Title"
 msgstr "Homage Titel"
 
 #: models.py:21
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: models.py:24
 msgid "Check each entry for keywords (see below)"
 msgstr "Prüfe jeden Eintrag auf Keywords (siehe unten)"
 
-#: models.py:21
-msgid ""
-"If this is a weblog or a category-feed with only django-related entries, you "
-"may uncheck this."
-msgstr ""
-"Wenn dies ein Weblog oder ein Kategorie-Feed ist, der ausschließich Django-"
-"Kram beinhaltet, solltest du diese hier den Haken entfernen."
+#: models.py:24
+msgid "If this is a weblog or a category-feed with only django-related entries, you may uncheck this."
+msgstr "Wenn dies ein Weblog oder ein Kategorie-Feed ist, der ausschließich Django-Kram beinhaltet, solltest du diese hier den Haken entfernen."
 
-#: models.py:22 models.py:71
+#: models.py:25
+#: models.py:74
 msgid "Keywords"
 msgstr "Keywords"
 
-#: models.py:22
+#: models.py:25
 msgid "All lowercase, seperate by spaces"
 msgstr "Alle kleingeschrieben, getrennt mit Leerzeichen"
 
-#: models.py:25
+#: models.py:28
 msgid "Error Counter"
 msgstr "Fehlerzähler"
 
-#: models.py:31
+#: models.py:34
 msgid "Feed"
 msgstr "Feed"
 
-#: models.py:32
+#: models.py:35
 msgid "Feeds"
 msgstr "Feeds"
 
-#: models.py:58
+#: models.py:61
 msgid "Status"
 msgstr "Status"
 
-#: models.py:63
+#: models.py:66
 msgid "Core Feed Data"
 msgstr "Kern Feeddaten"
 
-#: models.py:77
+#: models.py:80
 msgid "Debug"
 msgstr "Debug"
 
-#: models.py:86
+#: models.py:89
 msgid "Broken!"
 msgstr "Kaputt!"
 
-#: models.py:100 models.py:138
+#: models.py:102
+#: models.py:160
 msgid "Items"
 msgstr "Einträge"
 
-#: models.py:105
+#: models.py:107
 msgid "KW Check"
 msgstr "KW Check"
 
-#: models.py:110
+#: models.py:112
 msgid "Link to Homepage"
 msgstr "Link zur Homepage"
 
-#: models.py:123
+#: models.py:145
 msgid "Disable this Feed-Entry instead of deleting it"
 msgstr "Deaktiviere diesen Feed-Beitrag, anstatt ihn zu löschen"
 
-#: models.py:137
+#: models.py:159
 msgid "Item"
 msgstr "Eintrag"
 
-#: views.py:23
+#: views.py:33
+#, python-format
+msgid "A new feed has been added and awaits activation: %s"
+msgstr "Ein neuer Feed wurde hinzugefügt und wartet auf Aktivierung: %s"
+
+#: views.py:34
+msgid "Community: New feed added."
+msgstr ""
+
+#: views.py:63
 #, python-format
 msgid "\"%s\" was deleted"
 msgstr "\"%s\" wurde gelöscht"
 
-#: views.py:28
+#: views.py:68
 #, python-format
 msgid "\"%s\" was opened"
 msgstr "\"%s\" wurde geöffnet"
 
-#: views.py:33
+#: views.py:73
 #, python-format
 msgid "\"%s\" was closed"
 msgstr "\"%s\" wurde geschlossen"
+
+#: views.py:79
+msgid "Nothing to do..."
+msgstr "Nichts zu tun..."
 
 #: templates/admin/aggregator/change_list.html:4
 msgid "Are you sure?"
@@ -133,3 +153,4 @@ msgstr "Öffnen"
 #: templates/admin/aggregator/change_list.html:10
 msgid "Delete"
 msgstr "Löschen"
+
