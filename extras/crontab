@@ -1,0 +1,3 @@
+PYTHONPATH=/home/django-de/lib/
+DJANGO_SETTINGS_MODULE=django_de.settings
+0 * * * * /usr/bin/env python /home/django-de/lib/django_de/manage.py updatefeeds

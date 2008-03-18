@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: django_de aggregator 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-17 15:04+0100\n"
+"POT-Creation-Date: 2008-03-17 17:38-0500\n"
 "PO-Revision-Date: 2008-03-17 15:06+0100\n"
 "Last-Translator: Martin Mahner <martin@mahner.org>\n"
 "Language-Team: Martin Mahner <martin@mahner.org>\n"
@@ -17,10 +17,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: models.py:17
-#: models.py:98
-#: models.py:145
-#: models.py:180
+#: models.py:17 models.py:98 models.py:145 models.py:180
 msgid "Public"
 msgstr "Öffentlich"
 
@@ -45,11 +42,14 @@ msgid "Check each entry for keywords (see below)"
 msgstr "Prüfe jeden Eintrag auf Keywords (siehe unten)"
 
 #: models.py:24
-msgid "If this is a weblog or a category-feed with only django-related entries, you may uncheck this."
-msgstr "Wenn dies ein Weblog oder ein Kategorie-Feed ist, der ausschließich Django-Kram beinhaltet, solltest du diese hier den Haken entfernen."
+msgid ""
+"If this is a weblog or a category-feed with only django-related entries, you "
+"may uncheck this."
+msgstr ""
+"Wenn dies ein Weblog oder ein Kategorie-Feed ist, der ausschließich Django-"
+"Kram beinhaltet, solltest du diese hier den Haken entfernen."
 
-#: models.py:25
-#: models.py:74
+#: models.py:25 models.py:74
 msgid "Keywords"
 msgstr "Keywords"
 
@@ -85,8 +85,7 @@ msgstr "Debug"
 msgid "Broken!"
 msgstr "Kaputt!"
 
-#: models.py:102
-#: models.py:160
+#: models.py:102 models.py:160
 msgid "Items"
 msgstr "Einträge"
 
@@ -153,4 +152,3 @@ msgstr "Öffnen"
 #: templates/admin/aggregator/change_list.html:10
 msgid "Delete"
 msgstr "Löschen"
-
