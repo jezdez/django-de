@@ -1,0 +1,76 @@
+{% extends "base_2col.html" %}
+{% load jobboard %}
+
+{% block sectionid %}jobboard{% endblock %}
+{% block active_nav-jobboard %}class="active"{% endblock %}
+{% block title %}Django Jobs{% endblock %}
+{% block billboard %}<h2><a href="/jobs/">Django Jobs</a></h2>{% endblock %}
+{% block extrahead %}
+<style type="text/css" media="screen, projection">
+    div.jobboard-content h3{
+        margin: 0 0 3px 0 !important;
+    }
+    div.jobboard-content p.subheadline{
+        font-size: 0.75em !important;
+        margin: 0 !important;
+		color: gray !important;
+    }
+    div.jobboard-content p.summary{
+        font-size: 0.8em !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <h1>Entwickler werden gesucht:</h1>
+
+    <div class="content first-content">
+    <div class="section" id="{{ item.id }}">
+	{% if jobs %}
+	{% for j in jobs %}
+	<div class="jobboard-content">
+		<h3><a href="{{ j.get_absolute_url }}">{{ j.title }}</a> ~ {{ j.location }}</h3>
+		<p class="subheadline">Hinzugefügt am {{ j.published|date:"d. b. Y" }}</p>
+		<p class="summary">{{ j.description|strip_jobdescription:40 }}</p>
+	
+		{% if user.is_superuser %}
+		<p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">EDIT_URL für diesen Eintrag (nur für Superuser)</a></p>
+		{% endif %}
+	</div>
+	{% endfor %}
+	{% else %}
+		<p><em>Derzeit sind keine Angebote eingestellt.</em></p>
+	{% endif %}
+    </div>
+    </div>
+
+    <h1>Entwickler suchen nach Beschäftigung:</h1>
+
+    <div class="content first-content">
+    <div class="section" id="{{ item.guid|escape }}">
+	{% if developers %}
+	{% for j in developers %}
+	<div class="jobboard-content">
+		<h3><a href="{{ j.get_absolute_url }}">{{ j.name }}</a> ~ {{ j.location }}</h3>
+		<p class="subheadline">Hinzugefügt am {{ j.published|date:"d. b. Y" }}</p>
+		<p class="summary">{{ j.description|strip_jobdescription }}</p>
+	
+		{% if user.is_superuser %}
+		<p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">EDIT_URL für diesen Eintrag (nur für Superuser)</a></p>
+		{% endif %}
+	</div>
+	{% endfor %}
+	{% else %}
+		<p><em>Derzeit sind keine Angebote eingestellt.</em></p>
+	{% endif %}
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block content-related %}
+    <h2>Was ist das hier?</h2>
+    <p>Diese Seite soll Firmen und Entwicklern die Möglichkeit geben, nach ..</p>
+	<p>Du kannst dein Stellenangebot oder -gesuch auf <a href="/jobs/add/">dieser Seite</a>
+		kostenlos hinzufügen.</p>
+{% endblock %}

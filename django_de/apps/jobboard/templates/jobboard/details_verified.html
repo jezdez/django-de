@@ -1,0 +1,14 @@
+{% extends "jobboard/details.html" %}
+
+{% block content %}
+
+    <h1>Vielen Dank!</h1>
+        <div class="content first-content">
+        <p>Deine Stellanzeige wurde online gestellt. In der E-Mail war auch ein 
+            Link, mit dem du das Stellenangebot in Zukunft ändern oder löschen kannst.<p>
+        
+        <p>Hier ist deine Stellenanzeige: (<a href="{{ jobentry.get_absolute_url }}">Originale URL</a>)</p>
+    </div>
+    
+    {{ block.super }}
+{% endblock %}

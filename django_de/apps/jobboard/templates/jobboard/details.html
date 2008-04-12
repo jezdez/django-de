@@ -1,0 +1,32 @@
+{% extends "jobboard/overview.html" %}
+{% load jobboard %}
+
+{% block billboard %}<h2><a href="/jobs/">Django Jobs</a> &rarr; {{ jobentry.title|truncatewords:6 }}</h2>{% endblock %}
+
+{% block content %}
+    <h1>{{ jobentry.title }}</h1>
+
+    <div class="content first-content">
+    <div class="section">
+	
+		<h2>Beschreibung</h2>	
+		{{ jobentry.description|strip_jobdescription }}
+		
+		<p style="color:gray;">Hinzugefügt am {{ jobentry.published|date:"d. F Y" }}	
+		
+		<h2>Kontaktdaten</h2>
+		<p>
+			<strong>Name:</strong> {{ jobentry.name }}<br/>
+			{% if jobentry.homepage %}<strong>Homepage:</strong> <a href="{{ jobentry.homepage }}">{{ jobentry.homepage }}</a><br/>{% endif %}
+			<strong>E-Mail:</strong> {{ jobentry.email|obfuscate_email }}<br/>
+			<strong>Ort:</strong> {{ jobentry.location }}<br/>
+		</p>
+    </div>
+    </div>
+	
+    <div class="content first-content">
+    <div class="section">
+		<p><a href="/jobs/">&larr; Zurück zur Übersicht</a></p>
+	</div>
+	</div>
+{% endblock %}

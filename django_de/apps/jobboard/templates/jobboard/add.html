@@ -1,0 +1,92 @@
+{% extends "jobboard/overview.html" %}
+{% load jobboard %}
+
+{% block billboard %}<h2><a href="/jobs/">Django Jobs</a> &rarr; Eintrag {% if is_edit_form %}ändern{% else %}hinzufügen{% endif %}</h2>{% endblock %}
+{% block extrahead %}
+<style type="text/css" media="screen, projection">
+    ol.form{
+        margin: 10px 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 600px;
+    }
+
+    ol.form li{
+        margin: 0 !important;
+        padding: 10px 25px !important;
+        background-color: White;
+        border-bottom: 1px solid #D6F1B7;
+        border-right: 1px solid #D6F1B7;
+        font-size: 0.8em;
+    }
+
+    ol.form label{
+        display: block;
+        font-weight: bold;
+        color: #333333;
+        padding: 0 0 5px 0;
+    }
+
+    ol.form input{
+        width: 300px;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    ol.form input.datum{
+        width: 100px;
+    }
+
+    ol.form li.submit input{
+        margin: 0;
+        width: auto;
+    }
+
+    ol.form textarea{
+        width: 95%;
+        height: 300px;
+    }
+
+    ul.errorlist, ul.errorlist li{
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        border: none !important;
+        color: #c00;
+    }
+
+    ul.errorlist li{
+        padding-bottom: 4px !important;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+    {% if is_edit_form %}
+    <h1>Eintrag löschen</h1>
+    <div class="content">
+        <form method="post" action=".">
+        <ol class="form">
+            <li><p>Diese Aktion kann nicht mehr rückgängig gemacht werden!</p></li>
+            <li class="submit"><input type="submit" name="delete" value="Dieses Stellenangebot löschen"/></li>
+        </ol>
+        </form>
+    </div>
+    
+    <h1>Eintrag ändern</h1>
+    {% else %}
+    <h1>Eintrag hinzufügen</h1>
+    {% endif %}
+    
+    <div class="content">
+        <form method="post" action=".">
+        <ol class="form">
+            {{ form.as_ul }}
+            <li class="submit"><input type="submit" value="Abschicken"/></li>
+        </ol>
+        </form>
+    </div>
+
+{% endblock %}
