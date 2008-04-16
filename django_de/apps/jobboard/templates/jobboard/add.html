@@ -1,7 +1,8 @@
 {% extends "jobboard/overview.html" %}
 {% load jobboard %}
+{% load i18n %}
 
-{% block billboard %}<h2><a href="/jobs/">Django Jobs</a> &rarr; Eintrag {% if is_edit_form %}ändern{% else %}hinzufügen{% endif %}</h2>{% endblock %}
+{% block billboard %}<h2><a href="/jobs/">Django Jobs</a> &rarr; {% if is_edit_form %}{% trans "edit" %}{% else %}{% trans "add" %}{% endif %}</h2>{% endblock %}
 {% block extrahead %}
 <style type="text/css" media="screen, projection">
     ol.form{
@@ -65,26 +66,26 @@
 {% block content %}
 
     {% if is_edit_form %}
-    <h1>Eintrag löschen</h1>
+    <h1>{% trans "Delete entry" %}</h1>
     <div class="content">
         <form method="post" action=".">
         <ol class="form">
-            <li><p>Diese Aktion kann nicht mehr rückgängig gemacht werden!</p></li>
-            <li class="submit"><input type="submit" name="delete" value="Dieses Stellenangebot löschen"/></li>
+            <li><p>{% trans "This action can not be undone!" %}</p></li>
+            <li class="submit"><input type="submit" name="delete" value="{% trans "Delete this job offer" %}"/></li>
         </ol>
         </form>
     </div>
     
-    <h1>Eintrag ändern</h1>
+    <h1>{% trans "Edit entry" %}</h1>
     {% else %}
-    <h1>Eintrag hinzufügen</h1>
+    <h1>{% trans "Add entry" %}</h1>
     {% endif %}
     
     <div class="content">
         <form method="post" action=".">
         <ol class="form">
             {{ form.as_ul }}
-            <li class="submit"><input type="submit" value="Abschicken"/></li>
+            <li class="submit"><input type="submit" value="{% trans "Submit" %}"/></li>
         </ol>
         </form>
     </div>

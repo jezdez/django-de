@@ -1,20 +1,16 @@
-Hallo {{ entry.name }},
+{% load i18n %}Hallo {{ entry.name }},
 
 deine Stellenanzeige bei https://www.django-de.org/jobs/ wurde erfolgreich
 eingestellt.
 
+1. Stellenanzeige aktivieren
 
- 1. Stellenanzeige aktivieren
-========================================================================
-
-Bitte klicke noch auf den folgenden Link um die Anzeige zu 
-aktivieren.
+Bitte klicke noch auf den folgenden Link, um die Anzeige zu aktivieren.
 
 https://www.django-de.org/jobs/verify/{{ entry.id }}-{{ entry.edit_key }}/
 
 
- 2. Stellenanzeige ändern oder löschen
-========================================================================
+2. Stellenanzeige ändern oder löschen
 
 Du kannst diese Stellenanzeige auch jederzeit ändern oder löschen. Klicke dazu
 einfach auf diesen Link:
@@ -23,14 +19,12 @@ https://www.django-de.org/jobs/edit/{{ entry.id }}-{{ entry.edit_key }}/
 
 Hebe dir diese E-Mail gut auf!
 
-========================================================================
-
 Wenn du diese E-Mail nicht erwartet hast, oder in dem Glauben bist, jemand 
-Fremdes hat unter deinem Namen (oder deiner E-Mail) ein Stellenangebot
+Fremdes hat unter deinem Namen (oder deiner E-Mail-Adresse) ein Stellenangebot
 aufgegeben, ignoriere diese Nachricht einfach. Die Anzeige wird nicht 
 veröffentlicht und nach einigen Tagen aus dem System gelöscht.
 
-Im Zweifelsfall nimm Kontakt mit uns auf: https://www.django-de.org/imprint/
+Im Zweifelsfall nimm Kontakt mit uns auf: http://www.django-de.org/imprint/
 
 Vielen Dank. 
 

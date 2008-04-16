@@ -1,8 +1,10 @@
 ﻿import os
 import urlparse
+
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
+
 from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -50,7 +52,9 @@ def _get_svnroot(version, subpath):
     else:
         client = pysvn.Client()
         if subpath is None:
-            docroot = urlparse.urljoin(settings.DOCS_SVN_ROOT, settings.DOCS_SVN_PATH)
+            docroot = urlparse.urljoin(
+                settings.DOCS_SVN_ROOT,
+                settings.DOCS_SVN_PATH)
         else:
             if version is None:
                 version = "trunk"
@@ -63,18 +67,6 @@ def _get_svnroot(version, subpath):
         try:
             client.info2(docroot, recurse=False)
         except pysvn.ClientError:
-            raise Http404("Bad SVN path: %s" % docroot)
+            print "bla"
+            #raise Http404("Bad SVN path: %s" % docroot)
         return client, version, docroot
-
-def get_documents():
-    """
-    Returns a list of document slugs available in the SVN.
-    """
-    all_docs = []
-    for release in Release.objects.all():
-        client, version, docroot = _get_svnroot(release.version, settings.DOCS_SVN_PATH)
-        doclist = client.ls(docroot, recurse=False)
-        doclist = [os.path.splitext(os.path.basename(doc.name))[0] for doc in doclist]
-        doclist.sort()
-        all_docs.extend(["/documentation/%s/" % doc for doc in doclist])
-    return tuple(all_docs)

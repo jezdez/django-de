@@ -31,10 +31,10 @@
 	<div class="jobboard-content">
 		<h3><a href="{{ j.get_absolute_url }}">{{ j.title }}</a> ~ {{ j.location }}</h3>
 		<p class="subheadline">Hinzugefügt am {{ j.published|date:"d. b. Y" }}</p>
-		<p class="summary">{{ j.description|strip_jobdescription:40 }}</p>
-	
+		<p class="summary">{{ j.description|strip_jobdescription:"40" }}</p>
+	    
 		{% if user.is_superuser %}
-		<p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">EDIT_URL für diesen Eintrag (nur für Superuser)</a></p>
+		<p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">Eintrag bearbeiten</a></p>
 		{% endif %}
 	</div>
 	{% endfor %}

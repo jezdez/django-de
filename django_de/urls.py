@@ -6,7 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 
 from django_de.sitemaps import StaticFileSitemap
-from django_de.apps.documentation.models import get_documents
+from django_de.apps.documentation.utils import get_documents
 from django_de.utils import cache_status
 
 static_urls = (
@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^community/', include('django_de.apps.aggregator.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
+    (r'^jobs/', include('django_de.apps.jobboard.urls')),    
     (r'^cache_status/$', cache_status),
     (r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}),
 )

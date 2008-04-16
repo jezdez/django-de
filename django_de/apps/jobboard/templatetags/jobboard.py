@@ -10,7 +10,7 @@ def strip_jobdescription(content, max_words=None):
     content = striptags(content)
     if isinstance(max_words, int) and max_words > 0:
         content = truncatewords(content, max_words)    
-    content = markdown.Markdown(content)
+    content = markdown.markdown(content)
     return mark_safe(content)
 
 

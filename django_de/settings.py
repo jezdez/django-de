@@ -2,7 +2,12 @@ import os, platform
 DEVELOPMENT_MODE = (platform.node() != "tichy.websushi.org")
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-ADMINS = (('Jannis Leidel', 'jannis@leidel.info'),)
+DEFAULT_FROM_EMAIL = "info@django-de.org"
+
+ADMINS = (
+    ('Jannis Leidel', 'jannis@leidel.info'),
+
+)
 
 MANAGERS = ADMINS
 
@@ -10,7 +15,7 @@ if DEVELOPMENT_MODE:
     DEBUG = True
     PREPEND_WWW = False
     CACHE_BACKEND = "file:///tmp/"
-    DOCS_SVN_ROOT = "http://www.django-de.org/svn/django/"
+    DOCS_SVN_ROOT = "https://www.django-de.org/svn/django/"
     DATABASE_ENGINE = 'sqlite3'
     DATABASE_NAME = os.path.join(PROJECT_PATH, 'django_de.db')
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
@@ -83,6 +88,7 @@ INSTALLED_APPS = (
     'django_de.apps.authors',
     'django_de.apps.documentation',
     'django_de.apps.aggregator',
+    'django_de.apps.jobboard',
 )
 
 # ############################################################################

@@ -1,26 +1,29 @@
 from django.db import models
+from django.db.models import permalink
+from django.utils.translation import ugettext_lazy as _
+
 from django_de.apps.jobboard.manager import EntryManager
 
-JOB_CHOICES = (
-    (1, 'Wir suchen (einen) Entwickler'),
-    (2, 'Ich bin Entwickler und suche nach Herausforderungen'), #FIXME: Das klingt doof
-)
-
 class Entry(models.Model):
-
+    LOOKING_FOR_DEV = 1
+    LOOKING_FOR_JOB = 2
+    JOB_CHOICES = (
+        (LOOKING_FOR_DEV, _('We are looking for (a) devloper')),
+        (LOOKING_FOR_JOB, _('I\'m looking for a job oppurtunity')),
+    )
     # Manager
     objects = EntryManager()
 
     # Jobdaten
     job_type = models.IntegerField(max_length=1, choices=JOB_CHOICES)
-    title = models.CharField('Titel', max_length=100)
-    description = models.TextField('Beschreibung')
+    title = models.CharField(_('title'), max_length=100)
+    description = models.TextField(_('description'))
 
     # Kontaktdaten
-    name = models.CharField('Dein Name', max_length=60)
-    email = models.EmailField('Deine E-Mail-Adresse')
-    homepage = models.URLField('Homapge', blank=True)
-    location = models.CharField('Wohnort', max_length=60)
+    name = models.CharField(_('Your name'), max_length=60)
+    email = models.EmailField(_('Your email adress'))
+    homepage = models.URLField(_('Your homepage'), blank=True)
+    location = models.CharField(_('Your location'), max_length=60)
 
     # Datumsfelder
     published = models.DateTimeField(auto_now_add=True)
@@ -43,8 +46,13 @@ class Entry(models.Model):
             'published',
         )
 
+    class Meta:
+        verbose_name = _('Entry')
+        verbose_name_plural = _('Entries')
+
     def __unicode__(self):
         return str(self.id)
 
     def get_absolute_url(self):
-        return '/jobs/%s/' % self.id
+        return ('django_de.apps.jobboard.views.details', [self.id])
+    get_absolute_url = permalink(get_absolute_url)

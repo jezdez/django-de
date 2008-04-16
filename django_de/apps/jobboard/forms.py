@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import newforms as forms
-from django_de.apps.jobboard.models import Entry, JOB_CHOICES
+from django_de.apps.jobboard.models import Entry
 
 import datetime
 from django import newforms as forms
@@ -10,7 +10,7 @@ class JobEntryForm(forms.ModelForm):
 
     job_type = forms.ChoiceField(
         label = 'Stellenangebot oder -gesuch aufgeben?',
-        choices=JOB_CHOICES,
+        choices = Entry.JOB_CHOICES,
     )
 
     description = forms.CharField(
@@ -29,12 +29,12 @@ class JobEntryForm(forms.ModelForm):
         label = 'Homepage: (optional)',
     )
 
-    published_until= forms.DateField(
-        required=False,
-        widget=forms.TextInput(attrs={'class': 'datum'}),
-        label=u'Anzeigen bis: (optional)',
-        help_text='Lasse dieses Feld leer, um das Inserat für immer anzeigen zu \
-                   lassen.<br/>Ansonsten gib das Datum im Format YYYY-MM-DD an.',
+    published_until = forms.DateField(
+        required = False,
+        widget = forms.TextInput(attrs={'class': 'datum'}),
+        label = u'Anzeigen bis: (optional)',
+        help_text = 'Lasse dieses Feld leer, um das Inserat für immer anzeigen zu \
+                     lassen.<br/>Ansonsten gib das Datum im Format YYYY-MM-DD an.',
         # TODO: Hier ein Dropdown-Widget nutzen? Wie dann aber
         #       unendlich lange Anzeigen markieren?
     )
