@@ -7,7 +7,7 @@ DEFAULT_FROM_EMAIL = "info@django-de.org"
 ADMINS = (
     ('Arne Brodowski', 'arne@rcs4u.de'),
     ('Jannis Leidel', 'jannis@leidel.info'),
-    ('Martin Mahner', 'barttc@gmail.com'),
+    ('Martin Mahner', 'martin@mahner.org'),
 )
 
 MANAGERS = ADMINS
