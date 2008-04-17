@@ -7,7 +7,7 @@ from django.template.context import RequestContext
 from django.template import loader
 from django.http import HttpResponseRedirect, Http404
 from django.core.mail import send_mail, mail_admins
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.conf import settings
 
 from django_de.apps.jobboard.models import Entry
@@ -41,7 +41,7 @@ def add(request):
                 (entry.email,)
             )
             mail_admins(
-                'Stellenangebot oder -gesuch aufgeben',
+                _('New job offer or application'),
                 add_message,
                 True
             )
