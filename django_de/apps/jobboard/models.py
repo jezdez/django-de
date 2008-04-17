@@ -8,8 +8,8 @@ class Entry(models.Model):
     LOOKING_FOR_DEV = 1
     LOOKING_FOR_JOB = 2
     JOB_CHOICES = (
-        (LOOKING_FOR_DEV, _('We are looking for (a) devloper')),
-        (LOOKING_FOR_JOB, _('I\'m looking for a job oppurtunity')),
+        (LOOKING_FOR_DEV, _('We are looking for (a) developer')),
+        (LOOKING_FOR_JOB, _('I\'m looking for a job opportunity')),
     )
     # Manager
     objects = EntryManager()
