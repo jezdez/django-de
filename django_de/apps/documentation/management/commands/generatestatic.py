@@ -1,6 +1,7 @@
 from django.core.management.base import NoArgsCommand
 
 from django_de.apps.documentation.utils import get_documents
+
 from django_de.apps.documentation.generator import quick_publish, StaticGeneratorException
 
 class Command(NoArgsCommand):
