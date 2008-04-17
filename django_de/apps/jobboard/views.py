@@ -41,7 +41,7 @@ def add(request):
                 (entry.email,)
             )
             mail_admins(
-                _('New job offer or application'),
+                'Stellenangebot oder -gesuch aufgeben',
                 add_message,
                 True
             )
