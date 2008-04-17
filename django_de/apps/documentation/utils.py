@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-from django_de.apps.documentation.models import Release
+from django_de.apps.documentation.models import Release, _get_svnroot
 
 def get_documents():
     """
