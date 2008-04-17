@@ -58,13 +58,13 @@
                         Community
                     </a>
                 </li>
-                <li id="nav-imprint">
-                    <a href="/imprint/" {% block active_nav-imprint %}{% endblock %}>
-                        Impressum
+                <li id="nav-jobs">
+                    <a href="/jobs/" {% block active_nav-jobs %}{% endblock %}>
+                        Jobs
                     </a>
                 </li>
                 <li id="nav-trac">
-                    <a href="/trac/">
+                    <a href="/trac/" {% block active_nav-imprint %}{% endblock %}>
                         Trac
                     </a>
                 </li>
@@ -86,7 +86,8 @@
             <p>
                 Django-de ist ein deutschsprachiger Treffpunkt von und für
                 Benutzer von <a href="http://www.djangoproject.com" title="Offzielle Seite">Django</a>.
-                Django ist eine eingetragene Marke von Lawrence Journal-World.
+                Django ist eine eingetragene Marke der Django Software Foundation.
+                <a href="/imprint/">Impressum</a>
             </p>
         </div>
     </div>
