@@ -1,4 +1,4 @@
-{% load i18n %}Hallo {{ entry.name }},
+Hallo {{ entry.name }},
 
 deine Stellenanzeige bei https://www.django-de.org/jobs/ wurde erfolgreich
 eingestellt.

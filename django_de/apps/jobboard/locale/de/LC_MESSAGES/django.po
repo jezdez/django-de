@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-17 13:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:11
+#, fuzzy
+msgid "We are looking for (a) developer"
+msgstr "Wir suchen (einen) Entwickler"
+
+#: models.py:12
+msgid "I'm looking for a job oppurtunity"
+msgstr "Ich bin Entwickler und suche einen Job"
+
+#: models.py:19
+msgid "title"
+msgstr "Titel"
+
+#: models.py:20
+msgid "description"
+msgstr "Beschreibung"
+
+#: models.py:23
+msgid "Your name"
+msgstr "Dein Name"
+
+#: models.py:24
+msgid "Your email adress"
+msgstr "Deine E-Mail-Adresse"
+
+#: models.py:25
+msgid "Your homepage"
+msgstr "Deine Webseite"
+
+#: models.py:26
+msgid "Your location"
+msgstr "Dein Wohn- oder Arbeitsort"
+
+#: models.py:50
+msgid "Entry"
+msgstr "Eintrag"
+
+#: models.py:51
+msgid "Entries"
+msgstr "Einträge"
+
+#: views.py:38
+msgid "Your job offer or application on django-de.org"
+msgstr "Deine Stellenanzeige bei django-de.org"
+
+#: views.py:44
+msgid "New job offer or application"
+msgstr "Stellenangebot oder -gesuch aufgeben"
+
+#: views.py:64 views.py:95
+msgid "This job offer or application doesn't exist (anymore)"
+msgstr "Dieses Stellenangebit gibt es nicht (mehr)"
+
+#: templates/jobboard/add.html:5
+msgid "edit"
+msgstr "Bearbeiten"
+
+#: templates/jobboard/add.html:5
+msgid "add"
+msgstr "Hinzufügen"
+
+#: templates/jobboard/add.html:69
+msgid "Delete entry"
+msgstr "Eintrag löschen"
+
+#: templates/jobboard/add.html:73
+msgid "This action can not be undone!"
+msgstr "Diese Aktion kann nicht mehr rückgängig gemacht werden"
+
+#: templates/jobboard/add.html:74
+msgid "Delete this job offer"
+msgstr "Dieses Stellenangebot löschen"
+
+#: templates/jobboard/add.html:79
+msgid "Edit entry"
+msgstr "Diesen Eintrag löschen"
+
+#: templates/jobboard/add.html:81
+msgid "Add entry"
+msgstr "Eintrag hinzufügen"
+
+#: templates/jobboard/add.html:88
+msgid "Submit"
+msgstr "Absenden"
+
+msgid "Homepage: (optional)"
+msgstr "Webseite (optional)"
+
+msgid "Show until: (optional)"
+msgstr "Zeigen bis: (optional)"
