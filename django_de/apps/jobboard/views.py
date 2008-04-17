@@ -35,10 +35,10 @@ def add(request):
             # Mail an den Besitzer um den Beitrag freischalten zu lassen
             add_message = loader.render_to_string('jobboard/mail/add_notify.txt', {'entry': entry})
             send_mail(
-                'Deine Stellenanzeige bei django-de.org',
+                _('Your job offer or application on django-de.org'),
                 add_message,
                 settings.DEFAULT_FROM_EMAIL,
-                (entry.email,)
+                [entry.email]
             )
             mail_admins(
                 _('New job offer or application'),
