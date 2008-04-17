@@ -5,8 +5,9 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_FROM_EMAIL = "info@django-de.org"
 
 ADMINS = (
+    ('Arne Brodowski', 'arne@rcs4u.de'),
     ('Jannis Leidel', 'jannis@leidel.info'),
-
+    ('Martin Mahner', 'barttc@gmail.com'),
 )
 
 MANAGERS = ADMINS
