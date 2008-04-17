@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-17 13:03+0200\n"
+"POT-Creation-Date: 2008-04-17 13:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
 "Language-Team: German <de@li.org>\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: models.py:11
-#, fuzzy
 msgid "We are looking for (a) developer"
 msgstr "Wir suchen (einen) Entwickler"
 
 #: models.py:12
-msgid "I'm looking for a job oppurtunity"
+msgid "I'm looking for a job opportunity"
 msgstr "Ich bin Entwickler und suche einen Job"
 
 #: models.py:19
