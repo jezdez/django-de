@@ -97,9 +97,11 @@
     </script>
     
     <script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-204224-14");
-    pageTracker._initData();
-    pageTracker._trackPageview();
+    if (typeof(_gat) == 'object') {
+        var pageTracker = _gat._getTracker("UA-204224-14");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    }
     </script>
     </body>
 </html>
