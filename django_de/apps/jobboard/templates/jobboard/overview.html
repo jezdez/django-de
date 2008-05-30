@@ -18,6 +18,10 @@
     div.jobboard-content p.summary{
         font-size: 0.8em !important;
     }
+    
+    div.jobboard-content p.more{
+        margin-bottom: 20px !important;
+    }
 </style>
 {% endblock %}
 
@@ -32,6 +36,7 @@
         <h3><a href="{{ j.get_absolute_url }}">{{ j.title }}</a> ~ {{ j.location }}</h3>
         <p class="subheadline">Hinzugefügt am {{ j.published|date:"d. b. Y" }}</p>
         <p class="summary">{{ j.description|strip_jobdescription:"40" }}</p>
+        <p class="more"><a href="{{ j.get_absolute_url }}">Weiter lesen&hellip;</a></p>
         
         {% if user.is_superuser %}
         <p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">Eintrag bearbeiten</a></p>
@@ -53,7 +58,8 @@
     <div class="jobboard-content">
         <h3><a href="{{ j.get_absolute_url }}">{{ j.name }}</a> ~ {{ j.location }}</h3>
         <p class="subheadline">Hinzugefügt am {{ j.published|date:"d. b. Y" }}</p>
-        <p class="summary">{{ j.description|strip_jobdescription }}</p>
+        <p class="summary">{{ j.description|strip_jobdescription:"40" }}</p>
+        <p class="more"><a href="{{ j.get_absolute_url }}">Weiter lesen&hellip;</a></p>
     
         {% if user.is_superuser %}
         <p><a href="/jobs/edit/{{ j.id }}-{{ j.edit_key }}/">EDIT_URL für diesen Eintrag (nur für Superuser)</a></p>
