@@ -71,6 +71,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_de.apps.documentation.middleware.StaticGeneratorMiddleware',
     #'django.middleware.cache.CacheMiddleware',
     'django.middleware.common.CommonMiddleware',
 )
