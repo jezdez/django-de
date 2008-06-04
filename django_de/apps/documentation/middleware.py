@@ -5,6 +5,9 @@ from staticgenerator import StaticGenerator
 from django_de.apps.documentation.utils import get_absolute_document_urls
 
 class StaticGeneratorMiddleware(object):
+    """
+    This is a modification of the staticgenerator middleware.
+    """
     urls = tuple([re.compile(r'^%s' % url) for url in get_absolute_document_urls()])
     
     def process_response(self, request, response):
