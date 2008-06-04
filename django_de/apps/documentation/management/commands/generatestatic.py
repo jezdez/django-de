@@ -7,7 +7,8 @@ class Command(NoArgsCommand):
     help = 'Used to autogenerate static files from SVN repository.'
 
     def handle_noargs(self, **options):
-        try:
-            quick_publish(get_absolute_document_urls())
-        except StaticGeneratorException:
-            pass
+        for path in get_absolute_document_urls() + ('/', '/documentation/'):
+            try:
+                quick_publish(path)
+            except StaticGeneratorException:
+                pass
