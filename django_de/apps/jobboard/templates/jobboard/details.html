@@ -10,7 +10,7 @@
     <div class="section">
 	
 		<h2>Beschreibung</h2>	
-		{{ jobentry.description|strip_jobdescription }}
+		{{ jobentry.description|strip_jobdescription|urlize }}
 		
 		<p style="color:gray;">Hinzugefügt am {{ jobentry.published|date:"d. F Y" }}	
 		
