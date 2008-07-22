@@ -1,1 +1,0 @@
-from django_de.apps.aggregator import admin

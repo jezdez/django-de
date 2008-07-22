@@ -24,6 +24,8 @@ sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
 }
 
+admin.autodiscover()
+
 urlpatterns = patterns('',
     (r'^$', direct_to_template, {'template': 'homepage.html'}),
     (r'^download/', direct_to_template, {'template': 'download.html'}),

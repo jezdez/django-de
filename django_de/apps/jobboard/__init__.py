@@ -1,1 +1,0 @@
-from django_de.apps.jobboard import admin
