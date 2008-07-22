@@ -4,12 +4,9 @@ import urlparse
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
-
 from django.http import Http404
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-
-from django_de.apps.documentation import builder
 
 def get_choices(path=None):
     try:
@@ -33,9 +30,6 @@ class Release(models.Model):
 
     class Meta:
         ordering = ('-release_date',)
-
-    class Admin:
-        list_display = ("version", "release_date")
 
     def __unicode__(self):
         return self.version
@@ -67,6 +61,5 @@ def _get_svnroot(version, subpath):
         try:
             client.info2(docroot, recurse=False)
         except pysvn.ClientError:
-            print "bla"
-            #raise Http404("Bad SVN path: %s" % docroot)
+            raise Http404("Bad SVN path: %s" % docroot)
         return client, version, docroot

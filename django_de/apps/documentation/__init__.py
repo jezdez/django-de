@@ -1,0 +1,1 @@
+from django_de.apps.documentation import admin

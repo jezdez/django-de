@@ -2,9 +2,10 @@ import re
 import md5
 from urlparse import urljoin
 from urllib import quote
+
 from django.db import models
 from django.conf import settings
-from django.template.defaultfilters import striptags, escape
+from django.template.defaultfilters import escape
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
 from django_de.apps.aggregator.manager import FeedManager, ItemManager
@@ -34,55 +35,6 @@ class Feed(models.Model):
         verbose_name = _('Feed')
         verbose_name_plural = _('Feeds')
         ordering = ('-published',)
-
-    class Admin:
-        list_display = (
-            'admin_action_checkbox',
-            'public_flag',
-            'title',
-            'url_link',
-            'errors',
-            'keyword_check_flag',
-            'keywords',
-            'item_count',
-            'published',
-        )
-
-        list_display_links = (
-            'title',
-        )
-
-        list_filter = (
-            'public',
-            'published',
-        )
-
-        fields = (
-            (_('Status'), {
-                'fields': (
-                    'public',
-                ),
-            }),
-            (_('Core Feed Data'), {
-                'fields': (
-                    'feed_url',
-                    'url',
-                    'title',
-                    'owner_email',
-                ),
-            }),
-            (_('Keywords'), {
-                'fields': (
-                    'keyword_check',
-                    'keywords',
-                ),
-            }),
-            (_('Debug'), {
-                'fields': (
-                    'errors',
-                ),
-            }),
-        )
 
     def admin_action_checkbox(self):
         enabled = (self.errors >= settings.AGGREGATOR_MAX_ERRORS) and ' disabled="disabled"' or ''
@@ -159,20 +111,6 @@ class Item(models.Model):
         verbose_name = _('Item')
         verbose_name_plural = _('Items')
         ordering = ('-published',)
-
-    class Admin:
-        list_display = (
-            'admin_action_checkbox',
-            'public_flag',
-            'feed',
-            'title',
-            'published',
-            'published_original',
-        )
-
-        list_display_links = (
-            'title',
-        )
 
     def public_flag(self):
         return self.public

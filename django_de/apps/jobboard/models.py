@@ -38,14 +38,6 @@ class Entry(models.Model):
     # Boolean ob der Eintrag schon per E-Mail bestaetigt wurde
     verified = models.BooleanField(default=False)
 
-    class Admin:
-        list_display = (
-            'name',
-            'job_type',
-            'verified',
-            'published',
-        )
-
     class Meta:
         verbose_name = _('Entry')
         verbose_name_plural = _('Entries')

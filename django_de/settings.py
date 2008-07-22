@@ -1,4 +1,5 @@
 import os, platform
+
 DEVELOPMENT_MODE = (platform.node() != "tichy.websushi.org")
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
