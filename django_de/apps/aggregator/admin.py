@@ -25,33 +25,6 @@ class FeedAdmin(admin.ModelAdmin):
         'published',
     )
 
-    fields = (
-        (_('Status'), {
-            'fields': (
-                'public',
-            ),
-        }),
-        (_('Core Feed Data'), {
-            'fields': (
-                'feed_url',
-                'url',
-                'title',
-                'owner_email',
-            ),
-        }),
-        (_('Keywords'), {
-            'fields': (
-                'keyword_check',
-                'keywords',
-            ),
-        }),
-        (_('Debug'), {
-            'fields': (
-                'errors',
-            ),
-        }),
-    )
-
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = (
