@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import site
 
 lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib/python2.4/site-packages'))
 path = site.addsitedir(lib_path, set())
