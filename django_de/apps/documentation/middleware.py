@@ -8,7 +8,7 @@ class StaticGeneratorMiddleware(object):
     """
     This is a modification of the staticgenerator middleware.
     """
-    urls = tuple([re.compile(r'^%s' % url) for url in get_absolute_document_urls()+('/', '/documentation/')])
+    urls = tuple([re.compile(r'^%s' % url) for url in get_absolute_document_urls()])
     
     def process_response(self, request, response):
         if response.status_code == 200:
