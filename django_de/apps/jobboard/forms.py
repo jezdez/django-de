@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from django import newforms as forms
+from django import forms
 from django_de.apps.jobboard.models import Entry
 
 import datetime
-from django import newforms as forms
+from django import forms
 
 class JobEntryForm(forms.ModelForm):
 

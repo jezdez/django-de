@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import feedparser
-from django import newforms as forms
+from django import forms
 from django_de.apps.aggregator.models import Feed
 
 class NewFeedForm(forms.ModelForm):
