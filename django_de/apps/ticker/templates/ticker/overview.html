@@ -12,10 +12,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Neues aus der Django-Welt</h1>
-	
-	<div class="content first-content">
-    
+<h1>Neues aus der Django-Welt</h1>
+<div class="content first-content">
 	{% autopaginate entry_list 1 %}
 	{% for entry in entry_list %}
     <div class="section" id="{{ item.guid|escape }}">
@@ -32,9 +30,8 @@
         </div>
     </div>
     {% endfor %}
-    </div>
-	
-	{% paginate %}
+</div>
+{% paginate %}
 {% endblock %}
 
 {% block content-related %}
@@ -48,7 +45,21 @@
 		Account ist schnell angelegt.</p>
 		
 	<h2>Populäre Tags</h2>
+	
+	<ul class="chartlist">
+	  {% for tag in popular_tags|slice:":10" %}
+	  <li>
+		<a href="{% url ticker_archive_details tag.name|urlencode %}">{{ tag.name }}</a>
+		<span class="count" title="umber of related entries">{{ tag.count }}</span>
+		<span class="index" style="width: {% widthratio tag.count popular_tags_max 100 %}%">
+		  ({% widthratio tag.count popular_tags_max 100 %}%)
+		</span>
+	  </li>
+	  {% endfor %}
+	</ul>
+	
+	<p style="margin-top: 10px;">Eine Übersicht über alle Tags findest du im 
+		<a href="{% url ticker_archive %}">Archiv</a>.</p>
 
-
-    <p><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+    <p style="margin-top: 20px;"><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
 {% endblock %}
