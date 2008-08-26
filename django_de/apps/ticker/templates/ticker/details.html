@@ -1,0 +1,62 @@
+{% extends "base_2col.html" %}
+{% load pagination_tags %}
+
+{% block sectionid %}news{% endblock %}
+{% block active_nav-news %}class="active"{% endblock %}
+{% block title %}News{% endblock %}
+{% block billboard %}
+	<h2>
+		<a href="{% url ticker_overview %}">News</a>
+	</h2>
+{% endblock %}
+
+{% block content %}
+<h1>{{ entry.title }}</h1>
+<div class="content first-content">
+	{% include "ticker/entry.html" %}
+	
+	<div class="newsentry-content">
+	<h3>Kommentare</h3>
+	
+	<h3>Kommentar hinzufügen</h3>
+	</div>
+</div>
+{% endblock %}
+
+{% block content-related %}
+
+	<p>
+		<span class="prevnext">
+			{% if entry.get_prev %}
+			&larr; <a href="{{ entry.get_prev.get_absolute_url }}" title="Vorheriger Beitrag: {{ entry.get_prev.title }}">
+				Vorheriger Beitrag
+			</a>
+			{% endif %}
+			&nbsp;
+			{% if entry.get_next %}
+			<a href="{{ entry.get_next.get_absolute_url }}" title="Nächster Beitrag: {{ entry.get_next.title }}">
+				Nächster Beitrag
+			</a> &rarr;
+			{% endif %}
+		</span>
+	</p>
+
+
+	{% if entry.get_tags %}
+	<h2 class="first">Tags für diesen Beitrag</h2>
+	{% for tag in entry.get_tags %}
+		<a href="{% url ticker_archive_details tag.name|urlencode %}" class="tag">{{ tag.name }}</a>
+	{% endfor %}
+	{% endif %}
+
+	{% if entry.get_related %}
+	<h2>Verwandte Beiträge</h2>
+	<ul class="linklist">
+	{% for rel in entry.get_related|slice:":5" %}
+		<li><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+
+    <p style="margin-top: 20px;"><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+{% endblock %}
