@@ -37,11 +37,11 @@ class Entry(models.Model):
     source_url = models.URLField('Quelle', blank=True)
 
     # Date Fields
-    published = models.DateTimeField(_('Published'), auto_now_add=True)
-    modified = models.DateTimeField(_('Modified'), auto_now=True)
+    published = models.DateTimeField('Published', auto_now_add=True)
+    modified = models.DateTimeField('Modified', auto_now=True)
 
     # Status Fields
-    status = models.SmallIntegerField(_('Status'),
+    status = models.SmallIntegerField('Status',
         choices=STATUS_CHOICES,
         default=STATUS_OPEN)
 
