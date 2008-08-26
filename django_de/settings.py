@@ -98,6 +98,7 @@ INSTALLED_APPS = (
     'gravatar',
     'tagging',
     'threadedcomments',
+    'extensions',
 )
 
 
