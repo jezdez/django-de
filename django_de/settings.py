@@ -98,7 +98,7 @@ INSTALLED_APPS = (
     'gravatar',
     'tagging',
     'threadedcomments',
-    'extensions',
+    'django_extensions',
 )
 
 
