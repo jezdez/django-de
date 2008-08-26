@@ -1,5 +1,6 @@
 {% extends "base_2col.html" %}
 {% load pagination_tags %}
+{% load threadedcommentstags %}
 
 {% block sectionid %}news{% endblock %}
 {% block active_nav-news %}class="active"{% endblock %}
@@ -16,9 +17,40 @@
 	{% include "ticker/entry.html" %}
 	
 	<div class="newsentry-content">
+		
 	<h3>Kommentare</h3>
-	
-	<h3>Kommentar hinzufügen</h3>
+		<ol class="comments">
+	    {% get_free_threaded_comment_tree for entry as comment_tree %}
+	    {% for comment in tree %}
+	        <div  class="comment">
+	             said:<br/>
+	            
+	        </div>
+	    {% endfor %}
+
+		{% for comment in comment_tree %}
+			<li id="c{{ comment.id }}" style="margin-left: {{ comment.depth }}em;">
+				<p class="title">
+					<a class="jump" href="#c{{ comment.id }}">#{{ forloop.counter }}</a> ~
+					<span class="author">By <a href="{{ comment.website }}">{{ comment.name }}</a></span>
+					~ comment.published|timesince
+				</p>
+				{% auto_transform_markup comment %}
+			</li>
+		{% endfor %}
+		</ol>
+		
+		<h3>Kommentar hinzufügen</h3>
+		<fieldset class="shinyform">
+	    <form method="POST" action="{% get_free_comment_url entry %}">
+	        <ol>
+	            {% get_free_threaded_comment_form as form %}
+	            {{ form.as_ul }}
+	            <li><input type="submit" value="Submit Comment" /></li>
+	        </ol>
+	    </form>
+		</fieldset>
+
 	</div>
 </div>
 {% endblock %}

@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'pagination',
     'gravatar',
     'tagging',
+    'threadedcomments',
 )
 
 

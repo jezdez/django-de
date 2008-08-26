@@ -16,6 +16,8 @@
 			<a href="{{ entry.source_url }}">{{ entry.source_url|truncurl:"50" }}</a>
 		</p>
 		{% endif %}
+		{% if not is_detail %}
         <p class="more"><strong>Details und Kommentare:</strong> <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
-    </div>
+    	{% endif %}
+	</div>
 </div>
