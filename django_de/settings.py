@@ -21,6 +21,11 @@ if DEVELOPMENT_MODE:
     DATABASE_ENGINE = 'sqlite3'
     DATABASE_NAME = os.path.join(PROJECT_PATH, 'django_de.db')
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
+
 else:
     DEBUG = False
     PREPEND_WWW = True
@@ -125,3 +130,12 @@ AGGREGATOR_GRAVATAR_SIZE = 50
 
 # Gravatar Rating; must be one of [ G | PG | R | X ]
 AGGREGATOR_GRAVATAR_RATING = 'PG'
+
+
+# ############################################################################
+# Pagination
+# ############################################################################
+
+PAGINATION_DEFAULT_PAGINATION = 10
+PAGINATION_DEFAULT_WINDOW = 3
+PAGINATION_DEFAULT_ORPHANS = 1
