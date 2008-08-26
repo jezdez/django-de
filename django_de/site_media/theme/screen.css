@@ -575,3 +575,316 @@ div.sidebar ul.toc li p{
     padding:0;
     text-align:right;
 }
+
+
+/* Community und News Blöcke */
+div.newsentry-gravatar{
+    float: left;
+    padding: 8px 0 0 0;
+}
+
+div.newsentry-gravatar img{
+    padding: 3px;
+    background-color: #D6F1B7;
+}
+
+div.newsentry-gravatar a:hover img{
+    background-color: green;
+}
+
+div.newsentry-content{
+    margin-left: 70px;
+}
+
+div.newsentry-content h3{
+    margin: 0 0 3px 0;
+}
+div.newsentry-content p.subheadline{
+    font-size: 0.75em;
+    margin: 0;
+	color: #666 !important;
+}
+div.newsentry-content div.summary p{
+    font-size: 0.8em;
+}
+
+div.newsentry-spacer{
+	height: 10px;
+}
+
+/* Quell-Links im News-Bereich */
+div.newsentry-content p.source{
+	margin: 20px 0 15px 0 !important;
+}
+
+div.newsentry-content p.source a:link,
+div.newsentry-content p.source a:visited{
+	color: #333;
+	text-decoration: none;
+	display: inline;
+	background-image: url(/site_media/theme/icons/applications-internet.png);
+	background-position: 4px 50%;
+	background-repeat: no-repeat;
+	background-color:#EAFEDD;
+	border:1px solid #D6F1B7;
+	padding: 5px 4px 5px 24px;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 1em;
+}
+
+div.newsentry-content p.source a:visited{
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	-webkit-opacity: 0.8;
+}
+
+div.newsentry-content p.source a:hover{
+	text-decoration: underline;
+}
+
+
+
+/* Pagination */
+p.invalidpage{
+    text-align: center;
+    color: #AAA;
+    font-size: 2em;
+    margin: 1em 0;
+}
+
+div.pagination{
+	padding: 5px 0 5px 85px !important;
+    white-space: nowrap;
+}
+
+div.pagination a,
+div.pagination span.disabled{
+    border: 1px solid #CCC;
+    padding: 2px 4px;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+div.pagination a:hover{
+    color: White;
+    background-color: #52AA4D;
+    border-color: #52AA4D;
+}
+
+div.pagination span.disabled{
+    color: #CCC;
+    border-color: #CCC;
+}
+
+div.pagination span.current{
+    color: White;
+    background-color: #52AA4D;
+    padding: 4px 8px;
+}
+
+div.pagination span.total{
+    font-size: 0.9em;
+    color: #777;
+    padding: 5px 0 5px 10px;
+    margin-left: 10px;
+    border-left: 1px solid #ccc;
+}
+
+
+/* Tags und Taglisten */
+a.tag{
+	color: #555555;
+	background-color: #FFF8E0;
+	border: 1px solid #F8F0E0;
+	border-right-color:  rgb(248, 228, 213);
+	border-bottom-color:  rgb(248, 228, 213);
+	text-decoration: none;
+	padding: 2px 3px;
+	font-weight: normal !important;
+}
+
+a.tag:hover{
+	color: Black;
+}
+
+p.tagsizelist{
+	line-height: 2.5em;
+}
+
+a.tag.tagsize1{ font-size: 0.8em; }
+a.tag.tagsize2{ font-size: 0.9em; }
+a.tag.tagsize3{ font-size: 1em; }
+a.tag.tagsize4{ font-size: 1.1em; }
+a.tag.tagsize5{ font-size: 1.2em; }
+a.tag.tagsize6{ font-size: 1.35em; }
+a.tag.tagsize7{ font-size: 1.5em; }
+a.tag.tagsize8{ font-size: 1.8em; }
+a.tag.tagsize9{ font-size: 2em; }
+
+/* *****************************************************************************
+ * Chartlists
+ **************************************************************************** */
+ul.chartlist {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+  line-height: 1.6em;
+}
+
+ul.chartlist a:link,
+ul.chartlist a:visited{
+}
+
+ul.chartlist a:hover {
+}
+
+ul.chartlist li {
+  position: relative;
+  _zoom: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul.chartlist li a {
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+ul.chartlist span.count {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0 5px 0 0;
+  text-align: right;
+  color: #999;
+  font-weight: bold;
+  font-size: 11px;
+  z-index: 5;
+}
+
+ul.chartlist span.index {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-right: 2px solid #B6D3B4;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+ul.chartlist li:hover .index{
+	background-color: #E8F6E7;
+}
+
+
+/* *****************************************************************************
+ * Content > Comments
+ **************************************************************************** */
+
+ol.comments{
+	margin: 15px 0;
+	padding: 0;
+	list-style: none !important;
+	font-size: 0.82em;
+	line-height: 1.6em;
+}
+
+ol.comments li{
+	background-color: #F1FFE8;
+	padding: 10px !important;
+	margin: 0 0 20px 0 !important;
+	font-size: 0.9em;
+	line-height: 1.5em;
+}
+
+ol.comments li p{
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
+ol.comments a.jump{
+	text-decoration: none;
+}
+
+ol.comments p{
+	margin: 0 0 10px 0;
+}
+
+ol.comments p.title{
+	border-bottom: 1px dotted #CECECE;
+	padding-bottom: 4px;
+}
+
+ol.comments p.title span.author{
+	margin: 0;
+	font-weight: bold;
+	color: Black;
+}
+
+/* *****************************************************************************
+ * Content > Shinyform
+ **************************************************************************** */
+
+fieldset.shinyform{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset.shinyform legend{
+}
+
+fieldset.shinyform ol{
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+}
+
+
+fieldset.shinyform ol li{
+	padding: 5px 0 !important;
+	margin: 5px 0 !important;
+}
+
+fieldset.shinyform label{
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #333;
+	display: block;
+}
+
+fieldset.shinyform input[type=text]{
+	width: 350px;
+}
+
+fieldset.shinyform textarea{
+    height: 200px;
+	width: 500px;
+}
+
+fieldset.shinyform span.help{
+	font-size: 0.8em;
+	display: block;
+	color: #999;
+	line-height: 1.2em;
+	padding-top: 3px;
+	max-width: 80%;
+}
+
+ul.errorlist,
+ul.errorlist li{
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+	float: right;
+	font-weight: bold;
+	font-size: 0.9em;
+	color: #c00;
+	line-height: 1.1em;
+}
+
+

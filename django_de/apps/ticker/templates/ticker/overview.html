@@ -1,0 +1,55 @@
+{% extends "base_2col.html" %}
+{% load pagination_tags %}
+
+{% block sectionid %}news{% endblock %}
+{% block active_nav-news %}class="active"{% endblock %}
+{% block title %}News{% endblock %}
+{% block billboard %}
+	<h2>
+		<a href="{% url ticker_overview %}">News</a>
+	</h2>
+{% endblock %}
+
+{% block content %}
+<h1>Neues aus der Django-Welt</h1>
+<div class="content first-content">
+	{% autopaginate entry_list 2 %}
+	{% for entry in entry_list %}
+		{% include "ticker/entry.html" %}
+		{% if not forloop.last %}
+		<div class="newsentry-spacer"></div>
+		{% endif %}
+    {% endfor %}
+</div>
+{% paginate %}
+{% endblock %}
+
+{% block content-related %}
+
+	<h2>Was ist das hier?</h2>	
+
+	<p>Der News-Bereich stellt regelmäßig die neuesten Nachrichten aus
+		der Django-Welt vor. Dabei kann jeder mitmachen!</p>
+		
+	<p>Wenn du Co-Autor werden willst, melde dich einfach im IRC, ein
+		Account ist schnell angelegt.</p>
+		
+	<h2>Populäre Tags</h2>
+	
+	<ul class="chartlist">
+	  {% for tag in popular_tags|slice:":10" %}
+	  <li>
+		<a href="{% url ticker_archive_details tag.name|urlencode %}">{{ tag.name }}</a>
+		<span class="count" title="umber of related entries">{{ tag.count }}</span>
+		<span class="index" style="width: {% widthratio tag.count popular_tags_max 100 %}%">
+		  ({% widthratio tag.count popular_tags_max 100 %}%)
+		</span>
+	  </li>
+	  {% endfor %}
+	</ul>
+	
+	<p style="margin-top: 10px;">Eine Übersicht über alle Tags findest du im 
+		<a href="{% url ticker_archive %}">Archiv</a>.</p>
+
+    <p><a href="/news/feeds/rss/">RSS-Feed</a> aller Beiträge</p>
+{% endblock %}

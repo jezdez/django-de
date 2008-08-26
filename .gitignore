@@ -1,0 +1,7 @@
+*.pyc
+*.pyo
+*~
+.project
+.pydevproject
+local_settings.py
+django_de.db
