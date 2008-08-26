@@ -27,7 +27,7 @@
 				<p class="title">
 					<a class="jump" href="#c{{ comment.id }}">#{{ forloop.counter }}</a> ~
 					<span class="author">By <a href="{{ comment.website }}">{{ comment.name }}</a></span>
-					~ comment.published|timesince
+					~ {{ comment.date_submitted|timesince }}
 				</p>
 				{% auto_transform_markup comment %}
 			</li>
