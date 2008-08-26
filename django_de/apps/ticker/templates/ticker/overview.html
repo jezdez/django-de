@@ -1,0 +1,54 @@
+{% extends "base_2col.html" %}
+{% load gravatar %}
+{% load pagination_tags %}
+
+{% block sectionid %}news{% endblock %}
+{% block active_nav-news %}class="active"{% endblock %}
+{% block title %}News{% endblock %}
+{% block billboard %}
+	<h2>
+		<a href="{% url ticker_overview %}">News</a>
+	</h2>
+{% endblock %}
+
+{% block content %}
+    <h1>Neues aus der Django-Welt</h1>
+	
+	<div class="content first-content">
+    
+	{% autopaginate entry_list 1 %}
+	{% for entry in entry_list %}
+    <div class="section" id="{{ item.guid|escape }}">
+        <div class="newsentry-gravatar">
+            <a href="{{ entry.get_absolute_url }}">{% gravatar entry.author 50 %}</a>
+        </div>
+        <div class="newsentry-content">
+            <h3>{{ entry.title }}</h3>
+            <p class="subheadline">
+                Von <strong>{{ entry.get_author }}</strong>
+                geschrieben am {{ entry.published|date:"d. F Y H:i" }} Uhr</p>
+            <div class="summary">{{ entry.content_processed|safe }}</div>
+            <p class="more"><strong>Details und Kommentare:</strong> <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+	
+	{% paginate %}
+{% endblock %}
+
+{% block content-related %}
+
+	<h2>Was ist das hier?</h2>	
+
+	<p>Der News-Bereich stellt regelmäßig die neuesten Nachrichten aus
+		der Django-Welt vor. Dabei kann jeder mitmachen!</p>
+		
+	<p>Wenn du Co-Autor werden willst, melde dich einfach im IRC, ein
+		Account ist schnell angelegt.</p>
+		
+	<h2>Populäre Tags</h2>
+
+
+    <p><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+{% endblock %}

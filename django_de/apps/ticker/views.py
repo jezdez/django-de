@@ -7,7 +7,7 @@ from django_de.apps.ticker.models import Entry
 from tagging.models import Tag, TaggedItem
 
 
-def overview(request, page=None, per_page=10, template_name='ticker/index.html'):
+def overview(request, page=None, per_page=10, template_name='ticker/overview.html'):
     '''The Index page of the ticker'''
 
     entry_list = Entry.objects.public()
@@ -25,7 +25,7 @@ def overview(request, page=None, per_page=10, template_name='ticker/index.html')
 def archive(request, template_name='ticker/archive.html'):
     
     entry_list = Entry.objects.public()
-    tag_list = Tag.objects.cloud_for_model(Entry, steps=9, filters={'status': 'OPEN'})
+    tag_list = Tag.objects.cloud_for_model(Entry, steps=9, filters={'status': Entry.STATUS_OPEN})
         
     template_context = {
         'entry_list': entry_list,
