@@ -33,9 +33,10 @@ class EntryAdmin(admin.ModelAdmin):
     def queryset(self, request):
         """
         Zeige nur Einträge des Users oder wenn er die Rechte besitzt, alle.
-        Siehe manager.py/entries_by_user für Details
         """
-        return self.model.objects.entries_by_user(request=request)
+        if request.user.has_perm('ticker.can_change_foreign'):
+            return self.model._default_manager.get_query_set()
+        return self.model._default_manager.filter(author=request.user)
 
 
     def formfield_for_dbfield(self, db_field, **kwargs):

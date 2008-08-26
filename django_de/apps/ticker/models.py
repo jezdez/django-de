@@ -48,6 +48,8 @@ class Entry(models.Model):
     # Related
     tags = TagField()
     author = models.ForeignKey(User)
+    
+    enable_comments = models.BooleanField(default=True)
 
     class Meta:
         ordering = ('-published',)
