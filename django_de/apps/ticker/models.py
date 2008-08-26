@@ -63,7 +63,7 @@ class Entry(models.Model):
         return Tag.objects.get_for_object(self)
 
     def get_related(self):
-        return TaggedItem.objects.get_related(self, Entry.objects.entries_by_user(request=None))
+        return TaggedItem.objects.get_related(self, Entry.objects.public())
 
     def get_related_tags(self):
         return Tag.objects.related_for_model(self.tags, Entry)

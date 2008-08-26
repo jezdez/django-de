@@ -18,16 +18,10 @@
 	
 	<div class="newsentry-content">
 		
-	<h3>Kommentare</h3>
-		<ol class="comments">
 	    {% get_free_threaded_comment_tree for entry as comment_tree %}
-	    {% for comment in tree %}
-	        <div  class="comment">
-	             said:<br/>
-	            
-	        </div>
-	    {% endfor %}
-
+		{% if comment_tree %}
+		<h3>Kommentare</h3>
+		<ol class="comments">
 		{% for comment in comment_tree %}
 			<li id="c{{ comment.id }}" style="margin-left: {{ comment.depth }}em;">
 				<p class="title">
@@ -39,6 +33,7 @@
 			</li>
 		{% endfor %}
 		</ol>
+		{% endif %}
 		
 		<h3>Kommentar hinzufügen</h3>
 		<fieldset class="shinyform">
@@ -58,27 +53,29 @@
 {% block content-related %}
 
 	<p>
-		<span class="prevnext">
-			{% if entry.get_prev %}
-			&larr; <a href="{{ entry.get_prev.get_absolute_url }}" title="Vorheriger Beitrag: {{ entry.get_prev.title }}">
-				Vorheriger Beitrag
-			</a>
-			{% endif %}
-			&nbsp;
-			{% if entry.get_next %}
-			<a href="{{ entry.get_next.get_absolute_url }}" title="Nächster Beitrag: {{ entry.get_next.title }}">
-				Nächster Beitrag
-			</a> &rarr;
-			{% endif %}
-		</span>
+	<span class="prevnext">
+		{% if entry.get_prev %}
+		&larr; <a href="{{ entry.get_prev.get_absolute_url }}" title="Vorheriger Beitrag: {{ entry.get_prev.title }}">
+			Zurück
+		</a>
+		{% endif %}
+		{% if entry.get_prev and entry.get_next %}&nbsp;~&nbsp;{% endif %}
+		{% if entry.get_next %}
+		<a href="{{ entry.get_next.get_absolute_url }}" title="Nächster Beitrag: {{ entry.get_next.title }}">
+			Weiter
+		</a> &rarr;
+		{% endif %}
+	</span>
 	</p>
 
 
 	{% if entry.get_tags %}
 	<h2 class="first">Tags für diesen Beitrag</h2>
+	<p class="tagsizelist">
 	{% for tag in entry.get_tags %}
 		<a href="{% url ticker_archive_details tag.name|urlencode %}" class="tag">{{ tag.name }}</a>
 	{% endfor %}
+	</p>
 	{% endif %}
 
 	{% if entry.get_related %}
