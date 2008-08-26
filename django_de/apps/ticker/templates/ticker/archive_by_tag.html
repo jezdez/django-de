@@ -15,7 +15,7 @@
 {% block content %}
 <h1>Beiträge die mit &quot;{{ the_tag }}&quot; getaggt wurden</h1>
 <div class="content first-content">
-	{% autopaginate entry_list 2 %}
+	{% autopaginate entry_list %}
 	{% for entry in entry_list %}
 		{% include "ticker/entry.html" %}
 		{% if not forloop.last %}

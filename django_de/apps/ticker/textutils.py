@@ -1,5 +1,3 @@
-import re
-
 import pygments
 import pygments.lexers as lexers
 import pygments.formatters as formatters
@@ -10,15 +8,13 @@ from md5 import md5
 from random import random
 import re
 
-from django.conf import settings
-
 #===============================================================================
 # Django Ticket Links
 #===============================================================================
 
 def changeset_links(content):
-    content = re.sub(r'(Ticket )*#(\d+)', '<a href="http://code.djangoproject.com/ticket/\\2">\\1 #\\2</a>', content)
-    content = re.sub(r'(Changeset )*r(\d+)', '<a href="http://code.djangoproject.com/changeset/\\2">\\1 r\\2</a>', content)
+    content = re.sub(r'#(\d+)', '<a href="http://code.djangoproject.com/ticket/\\1">#\\1</a>', content)
+    content = re.sub(r'r(\d+)', '<a href="http://code.djangoproject.com/changeset/\\1">r\\1</a>', content)
     return content
 
 #===============================================================================

@@ -30,7 +30,7 @@ class Entry(models.Model):
 
     # Title and Slug
     title = models.CharField('Titel', max_length=255)
-    slug = models.SlugField('Slug', blank=True)
+    slug = models.SlugField('Slug', max_length=255, blank=True)
 
     content = models.TextField('Inhalt')
     content_processed = models.TextField('Inhalt (geparsed)', blank=True)
@@ -80,7 +80,7 @@ class Entry(models.Model):
         return self.title
 
     def save(self):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.title)[:255]
         self.content_processed = textutils.textfilter(self.content)
         super(Entry, self).save()
 
