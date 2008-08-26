@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django_de.apps.documentation.middleware.StaticGeneratorMiddleware',
     #'django.middleware.cache.CacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'django_de.urls'
@@ -92,6 +93,9 @@ INSTALLED_APPS = (
     'django_de.apps.documentation',
     'django_de.apps.aggregator',
     'django_de.apps.jobboard',
+    'django_de.apps.ticker',
+    'pagination',
+    'gravatar',
 )
 
 # ############################################################################
