@@ -4,7 +4,7 @@ from django.utils.feedgenerator import Atom1Feed
 from django_de.apps.ticker.models import Entry
 
 class LatestEntries(feeds.Feed):
-    title = "DjangoHQ - Letzte News"
+    title = "django-de.org - Letzte News"
     link = "/"
 
     def items(self):

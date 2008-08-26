@@ -1,7 +1,5 @@
-<p>{% trans "Reported by:" %} {{ obj.get_author|slice:":8" }}</p>
-
+<p>Gemeldet von: {{ obj.get_author|slice:":8" }}</p>
 {{ obj.content_processed|safe }}
-
 {% if obj.source_url %}
 <p><strong>Quelle:</strong> <a href="{{ obj.source_url }}">{{ obj.source_url }}</a></p>
 {% endif %}
