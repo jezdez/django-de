@@ -1,7 +1,6 @@
 import os
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
-from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from django.contrib import admin
 from django.conf import settings
@@ -33,6 +32,7 @@ urlpatterns = patterns('',
     (r'^participate/', direct_to_template, {'template': 'participate.html'}),
     (r'^admin/(.*)', admin.site.root),
     (r'^documentation/', include('django_de.apps.documentation.urls')),
+    (r'^news/', include('django_de.apps.ticker.urls')),
     (r'^community/', include('django_de.apps.aggregator.urls')),
     (r'^authors/', include('django_de.apps.authors.urls')),
     (r'^jobs/', include('django_de.apps.jobboard.urls')),

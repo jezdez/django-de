@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'django_de.apps.ticker',
     'pagination',
     'gravatar',
+    'tagging',
 )
 
 # ############################################################################
