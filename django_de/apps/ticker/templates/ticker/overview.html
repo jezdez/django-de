@@ -1,5 +1,4 @@
 {% extends "base_2col.html" %}
-{% load gravatar %}
 {% load pagination_tags %}
 
 {% block sectionid %}news{% endblock %}
@@ -14,21 +13,12 @@
 {% block content %}
 <h1>Neues aus der Django-Welt</h1>
 <div class="content first-content">
-	{% autopaginate entry_list 1 %}
+	{% autopaginate entry_list 2 %}
 	{% for entry in entry_list %}
-    <div class="section" id="{{ item.guid|escape }}">
-        <div class="newsentry-gravatar">
-            <a href="{{ entry.get_absolute_url }}">{% gravatar entry.author 50 %}</a>
-        </div>
-        <div class="newsentry-content">
-            <h3>{{ entry.title }}</h3>
-            <p class="subheadline">
-                Von <strong>{{ entry.get_author }}</strong>
-                geschrieben am {{ entry.published|date:"d. F Y H:i" }} Uhr</p>
-            <div class="summary">{{ entry.content_processed|safe }}</div>
-            <p class="more"><strong>Details und Kommentare:</strong> <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
-        </div>
-    </div>
+		{% include "ticker/entry.html" %}
+		{% if not forloop.last %}
+		<div class="newsentry-spacer"></div>
+		{% endif %}
     {% endfor %}
 </div>
 {% paginate %}
@@ -61,5 +51,5 @@
 	<p style="margin-top: 10px;">Eine Übersicht über alle Tags findest du im 
 		<a href="{% url ticker_archive %}">Archiv</a>.</p>
 
-    <p style="margin-top: 20px;"><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+    <p><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
 {% endblock %}

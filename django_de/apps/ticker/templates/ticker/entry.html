@@ -1,0 +1,21 @@
+{% load gravatar %}
+{% load ticker_tags %}
+
+<div class="section" id="{{ item.guid|escape }}">
+    <div class="newsentry-gravatar">
+        <a href="{{ entry.get_absolute_url }}">{% gravatar entry.author 50 %}</a>
+    </div>
+    <div class="newsentry-content">
+        <h3>{{ entry.title }}</h3>
+        <p class="subheadline">
+            Von <strong>{{ entry.get_author }}</strong>
+            geschrieben am {{ entry.published|date:"d. F Y H:i" }} Uhr</p>
+        <div class="summary">{{ entry.content_processed|safe }}</div>
+		{% if entry.source_url %}
+		<p class="source">
+			<a href="{{ entry.source_url }}">{{ entry.source_url|truncurl:"50" }}</a>
+		</p>
+		{% endif %}
+        <p class="more"><strong>Details und Kommentare:</strong> <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
+    </div>
+</div>

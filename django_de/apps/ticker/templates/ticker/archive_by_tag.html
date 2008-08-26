@@ -1,0 +1,54 @@
+{% extends "base_2col.html" %}
+{% load pagination_tags %}
+
+{% block sectionid %}news{% endblock %}
+{% block active_nav-news %}class="active"{% endblock %}
+{% block title %}News{% endblock %}
+{% block billboard %}
+	<h2>
+		<a href="{% url ticker_overview %}">News</a> &rarr;
+		<a href="{% url ticker_archive %}">Archiv</a> &rarr;
+		<a href="{% url ticker_archive_details the_tag|urlencode %}">{{ the_tag }}</a>
+	</h2>
+{% endblock %}
+
+{% block content %}
+<h1>Beiträge die mit &quot;{{ the_tag }}&quot; getaggt wurden</h1>
+<div class="content first-content">
+	{% autopaginate entry_list 2 %}
+	{% for entry in entry_list %}
+		{% include "ticker/entry.html" %}
+		{% if not forloop.last %}
+		<div class="newsentry-spacer"></div>
+		{% endif %}
+    {% endfor %}	
+</div>
+{% endblock %}
+
+{% block content-related %}
+	
+	{% if related_tags %}
+	<h2>Verwandte Tags</h2>
+	<p class="taglistsize">
+	{% for tag in related_tags %}
+		<a href="{% url ticker_archive_details tag.name|urlencode %}" class="tag">{{ tag.name }}</a>
+	{% endfor %}
+	</p>
+	{% endif %}
+	
+	<h2>Populäre Tags</h2>
+	
+	<ul class="chartlist">
+	  {% for tag in popular_tags|slice:":10" %}
+	  <li>
+		<a href="{% url ticker_archive_details tag.name|urlencode %}">{{ tag.name }}</a>
+		<span class="count" title="umber of related entries">{{ tag.count }}</span>
+		<span class="index" style="width: {% widthratio tag.count popular_tags_max 100 %}%">
+		  ({% widthratio tag.count popular_tags_max 100 %}%)
+		</span>
+	  </li>
+	  {% endfor %}
+	</ul>
+
+    <p style="margin-top: 20px;"><a href="/news/feeds/latest/">RSS-Feed</a> aller Beiträge</p>
+{% endblock %}
