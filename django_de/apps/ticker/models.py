@@ -17,13 +17,13 @@ class EntryManager(models.Manager):
 
 class Entry(models.Model):
 
-    STATUS_CLOSED = 0,
-    STATUS_DRAFT = 1
-    STATUS_OPEN = 2
+    STATUS_CLOSED = 1
+    STATUS_DRAFT = 2
+    STATUS_OPEN = 3
     
     STATUS_CHOICES = (
         (STATUS_CLOSED, 'Geschlossen'),
-        (STATUS_DRAFT, 'Vorlage'),
+        (STATUS_DRAFT, 'Frei zum Veröffentlichen'),
         (STATUS_OPEN, 'Veröffentlicht'),
     )
     objects = EntryManager()

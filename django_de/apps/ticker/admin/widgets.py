@@ -36,7 +36,7 @@ class TaggingAutocompleteWidget(forms.TextInput):
         attrs['style'] = 'width: 30em;'
         field_value = super(TaggingAutocompleteWidget, self).render(name, value, attrs)
         return mark_safe("""
-        %(field_value)s         
+        %(field_value)s
         <script type="text/javascript">
         $(document).ready(function(){
             var global_taglist = new Array(

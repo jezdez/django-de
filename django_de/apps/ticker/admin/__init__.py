@@ -36,7 +36,7 @@ class EntryAdmin(admin.ModelAdmin):
         """
         if request.user.has_perm('ticker.can_change_foreign'):
             return self.model._default_manager.get_query_set()
-        return self.model._default_manager.filter(author=request.user)
+        return self.model._default_manager.get_query_set().filter(author=request.user)
 
 
     def formfield_for_dbfield(self, db_field, **kwargs):
@@ -56,18 +56,23 @@ class EntryAdmin(admin.ModelAdmin):
             return field
         
         if db_field.name == "status":
+            # #FIXME# Das hier geht schöner
+            
             # Wenn der User kein "can_publish" recht hat, soll ihm als Auswahl
-            # nur "Closed" und "Draft" angezeigt werden. Außer der Artikel war
-            # schon "Live" gesetzt, dann soll es angezeigt werden.
-            if not self._request.user.has_perm('ticker.can_publish') \
-               and not self._obj.status == Entry.STATUS_OPEN:
+            # nur "Closed" und "Draft" angezeigt werden. 
+            if not self._request.user.has_perm('ticker.can_publish'):
                 user_choices = ([i for i in Entry.STATUS_CHOICES \
                                  if i[0] != Entry.STATUS_OPEN])
             else:
                 user_choices = Entry.STATUS_CHOICES
+            
+            # Außer der Artikel war schon "Live" gesetzt, dann soll es
+            # angezeigt werden.
+            if hasattr(self, '_obj') and self._obj.status == Entry.STATUS_OPEN:
+                user_choices = Entry.STATUS_CHOICES
                 
             field = forms.ChoiceField(choices=user_choices) # Bugfix: #6967
-            field.widget = forms.RadioSelect(choices=user_choices)
+            #field.widget = forms.RadioSelect(choices=user_choices)
             return field
         
         # Textarea Felder einwenig größer
