@@ -71,7 +71,7 @@
 
 	{% if entry.get_tags %}
 	<h2 class="first">Tags für diesen Beitrag</h2>
-	<p class="tagsizelist">
+	<p class="tagsizelist" style="line-height: 2em;">
 	{% for tag in entry.get_tags %}
 		<a href="{% url ticker_archive_details tag.name|urlencode %}" class="tag">{{ tag.name }}</a>
 	{% endfor %}
