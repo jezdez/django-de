@@ -18,7 +18,10 @@
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="1" />
         <meta name="description" content="Django ist ein Python Web Framework für die schnelle Entwicklung von sauberen, pragmatischen Lösungen." />
-        {% block extrahead %}{% endblock %}
+        
+		<link rel="alternate" type="application/rss+xml" title="django-de.org: Community Aggregator" href="/community/feeds/latest/"/>
+		<link rel="alternate" type="application/rss+xml" title="django-de.org: Letzte News" href="/news/feeds/rss/"/>
+		{% block extrahead %}{% endblock %}
     </head>
 
     <body id="{% block sectionid %}generic{% endblock %}" class="{% block coltype %}default{% endblock %}">
@@ -106,8 +109,7 @@
         var pageTracker = _gat._getTracker("UA-204224-14");
         pageTracker._initData();
         pageTracker._trackPageview();
-    }
-    
+    }    
     </script>
     </body>
 </html>

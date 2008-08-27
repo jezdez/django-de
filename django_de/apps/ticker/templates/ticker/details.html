@@ -4,7 +4,7 @@
 
 {% block sectionid %}news{% endblock %}
 {% block active_nav-news %}class="active"{% endblock %}
-{% block title %}News{% endblock %}
+{% block title %}News: {{ entry.title }}{% endblock %}
 {% block billboard %}
 	<h2>
 		<a href="{% url ticker_overview %}">News</a>

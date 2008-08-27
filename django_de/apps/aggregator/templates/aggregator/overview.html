@@ -1,95 +1,40 @@
 {% extends "base_2col.html" %}
+{% load pagination_tags %}
 
 {% block sectionid %}community{% endblock %}
 {% block active_nav-community %}class="active"{% endblock %}
 {% block title %}Community{% endblock %}
 {% block billboard %}<h2><a href="/community/">Community</a></h2>{% endblock %}
-{% block extrahead %}
-<link rel="alternate" type="application/rss+xml" href="/community/feeds/latest/"/>
-<style type="text/css" media="screen, projection">
-    div.community-image{
-        float: left;
-        padding: 8px 0 0 0;
-    }
-
-    div.community-image img{
-        padding: 3px;
-        background-color: #D6F1B7;
-    }
-
-    div.community-image a:hover img{
-        background-color: green;
-    }
-
-    div.community-content{
-        margin-left: 70px;
-    }
-
-    div.community-content h3{
-        margin: 0 0 3px 0;
-    }
-    div.community-content p.subheadline{
-        font-size: 0.75em;
-        margin: 0;
-    }
-    div.community-content p.summary{
-        font-size: 0.8em;
-    }
-
-    div.paginator{
-        font-size: 0.8em; padding: 10px 0 10px 85px !important;
-    }
-
-    div.paginator a strong{
-        padding: 2px 4px;
-        background-color: #52AA4D;
-        color: White;
-    }
-</style>
-{% endblock %}
 
 {% block content %}
-    <h1>Community</h1>
-
-    <div class="content first-content">
+<h1>Community</h1>
+<div class="content first-content">
+    	
+	{% autopaginate item_list %}
     {% for item in item_list %}
     {% ifchanged %}
     <h2>{{ item.published_original|date:"F Y" }}</h2>
     {% endifchanged %}
 
     <div class="section" id="{{ item.guid|escape }}">
-        <div class="community-image">
+        <div class="newsentry-gravatar">
             <a href="{{ item.url }}"><img src="{{ item.feed.get_gravatar_url }}" alt="Gravatar" title=""/></a>
         </div>
-        <div class="community-content">
+        <div class="newsentry-content gravatar">
             <h3>{{ item.title|safe }}</h3>
             <p class="subheadline">
                 Von <a href="{{ item.feed.url }}">{{ item.feed.title }}</a>
                 geschrieben am {{ item.published_original|date:"d. F Y H:i" }} Uhr</p>
-            <p class="summary">{{ item.summary|truncatewords:"40"|safe }}</p>
-            <p class="more"><strong>Weiter lesen:</strong> <a href="{{ item.url }}">{{ item.title|safe }} &rarr;</a></p>
+            <div class="summary">{{ item.summary|safe|truncatewords:"40"|linebreaks }}</div>
+            <p class="more">Weiter lesen: <a href="{{ item.url }}">{{ item.title|safe }} &rarr;</a></p>
         </div>
     </div>
+	{% if not forloop.last %}
+	<div class="newsentry-spacer"></div>
+	{% endif %}
     {% endfor %}
-    </div>
-
-    {% if not page_range|length_is:"1" %}
-    {% spaceless %}
-    <div class="content first-content paginator">
-        Seite {{ page }} von {{ pages }}&nbsp;&nbsp;
-        {% if has_previous %}
-        <a href="?page={{ previous }}">&lArr; Zurück</a>&nbsp;
-        {% endif %}
-        {% for p in page_range %}
-        <a href="?page={{ p }}">{% ifequal p page %}<strong>{{ p }}</strong>{% else %}{{ p }}{% endifequal %}</a>&nbsp;
-        {% endfor %}
-        {% if has_next %}
-        <a href="?page={{ next }}">Weiter &rArr;</a>
-        {% endif %}
-        <span style="padding-left: 15px;">({{ hits }} Einträge gesamt)</span>
-    </div>
-    {% endspaceless %}
-    {% endif %}
+</div>
+{% paginate %}
 {% endblock %}
 
 {% block content-related %}

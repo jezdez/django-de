@@ -15,7 +15,6 @@ from django_de.apps.aggregator.forms import NewFeedForm
 def overview(request):
     params = {
         'queryset': Item.objects.latest_public(),
-        'paginate_by': 15,
         'allow_empty': True,
         'template_object_name': 'item',
         'template_name': 'aggregator/overview.html',
