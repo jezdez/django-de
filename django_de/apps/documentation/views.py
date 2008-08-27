@@ -1,4 +1,3 @@
-import os
 import datetime
 import urlparse
 from django.conf import settings
@@ -6,12 +5,17 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from django_de.apps.authors.models import Author
 from django_de.apps.documentation.models import Release, _get_svnroot
 from django_de.apps.documentation import builder
 
 def index(request, version=None):
     template_list = ["documentation/%s_index.html" % version, "documentation/index.html"]
-    return render_to_response(template_list, {"version": version,}, RequestContext(request, {}))
+    template_context = {
+        "version": version,
+        "author_list": Author.objects.order_by('name', 'slug'),
+    }
+    return render_to_response(template_list, template_context, RequestContext(request, {}))
 
 def detail(request, slug, version=None):
     try:

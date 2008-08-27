@@ -233,5 +233,13 @@
         <li><a href="http://groups.google.com/group/django-de">Django-de Mailingliste</a></li>
         <li><a href="/trac/newticket">Fehler melden</a></li>
     </ul>
-
+	
+	<h2>Autoren</h2>
+	<p>Nachfolgend ein paar Informationen über alle Mitwirkenden.</p>
+    <ul class="linklist">
+    	{% for author in author_list %}
+        <li><a href="{{ author.url }}">{{ author.name }}</a></li>
+		{% endfor %}
+    </ul>
+	<p>Nicht zögern, <a href="/participate/">jeder kann mitmachen</a>.</p>
 {% endblock %}
