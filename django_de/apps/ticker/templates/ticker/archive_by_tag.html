@@ -29,7 +29,7 @@
 	
 	{% if related_tags %}
 	<h2>Verwandte Tags</h2>
-	<p class="taglistsize">
+	<p class="taglistsize" style="line-height: 2em;">
 	{% for tag in related_tags %}
 		<a href="{% url ticker_archive_details tag.name|urlencode %}" class="tag">{{ tag.name }}</a>
 	{% endfor %}
