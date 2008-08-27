@@ -1,10 +1,6 @@
-{% load gravatar %}
 {% load ticker_tags %}
 
 <div class="section" id="{{ item.guid|escape }}">
-    <div class="newsentry-gravatar">
-        <a href="{{ entry.get_absolute_url }}">{% gravatar entry.author 50 %}</a>
-    </div>
     <div class="newsentry-content">
         <h3>{{ entry.title }}</h3>
         <p class="subheadline">
@@ -17,7 +13,7 @@
 		</p>
 		{% endif %}
 		{% if not is_detail %}
-        <p class="more"><strong>Details und Kommentare:</strong> <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
+        <p class="more">Details und Kommentare: <a href="{{ entry.get_absolute_url }}">{{ entry.title }} &rarr;</a></p>
     	{% endif %}
 	</div>
 </div>

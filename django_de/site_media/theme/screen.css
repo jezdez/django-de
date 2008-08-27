@@ -593,7 +593,10 @@ div.newsentry-gravatar a:hover img{
 }
 
 div.newsentry-content{
-    margin-left: 70px;
+}
+
+div.newsentry-content.gravatar{
+	margin-left: 70px;
 }
 
 div.newsentry-content h3{
@@ -608,13 +611,18 @@ div.newsentry-content div.summary p{
     font-size: 0.8em;
 }
 
+div.newsentry-content p.more{
+	font-size: 0.8em;
+}
+
 div.newsentry-spacer{
-	height: 10px;
+	height: 20px;
 }
 
 /* Quell-Links im News-Bereich */
 div.newsentry-content p.source{
 	margin: 20px 0 15px 0 !important;
+	font-size: 0.8em;
 }
 
 div.newsentry-content p.source a:link,
@@ -628,7 +636,7 @@ div.newsentry-content p.source a:visited{
 	background-color:#EAFEDD;
 	border:1px solid #D6F1B7;
 	padding: 5px 4px 5px 24px;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-weight: bold;
 	line-height: 1em;
 }
