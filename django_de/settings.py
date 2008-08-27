@@ -21,18 +21,9 @@ if DEVELOPMENT_MODE:
     DATABASE_ENGINE = 'sqlite3'
     DATABASE_NAME = os.path.join(PROJECT_PATH, 'django_de.db')
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
-    try:
-        from local_settings import *
-    except ImportError:
-        pass
-
 else:
     DEBUG = False
     PREPEND_WWW = True
-    try:
-        from local_settings import *
-    except ImportError:
-        pass
 
 DOCS_SVN_PATH = "docs/live/"
 
@@ -100,7 +91,6 @@ INSTALLED_APPS = (
     'django_de.apps.jobboard',
     'django_de.apps.ticker',
     'pagination',
-    'gravatar',
     'tagging',
     'threadedcomments',
     'django_extensions',
@@ -139,3 +129,8 @@ AGGREGATOR_GRAVATAR_RATING = 'PG'
 PAGINATION_DEFAULT_PAGINATION = 10
 PAGINATION_DEFAULT_WINDOW = 3
 PAGINATION_DEFAULT_ORPHANS = 1
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
