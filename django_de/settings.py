@@ -24,6 +24,10 @@ if DEVELOPMENT_MODE:
 else:
     DEBUG = False
     PREPEND_WWW = True
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
 
 DOCS_SVN_PATH = "docs/live/"
 
@@ -129,8 +133,3 @@ AGGREGATOR_GRAVATAR_RATING = 'PG'
 PAGINATION_DEFAULT_PAGINATION = 10
 PAGINATION_DEFAULT_WINDOW = 3
 PAGINATION_DEFAULT_ORPHANS = 1
-
-try:
-    from local_settings import *
-except ImportError:
-    pass
