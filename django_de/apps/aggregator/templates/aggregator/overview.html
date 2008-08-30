@@ -46,7 +46,7 @@
 
     <p>Folgende Weblogs und Personen sind auf dieser Seite zusammengefasst:</p>
 
-    <ul>
+    <ul class="linklist">
         {% for feed in feed_list %}
         <li><a href="{{ feed.url }}">{{ feed.title }}</a></li>
         {% endfor %}
