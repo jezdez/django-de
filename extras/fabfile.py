@@ -5,6 +5,7 @@ set(
     used_apps = 'django-comment-utils django-extensions django-mptt django-pagination django-registration django-tagging django-threadedcomments django-gravatar',
     app_dir = '~/lib/python2.4/site-packages',
     web_root = '~/public_html',
+    log_dir = '~/logs',
 )
 
 def update():
@@ -23,6 +24,10 @@ def restart():
     "Restarts the Django proccess."
     run("touch %(web_root)s/%(project)s.wsgi")
 
-def tail():
+def error_log():
     "Tail the servers error logfile."
-    run('tail -f /home/%(project)s/logs/error_log')
+    run('tail -f %(log_dir)s/error_log')
+
+def access_log():
+    "Tail the servers access logfile."
+    run('tail -f %(log_dir)s/access_log')
