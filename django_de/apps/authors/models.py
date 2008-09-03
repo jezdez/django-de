@@ -2,7 +2,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 class Author(models.Model):
-    name = models.CharField(_('name'), core=True, max_length=50, unique=True)
+    name = models.CharField(_('name'), max_length=50, unique=True)
     slug = models.SlugField(_('slug'), help_text=_('for direct access on the website of an author'))
     email = models.EmailField(_('email adress'))
     url = models.URLField(_('personal website'), null=True, blank=True, verify_exists=False)
