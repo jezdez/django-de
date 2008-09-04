@@ -8,11 +8,11 @@
 {% block billboard %}
 	<h2>
 		<a href="{% url ticker_overview %}">News</a>
-		&rarr; {{ entry.title }}
 	</h2>
 {% endblock %}
 
 {% block content %}
+<h1>{{ entry.title }}</h1>
 <div class="content first-content">
 	{% include "ticker/entry.html" %}
 	
