@@ -66,8 +66,6 @@ def details(request, id, slug, template_name='ticker/details.html'):
         'is_detail': True,
     }
 
-    assert False, entr
-
     return render_to_response(
         template_name,
         template_context,
