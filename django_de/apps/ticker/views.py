@@ -23,10 +23,10 @@ def overview(request, page=None, per_page=10, template_name='ticker/overview.htm
     )
 
 def archive(request, template_name='ticker/archive.html'):
-    
+
     entry_list = Entry.objects.public()
     tag_list = Tag.objects.cloud_for_model(Entry, steps=9, filters={'status': Entry.STATUS_OPEN})
-        
+
     template_context = {
         'entry_list': entry_list,
         'tag_list': tag_list,
@@ -39,6 +39,9 @@ def archive(request, template_name='ticker/archive.html'):
     )
 
 def archive_by_tag(request, tag, template_name='ticker/archive_by_tag.html'):
+
+    # Prüfe ob der Tag auch existiert
+    get_object_or_404(Tag, name=tag)
 
     entry_list = TaggedItem.objects.get_by_model(Entry.objects.public(), [tag])
     related_tags = Tag.objects.related_for_model([tag], Entry)
@@ -62,6 +65,8 @@ def details(request, id, slug, template_name='ticker/details.html'):
         'entry': entry,
         'is_detail': True,
     }
+
+    assert False, entr
 
     return render_to_response(
         template_name,
