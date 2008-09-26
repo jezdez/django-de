@@ -4,7 +4,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 
 from django_de.apps.ticker.models import Entry
+from django_de.apps.ticker.forms import BetterFreeThreadedCommentForm
 from tagging.models import Tag, TaggedItem
+
 
 
 def overview(request, page=None, per_page=10, template_name='ticker/overview.html'):
@@ -26,6 +28,7 @@ def archive(request, template_name='ticker/archive.html'):
 
     entry_list = Entry.objects.public()
     tag_list = Tag.objects.cloud_for_model(Entry, steps=9, filters={'status': Entry.STATUS_OPEN})
+
 
     template_context = {
         'entry_list': entry_list,
@@ -64,6 +67,7 @@ def details(request, id, slug, template_name='ticker/details.html'):
     template_context = {
         'entry': entry,
         'is_detail': True,
+        'comment_form': BetterFreeThreadedCommentForm(),
     }
 
     return render_to_response(

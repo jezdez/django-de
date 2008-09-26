@@ -9,6 +9,10 @@ from django_de.sitemaps import StaticFileSitemap
 from django_de.apps.documentation.utils import get_absolute_document_urls
 from django_de.utils import cache_status
 
+from django_de.apps.ticker.forms import BetterFreeThreadedCommentForm
+from threadedcomments import views as tc_views
+
+
 static_urls = (
     '/',
     '/trac/',
@@ -37,6 +41,12 @@ urlpatterns = patterns('',
     (r'^jobs/', include('django_de.apps.jobboard.urls')),
     (r'^cache_status/$', cache_status),
     (r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}),
+
+    # Overriding the default threadedcomment-form
+    url(r'^threadedcomments/freecomment/(?P<content_type>\d+)/(?P<object_id>\d+)/$',
+        tc_views.free_comment,
+        {'form_class': BetterFreeThreadedCommentForm},
+        name="tc_free_comment"),
     (r'^threadedcomments/', include('threadedcomments.urls')),
 )
 
