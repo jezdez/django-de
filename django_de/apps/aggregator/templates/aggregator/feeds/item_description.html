@@ -1,1 +1,5 @@
-{{ obj.summary|safe|linebreaks }}
+{{ obj.summary|safe|truncatewords:"40"|linebreaks }}
+
+<div style="background: #EAFEDD; padding: 0.8em; border: solid 1px #C6EB9A">
+    <p>Dieser Beitrag wurde <a href="http://www.django-de.org/">django-de</a> von <a href="{{ obj.feed.url }}">{{ obj.feed.title }}</a> zur Verfügung gestellt. Den <a href="{{ obj.url }}">vollständigen Beitrag</a> finden Sie auf der Seite des/der Autors/Autorin.</p>
+</div>
