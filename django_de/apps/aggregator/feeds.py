@@ -4,6 +4,7 @@ from django_de.apps.aggregator.models import Item
 class LatestItems(Feed):
     title = "django-de.org Community Aggregator"
     link = "/community/"
+    description_template = "aggregator/feeds/item_description.html"
 
     def items(self):
         return Item.objects.latest_public()[:30]
