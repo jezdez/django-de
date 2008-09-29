@@ -59,6 +59,9 @@ class Entry(models.Model):
         )
 
     def get_author(self):
+        name = self.author.get_full_name()
+        if name:
+            return name
         return self.author.username
 
     def get_tags(self):
