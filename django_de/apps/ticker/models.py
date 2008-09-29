@@ -84,10 +84,11 @@ class Entry(models.Model):
         self.content_processed = textutils.textfilter(self.content)
         super(Entry, self).save()
 
-    @permalink
+    
     def get_absolute_url(self):
         return ('ticker_details', (), {
             'id': str(self.id),
             'slug': self.slug,
         })
+    get_absolute_url = permalink(get_absolute_url)
 

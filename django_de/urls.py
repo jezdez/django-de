@@ -9,13 +9,13 @@ from django_de.sitemaps import StaticFileSitemap
 from django_de.apps.documentation.utils import get_absolute_document_urls
 from django_de.utils import cache_status
 
+from django_de.apps.ticker.sitemaps import TickerSitemap
 from django_de.apps.ticker.forms import BetterFreeThreadedCommentForm
 from threadedcomments import views as tc_views
 
 
 static_urls = (
     '/',
-    '/trac/',
     '/authors/',
     '/download/',
     '/imprint/',
@@ -24,7 +24,8 @@ static_urls = (
 ) + get_absolute_document_urls()
 
 sitemaps = {
-    'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily')
+    'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily'),
+    'ticker': TickerSitemap,
 }
 
 admin.autodiscover()
