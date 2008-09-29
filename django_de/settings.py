@@ -98,6 +98,7 @@ INSTALLED_APPS = (
     'tagging',
     'threadedcomments',
     'django_extensions',
+    'robots',
 )
 
 

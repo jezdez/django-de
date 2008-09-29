@@ -41,6 +41,7 @@ urlpatterns = patterns('',
     (r'^jobs/', include('django_de.apps.jobboard.urls')),
     (r'^cache_status/$', cache_status),
     (r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}),
+    (r'^robots.txt$', include('robots.urls')),
 
     # Overriding the default threadedcomment-form
     url(r'^threadedcomments/freecomment/(?P<content_type>\d+)/(?P<object_id>\d+)/$',
