@@ -50,12 +50,13 @@ class CodeHtmlFormatter(formatters.HtmlFormatter):
 
 def get_lexer(code_string):
     '''
-    Extract lexer name by the first line of the codeblock. See AvailableLexers_
-    for available lexers. This first line You can specify the lexer name in the
-    first line of your code block. See example for further details. If not lexer
-    is found or can not be guessed, the default lexer is ``text``.
+    Extract lexer name by the first line of the codeblock.
 
-    Returns a tuple of (code_string, lexer_name, lexer).
+    You can specify the lexer name in the  first line of your code block.
+    See example for further details. If no lexer is found or can not be guessed,
+    the default lexer is ``text``.
+
+    See AvailableLexers_ for available lexers.
 
     .. _AvailableLexers: http://pygments.org/docs/lexers/
 
