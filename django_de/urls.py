@@ -6,7 +6,6 @@ from django.contrib import admin
 from django.conf import settings
 
 from django_de.sitemaps import StaticFileSitemap
-from django_de.apps.documentation.utils import get_absolute_document_urls
 from django_de.utils import cache_status
 
 from django_de.apps.ticker.sitemaps import TickerSitemap
@@ -20,8 +19,7 @@ static_urls = (
     '/download/',
     '/imprint/',
     '/participate/',
-    '/documentation/',
-) + get_absolute_document_urls()
+)
 
 sitemaps = {
     'static': StaticFileSitemap(static_urls, priority=0.5, changefreq='daily'),
@@ -36,7 +34,6 @@ urlpatterns = patterns('',
     (r'^imprint/', direct_to_template, {'template': 'impressum.html'}),
     (r'^participate/', direct_to_template, {'template': 'participate.html'}),
     (r'^admin/(.*)', admin.site.root),
-    (r'^documentation/', include('django_de.apps.documentation.urls')),
     (r'^news/', include('django_de.apps.ticker.urls')),
     (r'^community/', include('django_de.apps.aggregator.urls')),
     (r'^jobs/', include('django_de.apps.jobboard.urls')),

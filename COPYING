@@ -1,7 +1,5 @@
 This django project is in the public domain, except parts from other apps:
 
-* django_de/apps/documentation/utils.py, from django code (BSD Licence)
-
 Feel free to use, copy and hack other parts :-).
 
 Thanks to David Larlet and Django-fr.org!
