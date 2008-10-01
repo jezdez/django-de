@@ -19,9 +19,9 @@
         <meta name="revisit-after" content="1" />
         <meta name="description" content="Django ist ein Python Web Framework für die schnelle Entwicklung von sauberen, pragmatischen Lösungen." />
         
-		<link rel="alternate" type="application/rss+xml" title="django-de.org: Community Aggregator" href="/community/feeds/latest/"/>
-		<link rel="alternate" type="application/rss+xml" title="django-de.org: Letzte News" href="/news/feeds/rss/"/>
-		{% block extrahead %}{% endblock %}
+        <link rel="alternate" type="application/rss+xml" title="django-de.org: Community Aggregator" href="/community/feeds/latest/"/>
+        <link rel="alternate" type="application/rss+xml" title="django-de.org: Letzte News" href="/news/feeds/rss/"/>
+        {% block extrahead %}{% endblock %}
     </head>
 
     <body id="{% block sectionid %}generic{% endblock %}" class="{% block coltype %}default{% endblock %}">
@@ -44,11 +44,6 @@
                 <li id="nav-download">
                     <a href="/download/" {% block active_nav-download %}{% endblock %}>
                         Download
-                    </a>
-                </li>
-                <li id="nav-documentation">
-                    <a href="/documentation/" {% block active_nav-documentation %}{% endblock %}>
-                        Dokumentation
                     </a>
                 </li>
                 <li id="nav-participate">
