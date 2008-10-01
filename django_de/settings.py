@@ -17,7 +17,6 @@ if DEVELOPMENT_MODE:
     DEBUG = True
     PREPEND_WWW = False
     CACHE_BACKEND = "file:///tmp/"
-    DOCS_SVN_ROOT = "https://www.django-de.org/svn/django/"
     DATABASE_ENGINE = 'sqlite3'
     DATABASE_NAME = os.path.join(PROJECT_PATH, 'django_de.db')
     SECRET_KEY = 'a1o#rz$vv6i$ptm-86h^r7n@v#v!h-@4+gh1e$@jf+b+li4z$*'
@@ -28,8 +27,6 @@ else:
         from local_settings import *
     except ImportError:
         pass
-
-DOCS_SVN_PATH = "docs/live/"
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -72,8 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_de.apps.documentation.middleware.StaticGeneratorMiddleware',
-    #'django.middleware.cache.CacheMiddleware',
+    'django.middleware.cache.CacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'pagination.middleware.PaginationMiddleware',
 )
@@ -90,7 +86,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'django_de.apps.authors',
-    'django_de.apps.documentation',
     'django_de.apps.aggregator',
     'django_de.apps.jobboard',
     'django_de.apps.ticker',
