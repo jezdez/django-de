@@ -4,7 +4,7 @@
     <div class="newsentry-content">
         <h3>{{ entry.title }}</h3>
         <p class="subheadline">
-            Von <strong>{{ entry.get_author }}</strong>
+            Von <strong>{{ entry.get_author }}</strong>,
             geschrieben am {{ entry.published|date:"d. F Y H:i" }} Uhr</p>
         <div class="summary">{{ entry.content_processed|safe }}</div>
 		{% if entry.source_url %}
