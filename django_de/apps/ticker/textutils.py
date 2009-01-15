@@ -13,8 +13,8 @@ import re
 #===============================================================================
 
 def changeset_links(content):
-    content = re.sub(r'#(\d+)', '<a href="http://code.djangoproject.com/ticket/\\1">#\\1</a>', content)
-    content = re.sub(r'r(\d+)', '<a href="http://code.djangoproject.com/changeset/\\1">r\\1</a>', content)
+    content = re.sub(r'#(\d{4,5})', '<a href="http://code.djangoproject.com/ticket/\\1">#\\1</a>', content)
+    content = re.sub(r'r(\d{4,5})', '<a href="http://code.djangoproject.com/changeset/\\1">r\\1</a>', content)
     return content
 
 #===============================================================================
